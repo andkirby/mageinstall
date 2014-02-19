@@ -130,7 +130,12 @@ php -f install.php -- \
 
 END=$(date +%s)
 DIFF=$(( $END - $START ))
-echo "Installing took $DIFF seconds."
+echo "Magento has been installed. Installing took $DIFF seconds."
+
+for FILE_INI in $SAMPLE_DATA_DIR/*.ini; do
+    php -f config.php $FILE_INI
+    echo "Applied configuration from file $FILE_INI"
+done
 
 cd "$OLD_DIR"
 
