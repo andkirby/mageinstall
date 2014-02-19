@@ -13,7 +13,7 @@ PROJECT_DOMAIN_MASK="%HOST%.cc"
 PROTOCOL_SECURED="https"
 ADMIN_USERNAME="admin"
 ADMIN_PASSWORD="qweqwe1"
-ADMIN_EMAIL="a.roslik@sysiq.com"
+ADMIN_EMAIL="$2"
 USE_REWRITES="yes" # Use Apache rewrites
 
 # ======= Not desirable to change ========
@@ -39,6 +39,13 @@ then
    echo "Please set project name."
    exit 1
 fi
+
+if [ -z "$ADMIN_EMAIL" ]
+then
+   echo "Please set your email as a second parameter."
+   exit 1
+fi
+
 
 echo "Go to directory $ROOT/$PROJECT..."
 if [ ! -d "$ROOT/$PROJECT" ]
