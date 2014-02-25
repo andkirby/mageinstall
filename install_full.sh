@@ -75,7 +75,7 @@ then
     done
     if [ "$SAMPLE_DATA_DIR/media" ]
     then
-        cp -Rf $SAMPLE_DATA_DIR/media $PROJECT_DIR/
+        cp -Rf $SAMPLE_DATA_DIR/media/* $PROJECT_DIR/media/
 
         # Set permissions
         chmod -R 777 media
@@ -116,7 +116,7 @@ DIFF=$(( $END - $START ))
 echo "Magento has been installed. Installing took $DIFF seconds."
 
 for FILE_INI in $SAMPLE_DATA_DIR/*.ini; do
-    php -f config.php $FILE_INI
+    php -f $SCRIPT_DIR/config.php $FILE_INI
     echo "Applied configuration from file $FILE_INI"
 done
 
