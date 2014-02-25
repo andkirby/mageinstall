@@ -3,7 +3,7 @@
 # ======= Not desirable to change ========
 
 # Set project domain
-PROJECT_DOMAIN=$(echo $PROJECT_DOMAIN_MASK | tr "%HOST%" $PROJECT )
+PROJECT_DOMAIN=`echo $PROJECT_DOMAIN_MASK | sed 's/%HOST%/'$PROJECT'/'`
 
 # Set Database name
 DB_NAME=$(echo $PROJECT | tr . _)
