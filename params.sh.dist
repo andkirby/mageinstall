@@ -15,4 +15,4 @@ ADMIN_USERNAME="admin"
 ADMIN_PASSWORD="qweqwe1"
 ADMIN_EMAIL="$2"
 USE_REWRITES="yes" # Use Apache rewrites
-
+PROJECT_DIR="$ROOT/$PROJECT"

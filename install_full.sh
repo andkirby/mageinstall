@@ -30,14 +30,14 @@ then
 fi
 
 
-echo "Go to directory $ROOT/$PROJECT..."
-if [ ! -d "$ROOT/$PROJECT" ]
+echo "Go to directory $PROJECT_DIR..."
+if [ ! -d "$PROJECT_DIR" ]
 then
-    echo "Directory $ROOT/$PROJECT doen not exist."
+    echo "Directory $PROJECT_DIR doen not exist."
     exit 1
 fi
 
-cd "$ROOT/$PROJECT"
+cd "$PROJECT_DIR"
 
 # ======= Clean Up var Directory =======
 echo "Cleaning up cache files and config file..."
