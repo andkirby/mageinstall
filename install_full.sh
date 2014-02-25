@@ -1,19 +1,19 @@
 #!/bin/sh
-
+SCRIPT_DIR=$(dirname $0)
 # include params
-if [ -f "./params.sh" ]
+if [ -f $SCRIPT_DIR"/params.sh" ]
 then
-    . params.sh
+    . $SCRIPT_DIR/params.sh
 else
-    . params.sh.dist
+    . $SCRIPT_DIR/params.sh.dist
 fi
 
 # include addintional params
-if [ -f "./params-protected.sh" ]
+if [ -f $SCRIPT_DIR"/params-protected.sh" ]
 then
-    . params-protected.sh
+    . $SCRIPT_DIR/params-protected.sh
 else
-    . params-protected.sh.dist
+    . $SCRIPT_DIR/params-protected.sh.dist
 fi
 
 # ================= Code =================
