@@ -1,5 +1,4 @@
 <?php
-require_once 'func.php';
 require 'app/Mage.php';
 
 if (!Mage::isInstalled()) {
