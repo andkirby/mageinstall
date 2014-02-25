@@ -113,7 +113,8 @@ php -f install.php -- \
 
 END=$(date +%s)
 DIFF=$(( $END - $START ))
-echo "Magento has been installed. Installing took $DIFF seconds."
+echo "Magento has been installed for domain http://$PROJECT_DOMAIN/."
+echo "Installing took $DIFF seconds."
 
 for FILE_INI in $SAMPLE_DATA_DIR/*.ini; do
     php -f $SCRIPT_DIR/config.php $FILE_INI
