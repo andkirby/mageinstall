@@ -75,7 +75,7 @@ then
     done
     if [ "$SAMPLE_DATA_DIR/media" ]
     then
-        cp -Rf $SAMPLE_DATA_DIR/media $ROOT/$PROJECT/
+        cp -Rf $SAMPLE_DATA_DIR/media $PROJECT_DIR/
 
         # Set permissions
         chmod -R 777 media
