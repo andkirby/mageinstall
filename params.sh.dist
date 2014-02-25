@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Input params
+PROJECT="$1"
+DB_HOST="localhost"
+DB_USER="root"
+DB_PASSWORD=""
+DB_NAME=$(echo $PROJECT | tr . _)
+ROOT="/web"
+SAMPLE_DATA_DIR="$ROOT/sample_data/$PROJECT"
+PROTOCOL_SECURED="https"
+PROJECT_DOMAIN_MASK="%HOST%.cc"
+PROTOCOL_SECURED="https"
+ADMIN_USERNAME="admin"
+ADMIN_PASSWORD="qweqwe1"
+ADMIN_EMAIL="$2"
+USE_REWRITES="yes" # Use Apache rewrites
+

@@ -1,36 +1,19 @@
 #!/bin/sh
 
-# Input params
-PROJECT="$1"
-DB_HOST="localhost"
-DB_USER="root"
-DB_PASSWORD=""
-DB_NAME=$(echo $PROJECT | tr . _)
-ROOT="/web"
-SAMPLE_DATA_DIR="$ROOT/sample_data/$PROJECT"
-PROTOCOL_SECURED="https"
-PROJECT_DOMAIN_MASK="%HOST%.cc"
-PROTOCOL_SECURED="https"
-ADMIN_USERNAME="admin"
-ADMIN_PASSWORD="qweqwe1"
-ADMIN_EMAIL="$2"
-USE_REWRITES="yes" # Use Apache rewrites
-
-# ======= Not desirable to change ========
-
-# Set project domain
-PROJECT_DOMAIN=$(echo $PROJECT_DOMAIN_MASK | tr "%HOST%" $PROJECT )
-
-# Set Database name
-DB_NAME=$(echo $PROJECT | tr . _)
-
-# Save current path to variable
-CUR_DIR=$(pwd)
-
-# Set default DB host
-if [ ! "$DB_HOST" ]
+# include params
+if [ -f "./params.sh" ]
 then
-    DB_HOST="localhost"
+    . params.sh
+else
+    . params.sh.dist
+fi
+
+# include addintional params
+if [ -f "./params-protected.sh" ]
+then
+    . params-protected.sh
+else
+    . params-protected.sh.dist
 fi
 
 # ================= Code =================

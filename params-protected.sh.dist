@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# ======= Not desirable to change ========
+
+# Set project domain
+PROJECT_DOMAIN=$(echo $PROJECT_DOMAIN_MASK | tr "%HOST%" $PROJECT )
+
+# Set Database name
+DB_NAME=$(echo $PROJECT | tr . _)
+
+# Save current path to variable
+CUR_DIR=$(pwd)
+
+# Set default DB host
+if [ ! "$DB_HOST" ]
+then
+    DB_HOST="localhost"
+fi
