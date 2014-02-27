@@ -121,5 +121,10 @@ for FILE_INI in $SAMPLE_DATA_DIR/*.ini; do
     echo "Applied configuration from file $FILE_INI"
 done
 
+if [ -e "$FULL_REINDEX" ]
+then
+    php -f $PROJECT_DIR/shell/indexer.php reindexall
+fi
+
 cd "$OLD_DIR"
 
