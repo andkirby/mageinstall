@@ -2,7 +2,7 @@
 require 'app/Mage.php';
 
 if (!Mage::isInstalled()) {
-    echo "Application is not installed yet, please complete install wizard first.";
+    echo 'Application is not installed yet, please complete install wizard first.';
     exit;
 }
 
@@ -18,10 +18,20 @@ umask(0);
 try {
     $setup = new Mage_Core_Model_Resource_Setup('write');
     $csv = new Varien_File_Csv();
-    $file = __DIR__  . DS . 'config.ini';
-    if (!file_exists($file)) {
+
+    if (empty($_SERVER['argv'][1])) {
+        echo "Please set file path as a parameter.";
         exit(1);
     }
+    $file = $_SERVER['argv'][1];
+    if (ltrim($file, '\\/') == $file) {
+        $file = realpath(__DIR__  . DIRECTORY_SEPARATOR . $file);
+    }
+    if (!file_exists($file)) {
+        echo "File '$file' does not exist.";
+        exit(1);
+    }
+
     $data = $csv->getData($file);
     foreach ($data as $row) {
         if (isset($row[0]) && isset($row[1])) {
