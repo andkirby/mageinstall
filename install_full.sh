@@ -46,7 +46,10 @@ rm -rf var/cache
 rm -rf var/lock
 rm -rf var/log
 rm -rf var/session
-rm -rf app/etc/local.xml
+if [ "$INSTALL_RUN" ]
+then
+    rm -rf app/etc/local.xml
+fi
 rm -rf media/catalog/product/cache
 echo "Clean up done."
 
@@ -58,73 +61,79 @@ then
 fi
 
 # ======= (Re)create DB =======
-echo "(Re)creating database '$DB_NAME'..."
-$DB_CONNECT_COMMAND -h$DB_HOST -e "DROP DATABASE IF EXISTS \`$DB_NAME\`;"
-$DB_CONNECT_COMMAND -h$DB_HOST -e "CREATE DATABASE \`$DB_NAME\`;"
-echo "Database (re)created."
+if [ "$INSTALL_RUN" ] && [ "$IMPORT_RUN" != 0 ]
+then
+    echo "(Re)creating database '$DB_NAME'..."
+    $DB_CONNECT_COMMAND -h$DB_HOST -e "DROP DATABASE IF EXISTS \`$DB_NAME\`;"
+    $DB_CONNECT_COMMAND -h$DB_HOST -e "CREATE DATABASE \`$DB_NAME\`;"
+    echo "Database (re)created."
+fi
 
 # ======= Install Sample Data =======
-if [ -d "$SAMPLE_DATA_DIR" ]
+if [ "$INSTALL_RUN" ] && [ "$IMPORT_RUN" != 0 ]
 then
-    echo "Trying install sample data..."
-    for f in $SAMPLE_DATA_DIR/*.sql; do
-        SQL_FILE="$f"
-        $DB_CONNECT_COMMAND $DB_NAME < $SQL_FILE
-        echo "Sample data added to DB."
-        break
-    done
-    if [ "$SAMPLE_DATA_DIR/media" ]
+    if [ -d "$SAMPLE_DATA_DIR" ]
     then
-        cp -Rf $SAMPLE_DATA_DIR/media/* $PROJECT_DIR/media/
+        echo "Trying install sample data..."
+        for f in $SAMPLE_DATA_DIR/*.sql; do
+            SQL_FILE="$f"
+            $DB_CONNECT_COMMAND $DB_NAME < $SQL_FILE
+            echo "Sample data added to DB."
+            break
+        done
+        if [ -d "$SAMPLE_DATA_DIR/media" ]
+        then
+            cp -Rf $SAMPLE_DATA_DIR/media/* $PROJECT_DIR/media/
 
-        # Set permissions
-        chmod -R 777 media
+            # Set permissions
+            chmod -R 777 media
+        else
+            echo "Skipped coping media files."
+        fi
     else
-        echo "Skipped coping media files."
+        echo "Skipped adding sample data."
     fi
-else
-    echo "Skipped adding sample data."
 fi
 
 # ======== Install Magento ========
-echo "Start installing Magento..."
-START=$(date +%s)
+if [ "$INSTALL_RUN" ] && [ "$IMPORT_RUN" != 0 ]
+then
+    echo "Start installing Magento..."
+    START=$(date +%s)
+    php -f install.php -- \
+            --license_agreement_accepted "yes" \
+            --locale "en_US" \
+            --timezone "America/Los_Angeles" \
+            --default_currency "USD" \
+            --db_host "$DB_HOST" \
+            --db_name "$DB_NAME" \
+            --db_user "$DB_USER" \
+            --db_pass "$DB_PASSWORD" \
+            --url "http://$PROJECT_DOMAIN/" \
+            --use_rewrites "$USE_REWRITES" \
+            --use_secure "yes" \
+            --secure_base_url "$PROTOCOL_SECURED://$PROJECT_DOMAIN/" \
+            --use_secure_admin "yes" \
+            --admin_firstname "ad" \
+            --admin_lastname "min" \
+            --admin_email "$ADMIN_EMAIL" \
+            --admin_username "$ADMIN_USERNAME" \
+            --admin_password "$ADMIN_PASSWORD" \
+            --skip_url_validation "yes"
+    END=$(date +%s)
+    DIFF=$(( $END - $START ))
+    echo "Magento has been installed for domain http://$PROJECT_DOMAIN/."
+    echo "Installing took $DIFF seconds."
+fi
 
-php -f install.php -- \
-        --license_agreement_accepted "yes" \
-        --locale "en_US" \
-        --timezone "America/Los_Angeles" \
-        --default_currency "USD" \
-        --db_host "$DB_HOST" \
-        --db_name "$DB_NAME" \
-        --db_user "$DB_USER" \
-        --db_pass "$DB_PASSWORD" \
-        --url "http://$PROJECT_DOMAIN/" \
-        --use_rewrites "$USE_REWRITES" \
-        --use_secure "yes" \
-        --secure_base_url "$PROTOCOL_SECURED://$PROJECT_DOMAIN/" \
-        --use_secure_admin "yes" \
-        --admin_firstname "ad" \
-        --admin_lastname "min" \
-        --admin_email "$ADMIN_EMAIL" \
-        --admin_username "$ADMIN_USERNAME" \
-        --admin_password "$ADMIN_PASSWORD" \
-        --skip_url_validation "yes"
-
-END=$(date +%s)
-DIFF=$(( $END - $START ))
-echo "Magento has been installed for domain http://$PROJECT_DOMAIN/."
-echo "Installing took $DIFF seconds."
-
+# Add configuration into Magento instance
 for FILE_INI in $SAMPLE_DATA_DIR/*.ini; do
-    php -f $SCRIPT_DIR/config.php $FILE_INI
-    echo "Applied configuration from file $FILE_INI"
+    echo "Applying configuration from file $FILE_INI..."
+    php -f $SCRIPT_DIR/config.php "$FILE_INI"
 done
 
-if [ -e "$FULL_REINDEX" ]
-then
-    php -f $PROJECT_DIR/shell/indexer.php reindexall
-fi
+# Import products
+. $SCRIPT_DIR/import.sh
 
 cd "$OLD_DIR"
 

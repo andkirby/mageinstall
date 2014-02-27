@@ -1,6 +1,13 @@
 <?php
-require_once 'func.php';
-require './app/Mage.php';
+$magentoRoot = trim(@$_SERVER['argv'][1], '"\'');
+$magentoRoot = rtrim($magentoRoot, '\\/');
+if (!is_dir($magentoRoot)) {
+    echo 'Please set path to filename. php shell/import.php /path/to/magento /path/to/filename.csv';
+    exit(1);
+}
+
+
+require_once $magentoRoot . '/app/Mage.php';
 
 if (!Mage::isInstalled()) {
     echo "Application is not installed yet, please complete install wizard first.";
@@ -9,8 +16,8 @@ if (!Mage::isInstalled()) {
 
 // Only for urls
 // Don't remove this
-$_SERVER['SCRIPT_NAME'] = str_replace(basename(__FILE__), 'index.php', $_SERVER['SCRIPT_NAME']);
-$_SERVER['SCRIPT_FILENAME'] = str_replace(basename(__FILE__), 'index.php', $_SERVER['SCRIPT_FILENAME']);
+$_SERVER['SCRIPT_NAME'] = $magentoRoot . DIRECTORY_SEPARATOR . 'index.php';
+$_SERVER['SCRIPT_FILENAME'] = $magentoRoot . DIRECTORY_SEPARATOR . 'index.php';
 
 Mage::app('admin')->setUseSessionInUrl(false);
 
@@ -19,11 +26,13 @@ umask(0);
 Mage::setIsDeveloperMode(true);
 
 try {
-    if (!isset($_SERVER['argv'][1])) {
-        echo 'Please set path to filename. php shell/import.php /path/to/filename';
+    var_dump($_SERVER['argv']);
+
+    if (!isset($_SERVER['argv'][2])) {
+        echo 'Please set path to filename. php shell/import.php /path/to/magento /path/to/filename.csv';
         exit(1);
     }
-    $file = $_SERVER['argv'][1];
+    $file = trim($_SERVER['argv'][2], ' "\'');
     $execDir = str_replace($_SERVER['argv'][0], '', __FILE__);
     if ($file[0] != '/' || $file[1] != ':') {
         //relative path to file, making it absolute
@@ -35,13 +44,14 @@ try {
     }
     //copy file into var/importexport dir
     $filename = pathinfo($file, PATHINFO_BASENAME);
-    $mageDir = realpath(__DIR__ . DS . '..');
-    $importDir = $mageDir . DS .'var' . DS . 'importexport';
-    if (!is_dir($importDir) && !mkdir($importDir)) {
+//    $mageDir = realpath(__DIR__ . DS . '..');
+    $importDir = $magentoRoot . DS .'var' . DS . 'importexport';
+    if (!is_dir($importDir) && is_writeable($magentoRoot . DS .'var') && !mkdir($importDir)) {
         echo "Unable to create dir '$importDir'.";
         exit(1);
     }
     $tmpFile = $importDir . DS . $filename;
+    var_dump($file, $tmpFile);
     if ($file != $tmpFile && !copy($file, $tmpFile)) {
         echo 'Could not copy file to "var" dir. Destination file: ' . $tmpFile;
         exit(1);
