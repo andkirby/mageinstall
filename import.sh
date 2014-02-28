@@ -1,5 +1,5 @@
 #!/bin/sh
-#SCRIPT_DIR=$(dirname $0)
+#SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 ## include params
 #if [ -f $SCRIPT_DIR"/params.sh" ]
 #then

@@ -51,7 +51,6 @@ try {
         exit(1);
     }
     $tmpFile = $importDir . DS . $filename;
-    var_dump($file, $tmpFile);
     if ($file != $tmpFile && !copy($file, $tmpFile)) {
         echo 'Could not copy file to "var" dir. Destination file: ' . $tmpFile;
         exit(1);
@@ -60,8 +59,8 @@ try {
 
     //Import script
     $actions = array('append', 'replace', 'delete');
-    if (isset($_SERVER['args'][2])) {
-        $action = $_SERVER['args'][2];
+    if (isset($_SERVER['args'][3])) {
+        $action = $_SERVER['args'][3];
     } else {
         $action = 'append';
     }

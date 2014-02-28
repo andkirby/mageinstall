@@ -1,19 +1,19 @@
 #!/bin/sh
-SCRIPT_DIR=$(dirname $0)
+SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 # include params
-if [ -f $SCRIPT_DIR"/params.sh" ]
+if [ -f "$SCRIPT_DIR/params.sh" ]
 then
-    . $SCRIPT_DIR/params.sh
+    . "$SCRIPT_DIR"/params.sh
 else
-    . $SCRIPT_DIR/params.sh.dist
+    . "$SCRIPT_DIR"/params.sh.dist
 fi
 
 # include addintional params
-if [ -f $SCRIPT_DIR"/params-protected.sh" ]
+if [ -f "$SCRIPT_DIR/params-protected.sh" ]
 then
-    . $SCRIPT_DIR/params-protected.sh
+    . "$SCRIPT_DIR"/params-protected.sh
 else
-    . $SCRIPT_DIR/params-protected.sh.dist
+    . "$SCRIPT_DIR"/params-protected.sh.dist
 fi
 
 # ================= Code =================
@@ -38,7 +38,7 @@ then
 fi
 
 cd "$PROJECT_DIR"
-
+INSTALL_RUN=""
 # ======= Clean Up var Directory =======
 echo "Cleaning up cache files and config file..."
 rm -rf var/full_page_cache
@@ -46,7 +46,7 @@ rm -rf var/cache
 rm -rf var/lock
 rm -rf var/log
 rm -rf var/session
-if [ "$INSTALL_RUN" ]
+if [ "$INSTALL_RUN" ] && [ "$IMPORT_RUN" != 0 ]
 then
     rm -rf app/etc/local.xml
 fi
@@ -127,13 +127,12 @@ then
 fi
 
 # Add configuration into Magento instance
-for FILE_INI in $SAMPLE_DATA_DIR/*.ini; do
+for FILE_INI in "$SAMPLE_DATA_DIR"/*.ini; do
     echo "Applying configuration from file $FILE_INI..."
-    php -f $SCRIPT_DIR/config.php "$FILE_INI"
+    php -f "$SCRIPT_DIR"/config.php "$FILE_INI"
 done
 
 # Import products
 . $SCRIPT_DIR/import.sh
 
 cd "$OLD_DIR"
-
