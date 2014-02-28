@@ -38,7 +38,7 @@ then
 fi
 
 cd "$PROJECT_DIR"
-INSTALL_RUN=""
+
 # ======= Clean Up var Directory =======
 echo "Cleaning up cache files and config file..."
 rm -rf var/full_page_cache
