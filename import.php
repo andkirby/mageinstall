@@ -53,7 +53,6 @@ try {
         echo 'Could not copy file to "var" dir. Destination file: ' . $tmpFile;
         exit(1);
     }
-    $file = $tmpFile;
 
     //Import script
     $actions = array('append', 'replace', 'delete');
@@ -75,7 +74,7 @@ try {
     /** @var $import Mage_ImportExport_Model_Import */
     $import = Mage::getModel('importexport/import');
     $import->setData($data);
-    $validationResult = $import->validateSource($file);
+    $validationResult = $import->validateSource($tmpFile);
     $messages = array();
     $importStart = false;
     if (!$import->getProcessedRowsCount()) {
@@ -128,5 +127,7 @@ try {
     }
 } catch (Exception $e) {
     Mage::printException($e);
+    unlink($tmpFile);
     exit(1);
 }
+unlink($tmpFile);
