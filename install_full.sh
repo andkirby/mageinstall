@@ -46,7 +46,7 @@ rm -rf var/cache
 rm -rf var/lock
 rm -rf var/log
 rm -rf var/session
-if [ "$INSTALL_RUN" ] && [ "$IMPORT_RUN" != 0 ]
+if [ "$INSTALL_RUN" ] && [ "$INSTALL_RUN" != 0 ]
 then
     rm -rf app/etc/local.xml
 fi
@@ -61,7 +61,7 @@ then
 fi
 
 # ======= (Re)create DB =======
-if [ "$INSTALL_RUN" ] && [ "$IMPORT_RUN" != 0 ]
+if [ "$INSTALL_RUN" ] && [ "$INSTALL_RUN" != 0 ]
 then
     echo "(Re)creating database '$DB_NAME'..."
     $DB_CONNECT_COMMAND -h$DB_HOST -e "DROP DATABASE IF EXISTS \`$DB_NAME\`;"
@@ -70,7 +70,7 @@ then
 fi
 
 # ======= Install Sample Data =======
-if [ "$INSTALL_RUN" ] && [ "$IMPORT_RUN" != 0 ]
+if [ "$INSTALL_RUN" ] && [ "$INSTALL_RUN" != 0 ]
 then
     if [ -d "$SAMPLE_DATA_DIR" ]
     then
@@ -96,7 +96,7 @@ then
 fi
 
 # ======== Install Magento ========
-if [ "$INSTALL_RUN" ] && [ "$IMPORT_RUN" != 0 ]
+if [ "$INSTALL_RUN" ] && [ "$INSTALL_RUN" != 0 ]
 then
     echo "Start installing Magento..."
     START=$(date +%s)
