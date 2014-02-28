@@ -26,8 +26,6 @@ umask(0);
 Mage::setIsDeveloperMode(true);
 
 try {
-    var_dump($_SERVER['argv']);
-
     if (!isset($_SERVER['argv'][2])) {
         echo 'Please set path to filename. php shell/import.php /path/to/magento /path/to/filename.csv';
         exit(1);
