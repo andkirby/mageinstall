@@ -31,24 +31,18 @@ try {
         exit(1);
     }
     $file = trim($_SERVER['argv'][2], ' "\'');
-    $execDir = str_replace($_SERVER['argv'][0], '', __FILE__);
-    if ($file[0] != '/' || $file[1] != ':') {
-        //relative path to file, making it absolute
-        $file = realpath($execDir . $file);
-    }
     if (!file_exists($file)) {
         echo "File '$file' doesn't exist.";
         exit(1);
     }
     //copy file into var/importexport dir
     $filename = pathinfo($file, PATHINFO_BASENAME);
-//    $mageDir = realpath(__DIR__ . DS . '..');
-    $importDir = $magentoRoot . DS .'var' . DS . 'importexport';
-    if (!is_dir($importDir) && is_writeable($magentoRoot . DS .'var') && !mkdir($importDir)) {
+    $importDir = $magentoRoot . DIRECTORY_SEPARATOR .'var' . DIRECTORY_SEPARATOR . 'importexport';
+    if (!is_dir($importDir) && is_writeable($magentoRoot . DIRECTORY_SEPARATOR .'var') && !mkdir($importDir)) {
         echo "Unable to create dir '$importDir'.";
         exit(1);
     }
-    $tmpFile = $importDir . DS . $filename;
+    $tmpFile = $importDir . DIRECTORY_SEPARATOR . $filename;
     if ($file != $tmpFile && !copy($file, $tmpFile)) {
         echo 'Could not copy file to "var" dir. Destination file: ' . $tmpFile;
         exit(1);
