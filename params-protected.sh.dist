@@ -3,7 +3,7 @@
 # ======= Not desirable to change ========
 
 # Set project domain
-if [ -n $PROJECT_DOMAIN ]
+if [ ! "$PROJECT_DOMAIN" ]
 then
     PROJECT_DOMAIN=`echo $PROJECT_DOMAIN_MASK | sed 's/%HOST%/'$PROJECT'/'`
 fi
