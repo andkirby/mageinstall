@@ -127,10 +127,13 @@ then
 fi
 
 # Add configuration into Magento instance
-for FILE_INI in "$SAMPLE_DATA_DIR"/*.ini; do
-    echo "Applying configuration from file $FILE_INI..."
-    php -f "$SCRIPT_DIR"/config.php "$FILE_INI"
-done
+if [ -d "$SAMPLE_DATA_DIR" ]
+then
+    for FILE_INI in "$SAMPLE_DATA_DIR"/*.ini; do
+        echo "Applying configuration from file $FILE_INI..."
+        php -f "$SCRIPT_DIR"/config.php "$FILE_INI"
+    done
+fi
 
 # Import products
 . $SCRIPT_DIR/import.sh
