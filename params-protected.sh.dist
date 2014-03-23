@@ -3,10 +3,10 @@
 # ======= Not desirable to change ========
 
 # Set project domain
-PROJECT_DOMAIN=`echo $PROJECT_DOMAIN_MASK | sed 's/%HOST%/'$PROJECT'/'`
-
-# Set Database name
-DB_NAME=$(echo $PROJECT | tr . _)
+if [ -n $PROJECT_DOMAIN ]
+then
+    PROJECT_DOMAIN=`echo $PROJECT_DOMAIN_MASK | sed 's/%HOST%/'$PROJECT'/'`
+fi
 
 # Save current path to variable
 CUR_DIR=$(pwd)
@@ -16,3 +16,6 @@ if [ ! "$DB_HOST" ]
 then
     DB_HOST="localhost"
 fi
+
+# Set Database name
+DB_NAME=$(echo $DB_NAME | tr /.- _)
