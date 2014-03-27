@@ -23,13 +23,13 @@ then
     FILE_CSV=""
     for FILE_CSV in $IMPORT_DIR/*.csv; do
         echo "Importing products file $FILE_CSV..."
-        php -f "$SCRIPT_DIR/import.php" "\"$PROJECT_DIR\"" "\"$FILE_CSV\""
+        $PHP_BIN -f "$SCRIPT_DIR/import.php" "\"$PROJECT_DIR\"" "\"$FILE_CSV\""
     done
 
     if [ "$FILE_CSV" ] # check if any file participated in the importing
     then
         echo "Reindexing..."
-        php -f $PROJECT_DIR/shell/indexer.php reindexall
+        $PHP_BIN -f $PROJECT_DIR/shell/indexer.php reindexall
     fi
 fi
 
