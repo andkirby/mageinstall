@@ -54,7 +54,7 @@ rm -rf media/catalog/product/cache
 echo "Clean up done."
 
 # ======= Set DB connect command =======
-DB_CONNECT_COMMAND="mysql -u$DB_USER -h$DB_HOST"
+DB_CONNECT_COMMAND="$MYSQL_BIN -u$DB_USER -h$DB_HOST"
 if [ "$DB_PASSWORD" ]
 then
     DB_CONNECT_COMMAND="$DB_CONNECT_COMMAND -p$DB_PASSWORD"
