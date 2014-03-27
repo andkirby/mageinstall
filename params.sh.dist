@@ -20,3 +20,4 @@ INSTALL_RUN=1
 IMPORT_RUN=1
 IMPORT_DIR="$SAMPLE_DATA_DIR/import"
 MYSQL_BIN="mysql" #path to binary MySQL client
+PHP_BIN="php" #path to binary PHP

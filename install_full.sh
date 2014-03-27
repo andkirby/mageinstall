@@ -100,7 +100,7 @@ if [ "$INSTALL_RUN" ] && [ "$INSTALL_RUN" != 0 ]
 then
     echo "Start installing Magento..."
     START=$(date +%s)
-    php -f install.php -- \
+    $PHP_BIN -f install.php -- \
             --license_agreement_accepted "yes" \
             --locale "en_US" \
             --timezone "America/Los_Angeles" \
@@ -131,7 +131,7 @@ if [ -d "$SAMPLE_DATA_DIR" ]
 then
     for FILE_INI in "$SAMPLE_DATA_DIR"/*.ini; do
         echo "Applying configuration from file $FILE_INI..."
-        php -f "$SCRIPT_DIR"/config.php "$FILE_INI"
+        $PHP_BIN -f "$SCRIPT_DIR"/config.php "$FILE_INI"
     done
 fi
 
