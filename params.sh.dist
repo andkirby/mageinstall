@@ -1,23 +1,66 @@
 #!/bin/sh
 
-# Input params
+# Project name. It should be provided from the first parameter.
 PROJECT="$1"
+# Database connection host. Magento install parameter.
 DB_HOST="localhost"
+# Database connection username. Magento install parameter.
 DB_USER="root"
+# Database connection password. Magento install parameter.
 DB_PASSWORD=""
+# Database name. Magento install parameter.
 DB_NAME=$(echo $PROJECT | tr . _)
+
+# Path to document root
 ROOT="/web"
-SAMPLE_DATA_DIR="$ROOT/sample_data/$PROJECT"
-PROTOCOL_SECURED="https"
+
+# %HOST% will be replaced with your $PROJECT parameter
+# You can make some your pattern:
+#   example.com/path/to/%HOST%
+#   example-%HOST%.com
+# And you will get completed domains:
+#   example.com/path/to/projectname
+#   example-projectname.com
 PROJECT_DOMAIN_MASK="%HOST%.cc"
+
+# Secured protocol secured URL of project. Set "http" if you don't have HTTPS. Magento install parameter.
 PROTOCOL_SECURED="https"
+
+# Username of default administrator. Magento install parameter.
 ADMIN_USERNAME="admin"
-ADMIN_PASSWORD="qweqwe1"
+
+# Password of default administrator. Magento install parameter.
+ADMIN_PASSWORD="password"
+
+# Email of default administrator. Magento install parameter.
 ADMIN_EMAIL="$2"
-USE_REWRITES="yes" # Use Apache rewrites
+
+# Enable using of Apache rewrites. Magento install parameter.
+USE_REWRITES="yes"
+
+# You root directory of project
 PROJECT_DIR="$ROOT/$PROJECT"
+
+# Enable installation
 INSTALL_RUN=1
+
+# Enable products importing
 IMPORT_RUN=1
+
+# Enable importing sample data SQL scripts and media files
+SAMPLE_DATA_SQL_RUN=1
+
+# Enable importing sample data SQL scripts and media files
+SAMPLE_DATA_MEDIA_RUN=1
+
+# Path sample data directory
+SAMPLE_DATA_DIR="$ROOT/sample_data/$PROJECT"
+
+# Products CSV files directory
 IMPORT_DIR="$SAMPLE_DATA_DIR/import"
-MYSQL_BIN="mysql" #path to binary MySQL client
-PHP_BIN="php" #path to binary PHP
+
+# Path to MySQL client binary file
+MYSQL_BIN="mysql"
+
+# Path to PHP binary file
+PHP_BIN="php"
