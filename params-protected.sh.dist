@@ -8,14 +8,15 @@ then
     PROJECT_DOMAIN=`echo $PROJECT_DOMAIN_MASK | sed 's/%HOST%/'$PROJECT'/'`
 fi
 
-# Save current path to variable
+# Save current path
 CUR_DIR=$(pwd)
 
 # Set default DB host
 if [ ! "$DB_HOST" ]
 then
     DB_HOST="localhost"
+    echo "Set database hostname \"localhost\"!!!"
 fi
 
-# Set Database name
+# Replace symbols "/.-" with "_" in database name
 DB_NAME=$(echo $DB_NAME | tr /.- _)
