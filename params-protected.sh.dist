@@ -8,11 +8,14 @@ then
     PROJECT_DOMAIN=`echo $PROJECT_DOMAIN_MASK | sed 's/%HOST%/'$PROJECT'/'`
 fi
 
+# Set project name into email
+ADMIN_EMAIL=`echo $ADMIN_EMAIL | sed 's/%HOST%/'$PROJECT'/'`
+
 # Save current path
 CUR_DIR=$(pwd)
 
 # Set default DB host
-if [ ! "$DB_HOST" ]
+if [ "$DB_HOST" ]
 then
     DB_HOST="localhost"
     echo "Set database hostname \"localhost\"!!!"
@@ -20,3 +23,10 @@ fi
 
 # Replace symbols "/.-" with "_" in database name
 DB_NAME=$(echo $DB_NAME | tr /.- _)
+
+#Set boolean values
+setBoolean INSTALL_RUN "$INSTALL_RUN"
+setBoolean IMPORT_RUN "$IMPORT_RUN"
+setBoolean SAMPLE_DATA_SQL_RUN "$SAMPLE_DATA_SQL_RUN"
+setBoolean SAMPLE_DATA_MEDIA_RUN "$SAMPLE_DATA_MEDIA_RUN"
+setBoolean SAMPLE_DATA_CONFIG_RUN "$SAMPLE_DATA_CONFIG_RUN"

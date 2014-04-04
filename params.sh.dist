@@ -1,19 +1,20 @@
 #!/bin/sh
 
-# Project name. It should be provided from the first parameter.
-PROJECT="$1"
-# Database connection host. Magento install parameter.
+# Project name. It should be provided as a parameter.
+PROJECT=""
+
+# ---------- 1. INSTALLATION PARAMETERS ------------
+# ---------- 1.1. Database parameters --------------
+# Database connection host.
 DB_HOST="localhost"
-# Database connection username. Magento install parameter.
+# Database connection username.
 DB_USER="root"
-# Database connection password. Magento install parameter.
+# Database connection password.
 DB_PASSWORD=""
-# Database name. Magento install parameter.
+# Database name.
 DB_NAME=$(echo $PROJECT | tr . _)
 
-# Path to document root
-ROOT="/web"
-
+# ---------- 1.2. URL parameters
 # %HOST% will be replaced with your $PROJECT parameter
 # You can make some your pattern:
 #   example.com/path/to/%HOST%
@@ -22,45 +23,44 @@ ROOT="/web"
 #   example.com/path/to/projectname
 #   example-projectname.com
 PROJECT_DOMAIN_MASK="%HOST%.cc"
-
-# Secured protocol secured URL of project. Set "http" if you don't have HTTPS. Magento install parameter.
+# Secured protocol secured URL of project.
+# Set "http" if you don't have HTTPS.
 PROTOCOL_SECURED="https"
-
-# Username of default administrator. Magento install parameter.
-ADMIN_USERNAME="admin"
-
-# Password of default administrator. Magento install parameter.
-ADMIN_PASSWORD="password"
-
-# Email of default administrator. Magento install parameter.
-ADMIN_EMAIL="$2"
-
-# Enable using of Apache rewrites. Magento install parameter.
+# Enable using of Apache rewrites.
 USE_REWRITES="yes"
 
+# ---------- 1.3. Admin user parameters
+# Username of default administrator.
+ADMIN_USERNAME="admin"
+# Password of default administrator.
+ADMIN_PASSWORD="password"
+# Email of default administrator.
+ADMIN_EMAIL="example@example.com"
+
+# ---------- 2. Install parameters
+# Enable Magento installation
+INSTALL_RUN=1
+# Enable products importing
+IMPORT_RUN=1
+# Enable importing sample data SQL scripts and media files
+SAMPLE_DATA_SQL_RUN=1
+# Enable importing sample data SQL scripts and media files
+SAMPLE_DATA_MEDIA_RUN=1
+# Enable setting Magento configuration from CSV file
+SAMPLE_DATA_CONFIG_RUN=1
+
+# ---------- 3. Install directories
+# Path to document root
+ROOT="/usr/local/www/apache22/data"
+# Path sample data directory
+SAMPLE_DATA_DIR="$ROOT/sample_data/$PROJECT"
+# Products CSV files directory
+IMPORT_DIR="$SAMPLE_DATA_DIR/import"
 # You root directory of project
 PROJECT_DIR="$ROOT/$PROJECT"
 
-# Enable installation
-INSTALL_RUN=1
-
-# Enable products importing
-IMPORT_RUN=1
-
-# Enable importing sample data SQL scripts and media files
-SAMPLE_DATA_SQL_RUN=1
-
-# Enable importing sample data SQL scripts and media files
-SAMPLE_DATA_MEDIA_RUN=1
-
-# Path sample data directory
-SAMPLE_DATA_DIR="$ROOT/sample_data/$PROJECT"
-
-# Products CSV files directory
-IMPORT_DIR="$SAMPLE_DATA_DIR/import"
-
+# ---------- 4. Binary files parameters
 # Path to MySQL client binary file
 MYSQL_BIN="mysql"
-
 # Path to PHP binary file
 PHP_BIN="php"

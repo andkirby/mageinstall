@@ -1,19 +1,25 @@
 #!/bin/sh
+OLD_DIR=$(pwd)
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
-# include params
-if [ -f "$SCRIPT_DIR/params.sh" ]
+cd "$SCRIPT_DIR"
+
+# include default params
+. params.sh.dist
+# include custom params
+if [ -f "params.sh" ]
 then
-    . "$SCRIPT_DIR"/params.sh
-else
-    . "$SCRIPT_DIR"/params.sh.dist
+    . params.sh
 fi
 
+# get options from command line
+. tools/getopt.sh
+
 # include addintional params
-if [ -f "$SCRIPT_DIR/params-protected.sh" ]
+if [ -f "params-protected.sh" ]
 then
-    . "$SCRIPT_DIR"/params-protected.sh
+    . params-protected.sh
 else
-    . "$SCRIPT_DIR"/params-protected.sh.dist
+    . params-protected.sh.dist
 fi
 
 # ================= Code =================
@@ -25,7 +31,7 @@ fi
 
 if [ -z "$ADMIN_EMAIL" ]
 then
-   echo "Please set your email as a second parameter."
+   echo "Please set admin email."
    exit 1
 fi
 
@@ -33,7 +39,7 @@ fi
 echo "Go to directory $PROJECT_DIR..."
 if [ ! -d "$PROJECT_DIR" ]
 then
-    echo "Directory $PROJECT_DIR doen not exist."
+    echo "Directory $PROJECT_DIR does not exist."
     exit 1
 fi
 
@@ -43,10 +49,12 @@ cd "$PROJECT_DIR"
 echo "Cleaning up cache files and config file..."
 rm -rf var/full_page_cache
 rm -rf var/cache
-rm -rf var/lock
-rm -rf var/log
+if [ "$INSTALL_RUN" = true ] || [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] ; then
+    rm -rf var/lock
+    rm -rf var/log
+fi
 rm -rf var/session
-if [ "$INSTALL_RUN" ] && [ "$INSTALL_RUN" != 0 ]
+if [ "$INSTALL_RUN" = true ]
 then
     rm -rf app/etc/local.xml
 fi
@@ -61,7 +69,7 @@ then
 fi
 
 # ======= (Re)create DB =======
-if [ "$INSTALL_RUN" ] && [ "$INSTALL_RUN" != 0 ]
+if [ "$INSTALL_RUN" = true ] || [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ]
 then
     echo "(Re)creating database '$DB_NAME'..."
     $DB_CONNECT_COMMAND -h$DB_HOST -e "DROP DATABASE IF EXISTS \`$DB_NAME\`;"
@@ -70,37 +78,30 @@ then
 fi
 
 # ======= Install Sample Data =======
-if [ "$INSTALL_RUN" ] && [ "$INSTALL_RUN" != 0 ]
+if [ true = "$SAMPLE_DATA_SQL_RUN" ] && [ -d "$SAMPLE_DATA_DIR" ]
 then
-    if [ -d "$SAMPLE_DATA_DIR" ]
-    then
-        echo "Trying install sample data..."
-        for f in $SAMPLE_DATA_DIR/*.sql; do
-            SQL_FILE="$f"
-            $DB_CONNECT_COMMAND $DB_NAME < $SQL_FILE
-            echo "Sample data added to DB."
-            break
-        done
-        if [ -d "$SAMPLE_DATA_DIR/media" ]
-        then
-            cp -Rf $SAMPLE_DATA_DIR/media/* $PROJECT_DIR/media/
+    echo "Installing sample data SQL files..."
+    for SQL_FILE in $SAMPLE_DATA_DIR/*.sql; do
+        $DB_CONNECT_COMMAND $DB_NAME < $SQL_FILE
+        echo "Added to DB SQL file: $SQL_FILE..."
+    done
+else
+    echo "Skipped adding sample data."
+fi
+if [ "$SAMPLE_DATA_MEDIA_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR/media" ] ; then
+    echo "Installing sample data media files..."
+    cp -Rf $SAMPLE_DATA_DIR/media/* $PROJECT_DIR/media/
 
-            # Set permissions
-            chmod -R 777 media
-        else
-            echo "Skipped coping media files."
-        fi
-    else
-        echo "Skipped adding sample data."
-    fi
+    # Set permissions
+    chmod -R 777 media
 fi
 
 # ======== Install Magento ========
-if [ "$INSTALL_RUN" ] && [ "$INSTALL_RUN" != 0 ]
+if [ "$INSTALL_RUN" = true ]
 then
     echo "Start installing Magento..."
     START=$(date +%s)
-    $PHP_BIN -f install.php -- \
+    $PHP_BIN -f "$PROJECT_DIR"/install.php -- \
             --license_agreement_accepted "yes" \
             --locale "en_US" \
             --timezone "America/Los_Angeles" \
@@ -127,15 +128,15 @@ then
 fi
 
 # Add configuration into Magento instance
-if [ -d "$SAMPLE_DATA_DIR" ]
+if [ "$SAMPLE_DATA_CONFIG_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ]
 then
-    for FILE_INI in "$SAMPLE_DATA_DIR"/*.ini; do
+    for FILE_INI in "$SAMPLE_DATA_DIR"/*.csv; do
         echo "Applying configuration from file $FILE_INI..."
-        $PHP_BIN -f "$SCRIPT_DIR"/config.php "$FILE_INI"
+        $PHP_BIN -f "$SCRIPT_DIR"/tools/config.php "$FILE_INI"
     done
 fi
 
 # Import products
-. $SCRIPT_DIR/import.sh
+. "$SCRIPT_DIR"/tools/import.sh
 
 cd "$OLD_DIR"
