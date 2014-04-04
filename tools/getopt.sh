@@ -22,8 +22,11 @@ do
     case $1 in
         -h | --help | -\?)
             # Show some help
-            echo $(cat readme.txt)
-            exit 0      # This is not an error, User asked help. Don't do "exit 1"
+            while read line; do
+                echo -e "$line"
+            done < "readme.txt"
+
+            exit 0 # This is not an error, User asked help. Don't do "exit 1"
             ;;
         -p | --project)
             PROJECT="$2"
