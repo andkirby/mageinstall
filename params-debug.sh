@@ -3,8 +3,10 @@ OLD_DIR=$(pwd)
 SCRIPT_DIR=$(dirname "$0")
 cd "$SCRIPT_DIR"
 
-. params.sh.dist
-. tools/getopt.sh
+if [ "$SKIP_LOAD" != true ] ; then
+    . params.sh.dist
+    . tools/getopt.sh
+fi
 
 echo "PROJECT=""$PROJECT"
 echo "DB_HOST=""$DB_HOST"
