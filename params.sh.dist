@@ -15,14 +15,14 @@ DB_PASSWORD=""
 DB_NAME=$(echo $PROJECT | tr . _)
 
 # ---------- 1.2. URL parameters
-# %HOST% will be replaced with your $PROJECT parameter
+# __PROJECT__ will be replaced with your $PROJECT parameter
 # You can make some your pattern:
-#   example.com/path/to/%HOST%
-#   example-%HOST%.com
+#   example.com/path/to/__PROJECT__
+#   example-__PROJECT__.com
 # And you will get completed domains:
 #   example.com/path/to/projectname
 #   example-projectname.com
-PROJECT_DOMAIN_MASK="%HOST%.cc"
+PROJECT_DOMAIN_MASK="__PROJECT__.cc"
 # Secured protocol secured URL of project.
 # Set "http" if you don't have HTTPS.
 PROTOCOL_SECURED="https"
@@ -39,15 +39,15 @@ ADMIN_EMAIL="example@example.com"
 
 # ---------- 2. Install parameters
 # Enable Magento installation
-INSTALL_RUN=1
+INSTALL_RUN=yes
 # Enable products importing
-IMPORT_RUN=1
-# Enable importing sample data SQL scripts and media files
-SAMPLE_DATA_SQL_RUN=1
-# Enable importing sample data SQL scripts and media files
-SAMPLE_DATA_MEDIA_RUN=1
+IMPORT_RUN=yes
+# Enable importing sample data SQL scripts
+SAMPLE_DATA_SQL_RUN=yes
+# Enable importing sample data media files
+SAMPLE_DATA_MEDIA_RUN=yes
 # Enable setting Magento configuration from CSV file
-SAMPLE_DATA_CONFIG_RUN=1
+SAMPLE_DATA_CONFIG_RUN=yes
 
 # ---------- 3. Install directories
 # Path to document root
