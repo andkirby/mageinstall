@@ -43,6 +43,7 @@ params=(\
 "PHP_BIN:Path to PHP binary file" \
 )
 
+nonDefault=()
 while true :
 do
     printf "Do you have several Magento projects? (yes|no) [yes] : "
@@ -53,6 +54,7 @@ do
                 printf "Database name [$DB_NAME] : "
                 read DB_NAME
             done
+            nonDefault+=("DB_NAME=\"$DB_NAME\"")
             PROJECT_DOMAIN_MASK="project-__PROJECT__.localhost"
             break
             ;;
@@ -60,7 +62,6 @@ do
     esac
 done
 
-nonDefault=()
 for item in "${params[@]}"; do
 
     IFS=':' read -ra ADDR <<< "$item"
