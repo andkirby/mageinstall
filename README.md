@@ -30,7 +30,7 @@ Let's consider some example how to use it within some environment.
     # DB_PASSWORD=""
     ROOT="/usr/local/www/apache22/data"
     SAMPLE_DATA_DIR="$ROOT/sample_data/$PROJECT"
-    PROJECT_DOMAIN_MASK="%HOST%.cc"
+    PROJECT_DOMAIN_MASK="__PROJECT__.cc"
     ADMIN_PASSWORD="project123"
     ADMIN_EMAIL="yourname@example.com"
 
@@ -43,12 +43,12 @@ In example param will show one params file for QA, Staging and Dev servers.
     DB_PASSWORD="paSSworD1"
     ROOT="/srv/www/htdocs"
     SAMPLE_DATA_DIR="/srv/www/sample_data"
-    PROJECT_DOMAIN_MASK="projname-%HOST%.example.com"
+    PROJECT_DOMAIN_MASK="projname-__PROJECT__.example.com"
     ADMIN_USERNAME="admin"
     ADMIN_PASSWORD="pasSs3v"
-    ADMIN_EMAIL="projname-%HOST%@example.com"
-    PROJECT_DIR="/srv/www/htdocs"
-    IMPORT_DIR="$SAMPLE_DATA_DIR/import"
+    ADMIN_EMAIL="projname-__PROJECT__@example.com"
+    PROJECT_DIR="__DOCROOT__"
+    IMPORT_DIR="__SAMPLE_DIR__/import"
 
 "projname" is static.
 
@@ -65,7 +65,7 @@ params.sh work with set up XAMPP:
     DB_USER="root"
     DB_PASSWORD="yourpassword"
     ROOT="/c/xampp/htdocs"
-    PROJECT_DOMAIN_MASK="%HOST%.site"
+    PROJECT_DOMAIN_MASK="__PROJECT__.site"
     ADMIN_USERNAME="admin"
     ADMIN_PASSWORD="project123"
     ADMIN_EMAIL="yourname@example.com"

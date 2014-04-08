@@ -53,11 +53,11 @@ SAMPLE_DATA_CONFIG_RUN=yes
 # Path to document root
 ROOT="/usr/local/www/apache22/data"
 # Path sample data directory
-SAMPLE_DATA_DIR="$ROOT/sample_data/$PROJECT"
+SAMPLE_DATA_DIR="__DOCROOT__/sample_data/__PROJECT__"
 # Products CSV files directory
-IMPORT_DIR="$SAMPLE_DATA_DIR/import"
+IMPORT_DIR="__SAMPLE_DIR__/import"
 # You root directory of project
-PROJECT_DIR="$ROOT/$PROJECT"
+PROJECT_DIR="__DOCROOT__/__PROJECT__"
 
 # ---------- 4. Binary files parameters
 # Path to MySQL client binary file

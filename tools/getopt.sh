@@ -1,22 +1,6 @@
 #!/bin/sh
 # (POSIX shell syntax)
 
-# Boolean function
-function setBoolean() {
-  local v
-  if (( $# != 2 )); then
-     echo "Err: setBoolean usage" 1>&2; exit 1 ;
-  fi
-
-  case "$2" in
-    TRUE | true | yes | 1) v=true ;;
-    FALSE | false | no | 0) v=false ;;
-    *) echo "Err: Unknown boolean value \"$2\"" 1>&2; exit 1 ;;
-   esac
-
-   eval $1=$v
-}
-
 while :
 do
     case $1 in

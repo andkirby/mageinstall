@@ -9,10 +9,16 @@ cd "$SCRIPT_DIR"
 if [ -f "params.sh" ]
 then
     . params.sh
+else
+    . init.sh
+    echo "Please run install script again."
+    exit 1
 fi
 
 # get options from command line
 . tools/getopt.sh
+# reset param into boolean
+. tools/set-boolean.sh
 
 # include addintional params
 if [ -f "params-protected.sh" ]

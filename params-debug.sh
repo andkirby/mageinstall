@@ -4,6 +4,7 @@ SCRIPT_DIR=$(dirname "$0")
 cd "$SCRIPT_DIR"
 
 if [ "$SKIP_LOAD" != true ] ; then
+    . tools/function.sh
     . params.sh.dist
     . tools/getopt.sh
 fi

@@ -1,7 +1,7 @@
 #!/bin/sh
 SCRIPT_DIR=$(dirname "$0")
 cd "$SCRIPT_DIR"
-
+. tools/function.sh
 # Boolean function
 function setBoolean() {
   local v
@@ -86,12 +86,14 @@ for item in "${params[@]}"; do
     expected="$param=$testValue"
 
     cmd="sh $SCRIPT_DIR/params-debug.sh $key $testValue"
-    result=$(eval "$cmd | grep \"\=$checkValue\"")
+    result=$(eval "$cmd | grep \"\$param=$checkValue\"")
 
     if [ "${result}" = "${expected}" ] ; then
         echo "OK $key $param"
     else
         echo "FAILED $key $param"
+        echo "Expected : ${expected}"
+        echo "Actual   : ${result}"
         exit 1
     fi
 done
