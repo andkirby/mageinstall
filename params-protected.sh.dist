@@ -2,22 +2,28 @@
 
 # ======= Not desirable to change ========
 
+function replaceVariable() {
+    local find replace input
+    input=$1
+    find=$2
+    replace=$3
+    echo "$input" | sed "s,$find,$replace,"
+}
 # Set project domain
 if [ ! "$PROJECT_DOMAIN" ]
 then
-    PROJECT_DOMAIN=`echo $PROJECT_DOMAIN_MASK | sed 's/__PROJECT__/'$PROJECT'/'`
+    PROJECT_DOMAIN=$(replaceVariable "$PROJECT_DOMAIN_MASK" "__PROJECT__" "$PROJECT")
 fi
+SAMPLE_DATA_DIR=$(replaceVariable "$SAMPLE_DATA_DIR" "__PROJECT__" "$PROJECT")
+SAMPLE_DATA_DIR=$(replaceVariable "$SAMPLE_DATA_DIR" "__DOCROOT__" "$ROOT")
 
-SAMPLE_DATA_DIR=`echo $SAMPLE_DATA_DIR | sed 's/__PROJECT__/'$PROJECT'/'`
-SAMPLE_DATA_DIR=`echo $SAMPLE_DATA_DIR | sed 's/__DOCROOT__/'$ROOT'/'`
+IMPORT_DIR=$(replaceVariable "$IMPORT_DIR" "__SAMPLE_DIR__" "$SAMPLE_DATA_DIR")
 
-IMPORT_DIR=`echo $IMPORT_DIR | sed 's/__SAMPLE_DIR__/'$SAMPLE_DATA_DIR'/'`
-
-PROJECT_DIR=`echo $PROJECT_DIR | sed 's/__DOCROOT__/'$ROOT'/'`
-PROJECT_DIR=`echo $PROJECT_DIR | sed 's/__PROJECT__/'$PROJECT'/'`
+PROJECT_DIR=$(replaceVariable "$PROJECT_DIR" "__DOCROOT__" "$ROOT")
+PROJECT_DIR=$(replaceVariable "$PROJECT_DIR" "__PROJECT__" "$PROJECT")
 
 # Set project name into email
-ADMIN_EMAIL=`echo $ADMIN_EMAIL | sed 's/__PROJECT__/'$PROJECT'/'`
+ADMIN_EMAIL=$(replaceVariable "$ADMIN_EMAIL" "__PROJECT__" "$PROJECT")
 
 # Save current path
 CUR_DIR=$(pwd)
