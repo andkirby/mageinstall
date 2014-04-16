@@ -4,9 +4,30 @@ SCRIPT_DIR=$(dirname "$0")
 cd "$SCRIPT_DIR"
 
 if [ "$SKIP_LOAD" != true ] ; then
-    . tools/function.sh
+    # include default params
     . params.sh.dist
+    # include custom params
+    if [ -f "params.sh" ]
+    then
+        . params.sh
+    else
+        . init.sh
+        echo "Please run install script again."
+        exit 1
+    fi
+
+    # get options from command line
     . tools/getopt.sh
+    # reset param into boolean
+    . tools/set-boolean.sh
+
+    # include addintional params
+    if [ -f "params-protected.sh" ]
+    then
+        . params-protected.sh
+    else
+        . params-protected.sh.dist
+    fi
 fi
 
 echo "PROJECT=""$PROJECT"
