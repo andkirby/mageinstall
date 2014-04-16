@@ -41,7 +41,7 @@ then
     DB_NAME=$PROJECT
 fi
 
-DB_NAME=`echo $DB_NAME | sed 's/__PROJECT__/'$PROJECT'/'`
+DB_NAME=$(replaceVariable "$DB_NAME" "__PROJECT__" "$PROJECT")
 
 # Replace symbols "/.-" with "_" in database name
 DB_NAME=$(echo $DB_NAME | tr /.- _)
