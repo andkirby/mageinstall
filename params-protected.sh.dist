@@ -34,5 +34,14 @@ then
     DB_HOST="localhost"
 fi
 
+
+# Set DB name as project name if it's empty
+if [ -z "$DB_NAME" ]
+then
+    DB_NAME=$PROJECT
+fi
+
+DB_NAME=`echo $DB_NAME | sed 's/__PROJECT__/'$PROJECT'/'`
+
 # Replace symbols "/.-" with "_" in database name
 DB_NAME=$(echo $DB_NAME | tr /.- _)
