@@ -3,6 +3,13 @@
 # Import products
 if [ "$IMPORT_RUN" = true ] && [ -d "$IMPORT_DIR" ]
 then
+#    if [ -d "$IMPORT_DIR/media" ] ; then
+#        if [ -d "$PROJECT_DIR/media/import" ] ; then
+#            mkdir "$PROJECT_DIR/media/import"
+#        fi
+#        cp "$IMPORT_DIR/media/*" "$PROJECT_DIR/media/import"
+#    fi
+
     FILE_CSV=""
     for FILE_CSV in $IMPORT_DIR/*.csv; do
         echo "Importing products file $FILE_CSV..."
