@@ -2,7 +2,7 @@
 OLD_DIR=$(pwd)
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$SCRIPT_DIR"
-
+. tools/function.sh
 # include default params
 . params.sh.dist
 # include custom params
@@ -53,9 +53,9 @@ cd "$PROJECT_DIR"
 
 # ======= Clean Up var Directory =======
 echo "Cleaning up cache files and config file..."
-rm -rf var/full_page_cache
-rm -rf var/cache
 if [ "$INSTALL_RUN" = true ] || [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] ; then
+    rm -rf var/full_page_cache
+    rm -rf var/cache
     rm -rf var/lock
     rm -rf var/log
 fi
