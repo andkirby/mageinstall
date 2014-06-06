@@ -24,7 +24,8 @@ try {
         exit(1);
     }
     $file = $_SERVER['argv'][1];
-    if (ltrim($file, '\\/') == $file) {
+    $winAbsolute = substr($file, 1, 1) !== ':';
+    if (ltrim($file, '\\/') == $file && $winAbsolute) {
         $file = realpath(__DIR__  . DIRECTORY_SEPARATOR . $file);
     }
     if (!file_exists($file)) {
