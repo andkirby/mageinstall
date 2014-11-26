@@ -1,6 +1,6 @@
 #!/bin/sh
 # Boolean function
-function setBoolean() {
+function setBoolean {
     local v
     if (( $# != 2 )); then
      echo "Err: setBoolean usage" 1>&2; exit 1 ;
