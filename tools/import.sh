@@ -11,12 +11,14 @@ then
 #    fi
 
     RESULT=""
+    echo "$SAMPLE_DATA_DIR/scripts/import-categories.sh"
     if [ -d "$SAMPLE_DATA_DIR/scripts" ] && [ -f "$SAMPLE_DATA_DIR/scripts/import-categories.sh" ]
     then
         . "$SAMPLE_DATA_DIR/scripts/import-categories.sh"
         REINDEX_ALL_RUN="1"
     fi
 
+    echo "$SAMPLE_DATA_DIR/scripts/import-products-before.sh"
     if [ -d "$SAMPLE_DATA_DIR/scripts" ] && [ -f "$SAMPLE_DATA_DIR/scripts/import-products-before.sh" ]
     then
         . "$SAMPLE_DATA_DIR/scripts/import-products-before.sh"
@@ -30,6 +32,7 @@ then
         REINDEX_ALL_RUN="1"
     done
 
+    echo "$SAMPLE_DATA_DIR/scripts/import-products-after.sh"
     if [ -d "$SAMPLE_DATA_DIR/scripts" ] && [ -f "$SAMPLE_DATA_DIR/scripts/import-products-after.sh" ]
     then
         . "$SAMPLE_DATA_DIR/scripts/import-products-after.sh"
@@ -39,7 +42,7 @@ then
     if [ "$FILE_CSV" ] || [ "$REINDEX_ALL_RUN" ] # check if any file participated in the importing
     then
         echo "Reindexing..."
-        $PHP_BIN -f $PROJECT_DIR/shell/indexer.php reindexall
+#        $PHP_BIN -f $PROJECT_DIR/shell/indexer.php reindexall
     fi
 fi
 
