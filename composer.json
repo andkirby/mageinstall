@@ -1,0 +1,12 @@
+{
+  "name": "andkirby/mageinstall",
+  "description": "MageInstall Tool to install and reinstall Magento quickly.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrew Roslik",
+      "email": "bizkirby@gmail.com"
+    }
+  ]
+}
