@@ -1,22 +1,8 @@
 #!/bin/sh
-SCRIPT_DIR=$(dirname "$0")
+SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$SCRIPT_DIR"
+
 . tools/function.sh
-# Boolean function
-function setBoolean() {
-  local v
-  if (( $# != 2 )); then
-     echo "Err: setBoolean usage" 1>&2; exit 1 ;
-  fi
-
-  case "$2" in
-    TRUE | true | yes | 1) v=true ;;
-    FALSE | false | no | 0) v=false ;;
-    *) echo "Err: Unknown boolean value \"$2\"" 1>&2; exit 1 ;;
-   esac
-
-   eval $1=$v
-}
 
 params=(\
 --project:PROJECT \
@@ -85,7 +71,7 @@ for item in "${params[@]}"; do
     fi
     expected="$param=$testValue"
 
-    cmd="sh $SCRIPT_DIR/params-debug.sh $key $testValue"
+    cmd="bash $SCRIPT_DIR/params-debug.sh $key $testValue"
     result=$(eval "$cmd | grep \"\$param=$checkValue\"")
 
     if [ "${result}" = "${expected}" ] ; then

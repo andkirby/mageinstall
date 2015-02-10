@@ -1,7 +1,9 @@
 #!/bin/sh
 OLD_DIR=$(pwd)
-SCRIPT_DIR=$(dirname "$0")
+SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$SCRIPT_DIR"
+
+. tools/function.sh
 
 if [ "$SKIP_LOAD" != true ] ; then
     # include default params
