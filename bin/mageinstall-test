@@ -1,4 +1,4 @@
 #!/bin/sh
 SCRIPT_DIR=$(cd "$(dirname "$0")/../"; pwd) #root dir
 cd "$SCRIPT_DIR"
-bash "$SCRIPT_DIR/params-test.sh"
+bash "$SCRIPT_DIR/params-test.sh $@"

@@ -14,5 +14,11 @@
   },
   "config": {
     "bin-dir": "bin"
-  }
+  },
+  "bin": [
+    "mageinstall",
+    "mageinstall-init",
+    "mageinstall-test",
+    "mageinstall-selfupdate",
+  ]
 }
