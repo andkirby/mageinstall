@@ -19,6 +19,6 @@
     "mageinstall",
     "mageinstall-init",
     "mageinstall-test",
-    "mageinstall-selfupdate",
+    "mageinstall-selfupdate"
   ]
 }
