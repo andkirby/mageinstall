@@ -6,9 +6,9 @@ cd "$SCRIPT_DIR"
 # include default params
 . params.sh.dist
 # include custom params
-if [ -f "params.sh" ]
+if [ -f "~/.mageinstall_params.sh" ]
 then
-    . params.sh
+    . ~/.mageinstall_params.sh
 else
     . init.sh
     echo "Please run install script again."

@@ -1,7 +1,7 @@
 # Mageinstall tool
 
 ## Start
-1. Create params.sh from example below and fill up your values.
+1. Create ~/.mageinstall_params.sh from example below and fill up your values.
 2. Copy params-protected.sh.dist to params-protected.sh and fill up you params.
 3. Run similar command:
 
@@ -12,8 +12,8 @@ where
 * "projectname" is a directory and DB name and DB user,
 * "email@example.com" is Magento default admin email.
 
-Also you set up as you wish params.sh file within you local environment.
-Just copy of params.sh.dist to params.sh and update it.
+Also you set up as you wish ~/.mageinstall_params.sh file within you local environment.
+Just copy of params.sh.dist to ~/.mageinstall_params.sh and update it.
 
 To apply only configuration file you can use -S param to reject all "run" scripts and enable configuration running.
 
@@ -59,7 +59,7 @@ Commands to install
     # sh install_full.sh stage
 
 ### Windows
-params.sh work with set up XAMPP:
+~/.mageinstall_params.sh work with set up XAMPP:
 
     #!/bin/sh
     DB_USER="root"
@@ -135,7 +135,7 @@ Would you like make some fixes? Ask me - andkirby@gmail.com.
 
        -e, --admin-email [REQUIRED]
            Param ADMIN_EMAIL
-           Required if it is not set in params.sh file.
+           Required if it is not set in ~/.mageinstall_params.sh file.
 
        -S, --skip-all-run
            Reset run params.

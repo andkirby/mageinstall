@@ -56,7 +56,7 @@
 .
 .        -e, --admin-email [REQUIRED]
 .            Param ADMIN_EMAIL
-.            Required if it is not set in params.sh file.
+.            Required if it is not set in ~/.mageinstall_params.sh file.
 .
 .        -S, --skip-all-run
 .            Reset run params.
