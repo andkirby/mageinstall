@@ -9,7 +9,7 @@ if [ "$SKIP_LOAD" != true ] ; then
     # include default params
     . params.sh.dist
     # include custom params
-    if [ -f "~/.mageinstall_params.sh" ]
+    if [ -f $(cd ~; pwd)"/.mageinstall_params.sh" ]
     then
         . ~/.mageinstall_params.sh
     else
