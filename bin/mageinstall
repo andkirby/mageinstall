@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 SCRIPT_DIR=$(cd "$(dirname "$0")/../"; pwd) #root dir
 CURRENT=$(cd "$(dirname "$0")"; pwd)
-if [ -L $CURRENT"/bin/mageinstall" ] ; then
+if [ -L $CURRENT"/mageinstall" ] ; then
   # Case when symlink in vendor/bin
   # I didn't find more right way to get a path of the real file
   SCRIPT_DIR=$(cd "$(dirname "$0")/../andkirby/mageinstall"; pwd)
