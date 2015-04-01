@@ -16,6 +16,10 @@ do
             PROJECT="$2"
             shift 2
             ;;
+        -t | --path)
+            PROJECT_PATH="$2"
+            shift 2
+            ;;
         -H | --db-host)
             DB_HOST="$2"
             shift 2
