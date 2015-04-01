@@ -17,7 +17,7 @@ do
             shift 2
             ;;
         -t | --path)
-            PROJECT_PATH="$2"
+            PROJECT_DIR="$2"
             shift 2
             ;;
         -H | --db-host)
