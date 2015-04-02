@@ -25,7 +25,9 @@
 .
 .        -p, --project [REQUIRED]
 .            Param PROJECT.
-.            REQUIRED
+.
+.        -t, --path
+.            Param PROJECT_DIR.
 .
 .        -H, --db-host
 .            Param DB_HOST.
