@@ -94,13 +94,17 @@ then
 else
     echo "Skipped adding sample data."
 fi
-if [ "$SAMPLE_DATA_MEDIA_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR/media" ] ; then
-    echo "Installing sample data media files..."
-    cp -Rf $SAMPLE_DATA_DIR/media/* $PROJECT_DIR/media/
-
-    # Set permissions
-    chmod -R 777 media
+if [ "$SAMPLE_DATA_MEDIA_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR/sample/" ] ; then
+    echo "Installing sample data files..."
+    for i in "$SAMPLE_DATA_DIR/sample/*" ; do
+        if [ -d "$i" ]; then
+            DIR=$(basename "$i")
+            cp -Rf $SAMPLE_DATA_DIR/sample/$DIR/* $PROJECT_DIR/$DIR/
+        fi
+    done
 fi
+# Set permissions to media
+chmod -R 777 $PROJECT_DIR/media
 
 # ======== Install Magento ========
 if [ "$INSTALL_RUN" = true ]
