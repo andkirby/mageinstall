@@ -74,13 +74,24 @@ then
     DB_CONNECT_COMMAND="$DB_CONNECT_COMMAND -p$DB_PASSWORD"
 fi
 
-# ======= (Re)create DB =======
+# ======= Refreate DB =======
 if [ "$INSTALL_RUN" = true ] || [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ]
 then
-    echo "(Re)creating database '$DB_NAME'..."
-    $DB_CONNECT_COMMAND -h$DB_HOST -e "DROP DATABASE IF EXISTS \`$DB_NAME\`;"
-    $DB_CONNECT_COMMAND -h$DB_HOST -e "CREATE DATABASE \`$DB_NAME\`;"
-    echo "Database (re)created."
+    echo "Refresh database '$DB_NAME'..."
+    $DB_CONNECT_COMMAND -h$DB_HOST -e "CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;"
+    $DB_CONNECT_COMMAND -h$DB_HOST -e "
+SET FOREIGN_KEY_CHECKS = 0;
+SET @tables = NULL;
+SELECT GROUP_CONCAT(table_schema, '.', table_name) INTO @tables
+  FROM information_schema.tables
+  WHERE table_schema = 'database_name'; -- specify DB name here.
+
+SET @tables = CONCAT('DROP TABLE ', @tables);
+PREPARE stmt FROM @tables;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+SET FOREIGN_KEY_CHECKS = 1;"
+    echo "Database refreshed."
 fi
 
 # ======= Install Sample Data =======
@@ -88,7 +99,7 @@ if [ true = "$SAMPLE_DATA_SQL_RUN" ] && [ -d "$SAMPLE_DATA_DIR" ]
 then
     echo "Installing sample data SQL files..."
     for SQL_FILE in $SAMPLE_DATA_DIR/*.sql; do
-        $DB_CONNECT_COMMAND $DB_NAME < $SQL_FILE
+        $DB_CONNECT_COMMAND -h$DB_HOST $DB_NAME < $SQL_FILE
         echo "Added to DB SQL file: $SQL_FILE..."
     done
 else
