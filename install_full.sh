@@ -102,10 +102,7 @@ then
         $DB_CONNECT_COMMAND -h$DB_HOST $DB_NAME < $SQL_FILE
         echo "Added to DB SQL file: $SQL_FILE..."
     done
-else
-    echo "Skipped adding sample data."
-fi
-if [ "$SAMPLE_DATA_MEDIA_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR/sample/" ] ; then
+
     echo "Installing sample data files..."
     for i in "$SAMPLE_DATA_DIR/sample/*" ; do
         if [ -d "$i" ]; then
@@ -113,7 +110,10 @@ if [ "$SAMPLE_DATA_MEDIA_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR/sample/" ] ; th
             cp -Rf $SAMPLE_DATA_DIR/sample/$DIR/* $PROJECT_DIR/$DIR/
         fi
     done
+else
+    echo "Skipped adding sample data."
 fi
+
 # Set permissions to media
 chmod -R 777 $PROJECT_DIR/media
 
