@@ -89,13 +89,15 @@ You should make following files structure:
           /projectname        - project directory
           /sample_data        - sample data dir
               /projectname    - project sample data dir
-                  /media      - media directory with media files
+                  /sample
+                      /media      - some "sample" dir which will be
+                                    copied into target Magento dir
+                      /*.sql      - sample data SQL files
                   /import     - import directory
                       /*.csv  - import CSV files
                   /*.csv      - config CSV files
-                  /*.sql      - sample data SQL files
 
-Would you like make some fixes? Ask me - andkirby@gmail.com.
+Would you like make some fixes? Ask me - bizkirby@gmail.com.
 
 ## Console parameters
 
