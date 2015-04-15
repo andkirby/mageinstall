@@ -95,10 +95,10 @@ SET FOREIGN_KEY_CHECKS = 1;"
 fi
 
 # ======= Install Sample Data =======
-if [ true = "$SAMPLE_DATA_SQL_RUN" ] && [ -d "$SAMPLE_DATA_DIR" ]
+if [ true = "$SAMPLE_DATA_SQL_RUN" ] && [ -d "$SAMPLE_DATA_DIR/sample" ]
 then
     echo "Installing sample data SQL files..."
-    for SQL_FILE in $SAMPLE_DATA_DIR/*.sql; do
+    for SQL_FILE in $SAMPLE_DATA_DIR/sample/*.sql; do
         $DB_CONNECT_COMMAND -h$DB_HOST $DB_NAME < $SQL_FILE
         echo "Added to DB SQL file: $SQL_FILE..."
     done
