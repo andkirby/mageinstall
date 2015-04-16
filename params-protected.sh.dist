@@ -3,12 +3,16 @@
 # ======= Not desirable to change ========
 
 function replaceVariable() {
-    local find replace input
-    input=$1
-    find=$2
-    replace=$3
-    echo "$input" | sed "s,$find,$replace,"
+    if [ -z "$1" ]
+    then
+        local find replace input
+        input=$1
+        find=$2
+        replace=$3
+        echo "$input" | sed "s,$find,$replace,"
+    fi
 }
+
 # Set project domain
 if [ ! "$PROJECT_DOMAIN" ]
 then
@@ -42,6 +46,8 @@ then
 fi
 
 DB_NAME=$(replaceVariable "$DB_NAME" "__PROJECT__" "$PROJECT")
+
+DB_HOST=$(replaceVariable "DB_HOST" "__PROJECT__" "$PROJECT")
 
 # Replace symbols "/.-" with "_" in database name
 DB_NAME=$(echo $DB_NAME | tr /.- _)
