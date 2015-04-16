@@ -3,32 +3,22 @@ OLD_DIR=$(pwd)
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$SCRIPT_DIR"
 
-. tools/function.sh
-
+. $SCRIPT_DIR/tools/function.sh
 if [ "$SKIP_LOAD" != true ] ; then
     # include default params
-    . params.sh.dist
-    # include custom params
-    if [ -f $(cd ~; pwd)"/.mageinstall_params.sh" ]
-    then
-        . ~/.mageinstall_params.sh
-    else
-        . init.sh
-        echo "Please run install script again."
-        exit 1
-    fi
+    . $SCRIPT_DIR/params.sh.dist
 
     # get options from command line
-    . tools/getopt.sh
+    . $SCRIPT_DIR/tools/getopt.sh
     # reset param into boolean
-    . tools/set-boolean.sh
+    . $SCRIPT_DIR/tools/set-boolean.sh
 
     # include addintional params
-    if [ -f "params-protected.sh" ]
+    if [ -f "$SCRIPT_DIR/params-protected.sh" ]
     then
-        . params-protected.sh
+        . $SCRIPT_DIR/params-protected.sh
     else
-        . params-protected.sh.dist
+        . $SCRIPT_DIR/params-protected.sh.dist
     fi
 fi
 
