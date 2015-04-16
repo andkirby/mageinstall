@@ -51,6 +51,7 @@ do
     case "$answer" in
         no)
             while [[ -z "$DB_NAME" ]] ; do
+                userParam=$(getUserParam $DB_NAME)
                 printf "Database name [$DB_NAME] : "
                 read DB_NAME
             done
