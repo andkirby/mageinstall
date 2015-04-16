@@ -80,6 +80,7 @@ then
     echo "Refresh database '$DB_NAME'..."
     $DB_CONNECT_COMMAND -h$DB_HOST -e "CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;"
     $DB_CONNECT_COMMAND -h$DB_HOST -e "
+        USE \`$DB_NAME\`;
         SET FOREIGN_KEY_CHECKS = 0;
         SELECT DATABASE() FROM DUAL INTO @current_dbname;
         SET @tables = NULL;
@@ -91,7 +92,7 @@ then
         PREPARE stmt FROM @tables;
         EXECUTE stmt;
         DEALLOCATE PREPARE stmt;
-        SET FOREIGN_KEY_CHECKS = 1;"
+        SET FOREIGN_KEY_CHECKS = 1;" 2>&1
     echo "Database refreshed."
 fi
 
