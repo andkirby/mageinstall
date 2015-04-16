@@ -109,6 +109,7 @@ then
     for i in "$SAMPLE_DATA_DIR/sample/*" ; do
         if [ -d "$i" ]; then
             DIR=$(basename "$i")
+            echo "Copying directory $DIR..."
             cp -Rf $SAMPLE_DATA_DIR/sample/$DIR/* $PROJECT_DIR/$DIR/
         fi
     done
