@@ -110,19 +110,25 @@ then
         if [ -d "$i" ]; then
             DIR=$(basename "$i")
             echo "Copying directory sample/$DIR..."
-            cp -Rf $i/* $PROJECT_DIR/$DIR/
+            if [ -d "$PROJECT_DIR/$DIR/" ]; then
+                cp -Rf $i/* $PROJECT_DIR/$DIR/
+            else
+                cp -Rf $i $PROJECT_DIR/
+            fi
         fi
     done
 else
     echo "Skipped adding sample data."
 fi
 
-# Set permissions to media
-chmod -R 777 $PROJECT_DIR/media
-
 # ======== Install Magento ========
 if [ "$INSTALL_RUN" = true ]
 then
+    # Set permissions
+    chmod -R $PERMISSIONS_DIR $PROJECT_DIR/media
+    chmod $PERMISSIONS_DIR $PROJECT_DIR/app/etc/
+    chmod -R $PERMISSIONS_DIR $PROJECT_DIR/var
+
     echo "Start installing Magento..."
     START=$(date +%s)
     $PHP_BIN -f "$PROJECT_DIR"/install.php -- \
