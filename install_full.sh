@@ -131,7 +131,7 @@ then
 
     echo "Start installing Magento..."
     START=$(date +%s)
-    $PHP_BIN -f "$PROJECT_DIR"/install.php -- \
+    RESULT=$($PHP_BIN -f "$PROJECT_DIR"/install.php -- \
             --license_agreement_accepted "yes" \
             --locale "en_US" \
             --timezone "America/Los_Angeles" \
@@ -150,11 +150,20 @@ then
             --admin_email "$ADMIN_EMAIL" \
             --admin_username "$ADMIN_USERNAME" \
             --admin_password "$ADMIN_PASSWORD" \
-            --skip_url_validation "yes"
+            --skip_url_validation "yes" 2>&1)
+
     END=$(date +%s)
     DIFF=$(( $END - $START ))
-    echo "Magento has been installed for domain http://$PROJECT_DOMAIN/."
-    echo "Installing took $DIFF seconds."
+
+    echo "$RESULT";
+    TEST=$(echo $RESULT | grep "SUCCESS" 2>&1);
+    if [ "$TEST" ] ; then
+        echo "Magento has been installed for domain http://$PROJECT_DOMAIN/."
+        echo "Installing took $DIFF seconds."
+    else
+        echo "Magento installation failed."
+        exit 1
+    fi
 fi
 
 # Add configuration into Magento instance
