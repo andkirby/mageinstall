@@ -1,7 +1,7 @@
 # Mageinstall tool
 
 ## Start
-1. Create ~/.mageinstall_params.sh from example below and fill up your values.
+1. Create ~/.mageinstall/params.sh from example below and fill up your values.
 2. Copy params-protected.sh.dist to params-protected.sh and fill up you params.
 3. Run similar command:
 
@@ -12,8 +12,8 @@ where
 * "projectname" is a directory and DB name and DB user,
 * "email@example.com" is Magento default admin email.
 
-Also you set up as you wish ~/.mageinstall_params.sh file within you local environment.
-Just copy of params.sh.dist to ~/.mageinstall_params.sh and update it.
+Also you set up as you wish ~/.mageinstall/params.sh file within you local environment.
+Just copy of params.sh.dist to ~/.mageinstall/params.sh and update it.
 
 To apply only configuration file you can use -S param to reject all "run" scripts and enable configuration running.
 
@@ -59,7 +59,7 @@ Commands to install
     # sh install_full.sh stage
 
 ### Windows
-~/.mageinstall_params.sh work with set up XAMPP:
+~/.mageinstall/params.sh work with set up XAMPP:
 
     #!/bin/sh
     DB_USER="root"
@@ -97,7 +97,7 @@ You should make following files structure:
                       /*.csv  - import CSV files
                   /*.csv      - config CSV files
 
-Would you like make some fixes? Ask me - bizkirby@gmail.com.
+If you would you like to make some fixes feel free to make it and add pull request. Or add an issue.
 
 ## Console parameters
 
@@ -140,7 +140,7 @@ Would you like make some fixes? Ask me - bizkirby@gmail.com.
 
        -e, --admin-email [REQUIRED]
            Param ADMIN_EMAIL
-           Required if it is not set in ~/.mageinstall_params.sh file.
+           Required if it is not set in ~/.mageinstall/params.sh file.
 
        -S, --skip-all-run
            Reset run params.
@@ -151,16 +151,18 @@ Would you like make some fixes? Ask me - bizkirby@gmail.com.
            SAMPLE_DATA_MEDIA_RUN=false
 
        -i, --install-run
-           Param INSTALL_RUN = yes|no|true|false|1|0
+           Param INSTALL_RUN = boolean
 
        -I, --import-run)
-           Param IMPORT_RUN = yes|no|true|false|1|0
+           Param IMPORT_RUN = boolean
 
        -c, --config-run
-           Param SAMPLE_DATA_CONFIG_RUN = yes|no|true|false|1|0
+           Param SAMPLE_DATA_CONFIG_RUN = boolean
 
        -q, --sample-data-sql-run)
-           Param SAMPLE_DATA_SQL_RUN = yes|no|true|false|1|0
+           Param SAMPLE_DATA_SQL_RUN = boolean
 
        -m, --sample-data-media-run
-           Param SAMPLE_DATA_MEDIA_RUN = yes|no|true|false|1|0
+           Param SAMPLE_DATA_MEDIA_RUN = boolean
+           
+       Boolean means any value of yes, no, true, false, 1, 0.

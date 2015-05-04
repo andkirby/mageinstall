@@ -5,8 +5,8 @@ cd "$SCRIPT_DIR"
 
 function getUserParam() {
     local PROJECT DB_HOST DB_USER DB_PASSWORD DB_NAME PROJECT_DOMAIN_MASK PROTOCOL_SECURED USE_REWRITES ADMIN_USERNAME ADMIN_PASSWORD ADMIN_EMAIL INSTALL_RUN IMPORT_RUN SAMPLE_DATA_SQL_RUN SAMPLE_DATA_MEDIA_RUN SAMPLE_DATA_CONFIG_RUN ROOT SAMPLE_DATA_DIR IMPORT_DIR PROJECT_DIR MYSQL_BIN PHP_BIN
-    if [ -f $(cd ~; pwd)"/.mageinstall_params.sh" ] ; then
-        . ~/.mageinstall_params.sh
+    if [ -f $(cd ~; pwd)"/.mageinstall/params.sh" ] ; then
+        . ~/.mageinstall/params.sh
     fi
     echo "${!1}"
 }
@@ -115,8 +115,14 @@ for item in "${params[@]}"; do
 
 done
 
-# Write ~/.mageinstall_params.sh
-echo "Writing parameters into ~/.mageinstall_params.sh..."
-( IFS=$'\n'; echo "${nonDefault[*]}" ) > ~/.mageinstall_params.sh
+# Write ~/.mageinstall/params.sh
+echo "Writing parameters into ~/.mageinstall/params.sh..."
+if [ ! -d "~/.mageinstall" ] ; then
+    mkdir ~/.mageinstall
+    if [ ! -d "~/.mageinstall" ] ; then
+        echo "Directory ~/.mageinstall cannot be created."
+    fi
+fi
+( IFS=$'\n'; echo "${nonDefault[*]}" ) > ~/.mageinstall/params.sh
 
 echo "Finish!"
