@@ -53,7 +53,7 @@ cd "$PROJECT_DIR"
 
 # ======= Clean Up var Directory =======
 echo "Cleaning up cache files and config file..."
-if [ "$INSTALL_RUN" = true ] || [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] ; then
+if [ "$INSTALL_RUN" = true ] || ( [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] ) ; then
     rm -rf var/full_page_cache
     rm -rf var/cache
     rm -rf var/lock
@@ -75,7 +75,7 @@ then
 fi
 
 # ======= Refreate DB =======
-if [ "$INSTALL_RUN" = true ] || [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ]
+if [ "$INSTALL_RUN" = true ] || ( [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] )
 then
     echo "Refresh database '$DB_NAME'..."
     $DB_CONNECT_COMMAND -h$DB_HOST -e "CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;"
