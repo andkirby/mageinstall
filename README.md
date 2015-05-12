@@ -1,26 +1,34 @@
 # Mageinstall tool
 
 ## Start
-1. Create ~/.mageinstall/params.sh from example below and fill up your values.
-2. Copy params-protected.sh.dist to params-protected.sh and fill up you params.
-3. Run similar command:
+### Composer installation
+```shell
+$ composer require andkirby/mageinstall:@beta
+```
+### Initialization
+If you haven't initialized **MageInstall** it will sugest you to initilize by command `mageinstall`.<br>
+Anyway if what to make reinitialization follow the command: 
+```shell
+$ mageinstall-init
+```
+It will create the ~/.mageinstall/params.sh with your custom parameters.
 
-        install_full.sh -p projectname -e email@example.com
-
+### Install Magento
+To run an installation of Magento instance you can make simple command:
+```shell
+$ mageinstall -p projectname
+```
 where
 
-* "projectname" is a directory and DB name and DB user,
-* "email@example.com" is Magento default admin email.
+* "projectname" is a directory and DB name and DB user.
 
-Also you set up as you wish ~/.mageinstall/params.sh file within you local environment.
+But it depends on your settings.
+
+Also you may set up as you wish ~/.mageinstall/params.sh file within you local environment.
 Just copy of params.sh.dist to ~/.mageinstall/params.sh and update it.
 
-To apply only configuration file you can use -S param to reject all "run" scripts and enable configuration running.
-
-    install_full.sh -p projectname -e email@example.com -S -c 1
-
 ## Parameters examples
-Let's consider some example how to use it within some environment.
+Let's consider some configurations how to use it within some environment.
 
 ### Unix
 #### Several projects
@@ -43,7 +51,7 @@ In example param will show one params file for QA, Staging and Dev servers.
     DB_PASSWORD="paSSworD1"
     ROOT="/srv/www/htdocs"
     SAMPLE_DATA_DIR="/srv/www/sample_data"
-    PROJECT_DOMAIN_MASK="projname-__PROJECT__.example.com"
+    PROJECT_DOMAIN_MASK="cool-domain-__PROJECT__.example.com"
     ADMIN_USERNAME="admin"
     ADMIN_PASSWORD="pasSs3v"
     ADMIN_EMAIL="projname-__PROJECT__@example.com"
@@ -54,9 +62,9 @@ In example param will show one params file for QA, Staging and Dev servers.
 
 Commands to install
 
-    # sh install_full.sh dev
-    # sh install_full.sh qa
-    # sh install_full.sh stage
+    $ mageinstall -p dev
+    $ mageinstall -p qa
+    $ mageinstall -p stage
 
 ### Windows
 ~/.mageinstall/params.sh work with set up XAMPP:
@@ -78,14 +86,14 @@ Features:
 
 - base Magento install
 - import products
-- import configuration
+- import system configuration
 - add sample data SQL files
 - add sample data media files
-- clean up var directory and product media files before installation
+- clean up var directory and product media files cache before installation
 
-You should make following files structure:
+You may make following files structure:
 
-       /yourdocroot
+       /htdocs
           /projectname        - project directory
           /sample_data        - sample data dir
               /projectname    - project sample data dir
@@ -100,7 +108,7 @@ You should make following files structure:
 If you would you like to make some fixes feel free to make it and add pull request. Or add an issue.
 
 ## Console parameters
-
+```
        -h, --help, -?
            Get this help.
 
@@ -166,3 +174,4 @@ If you would you like to make some fixes feel free to make it and add pull reque
            Param SAMPLE_DATA_MEDIA_RUN = boolean
            
        Boolean means any value of yes, no, true, false, 1, 0.
+```
