@@ -6,10 +6,8 @@ do
     case $1 in
         -h | --help | -\?)
             # Show some help
-            while read line; do
-                echo -e "$line"
-            done < "readme.txt"
-
+            out=$(cat doc/shell/logo)"\n"$(cat doc/shell/readme)
+            echo -e "$out"
             exit 0 # This is not an error, User asked help. Don't do "exit 1"
             ;;
         -p | --project)

@@ -3,8 +3,13 @@ OLD_DIR=$(pwd)
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$SCRIPT_DIR"
 . tools/function.sh
+. tools/head.sh
 # include default params
 . params.sh.dist
+
+# get options from command line
+. tools/getopt.sh
+
 # include custom params
 if [ -f $(cd ~; pwd)"/.mageinstall/params.sh" ]
 then
@@ -14,9 +19,6 @@ else
     echo "Please run install script again."
     exit 1
 fi
-
-# get options from command line
-. tools/getopt.sh
 # reset param into boolean
 . tools/set-boolean.sh
 
