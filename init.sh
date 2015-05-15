@@ -117,9 +117,9 @@ done
 
 # Write ~/.mageinstall/params.sh
 echo "Writing parameters into ~/.mageinstall/params.sh..."
-if [ ! -d "~/.mageinstall" ] ; then
+if [ ! -d ~/.mageinstall ] ; then
     mkdir ~/.mageinstall
-    if [ ! -d "~/.mageinstall" ] ; then
+    if [ ! -d ~/.mageinstall ] ; then
         echo "Directory ~/.mageinstall cannot be created."
     fi
 fi
