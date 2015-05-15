@@ -109,69 +109,69 @@ If you would you like to make some fixes feel free to make it and add pull reque
 
 ## Console parameters
 ```
-       -h, --help, -?
-           Get this help.
+-h, --help, -?
+   Get this help.
 
-       -p, --project [REQUIRED]
-           Param PROJECT.
-           REQUIRED
+-p, --project [REQUIRED]
+   Param PROJECT.
+   REQUIRED
 
-       -t, --path
-           Param PROJECT_DIR.
+-t, --path
+   Param PROJECT_DIR.
 
-       -H, --db-host
-           Param DB_HOST.
+-H, --db-host
+   Param DB_HOST.
 
-       -u, --db-user
-           Param DB_USER
+-u, --db-user
+   Param DB_USER
 
-       -P, --db-password
-           DB_PASSWORD
+-P, --db-password
+   DB_PASSWORD
 
-       -n, --db-name
-           Param DB_NAME
+-n, --db-name
+   Param DB_NAME
 
-       -d, --domain
-           Param PROJECT_DOMAIN
+-d, --domain
+   Param PROJECT_DOMAIN
 
-       -s, --secured-protocol)
-           Param PROTOCOL_SECURED = https|http
+-s, --secured-protocol)
+   Param PROTOCOL_SECURED = https|http
 
-       -r, --use-rewrites
-           Param USE_REWRITES = yes|no
+-r, --use-rewrites
+   Param USE_REWRITES = yes|no
 
-       --admin-username
-           Param ADMIN_USERNAME
+--admin-username
+   Param ADMIN_USERNAME
 
-       --admin-password
-           Param ADMIN_PASSWORD
+--admin-password
+   Param ADMIN_PASSWORD
 
-       -e, --admin-email [REQUIRED]
-           Param ADMIN_EMAIL
-           Required if it is not set in ~/.mageinstall/params.sh file.
+-e, --admin-email [REQUIRED]
+   Param ADMIN_EMAIL
+   Required if it is not set in ~/.mageinstall/params.sh file.
 
-       -S, --skip-all-run
-           Reset run params.
-           INSTALL_RUN=false
-           IMPORT_RUN=false
-           SAMPLE_DATA_CONFIG_RUN=false
-           SAMPLE_DATA_SQL_RUN=false
-           SAMPLE_DATA_MEDIA_RUN=false
+-S, --skip-all-run
+   Reset run params.
+   INSTALL_RUN=false
+   IMPORT_RUN=false
+   SAMPLE_DATA_CONFIG_RUN=false
+   SAMPLE_DATA_SQL_RUN=false
+   SAMPLE_DATA_MEDIA_RUN=false
 
-       -i, --install-run
-           Param INSTALL_RUN = boolean
+-i, --install-run
+   Param INSTALL_RUN = boolean
 
-       -I, --import-run)
-           Param IMPORT_RUN = boolean
+-I, --import-run)
+   Param IMPORT_RUN = boolean
 
-       -c, --config-run
-           Param SAMPLE_DATA_CONFIG_RUN = boolean
+-c, --config-run
+   Param SAMPLE_DATA_CONFIG_RUN = boolean
 
-       -q, --sample-data-sql-run)
-           Param SAMPLE_DATA_SQL_RUN = boolean
+-q, --sample-data-sql-run)
+   Param SAMPLE_DATA_SQL_RUN = boolean
 
-       -m, --sample-data-media-run
-           Param SAMPLE_DATA_MEDIA_RUN = boolean
-           
-       Boolean means any value of yes, no, true, false, 1, 0.
+-m, --sample-data-media-run
+   Param SAMPLE_DATA_MEDIA_RUN = boolean
+   
+Boolean means any value of yes, no, true, false, 1, 0.
 ```
