@@ -85,7 +85,7 @@ then
         USE \`$DB_NAME\`;
         SET FOREIGN_KEY_CHECKS = 0;
         SELECT DATABASE() FROM DUAL INTO @current_dbname;
-        SET @tables = NULL;
+        SET @tables = '';
         SET SESSION group_concat_max_len = 1000000;
         SELECT GROUP_CONCAT(table_schema, '.', table_name) INTO @tables
           FROM information_schema.tables
