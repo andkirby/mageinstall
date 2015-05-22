@@ -23,7 +23,7 @@ fi
 . tools/set-boolean.sh
 
 # include addintional params
-if [ -f "params-protected.sh" ]
+if [ -f "~/params-protected.sh" ]
 then
     . params-protected.sh
 else
