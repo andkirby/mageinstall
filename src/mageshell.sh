@@ -8,10 +8,15 @@ cd "$SCRIPT_DIR"
 
 . head.sh
 
+action="$1"
+if [ -z "$action" ] ; then
+    action="-h"
+fi
+
 script=""
 while :
 do
-    case $1 in
+    case "$action" in
         -h | --help)
             # Show some help
             out=$(cat ../doc/shell/logo)"\n"$(cat ../doc/shell/help)"\n"
@@ -19,13 +24,11 @@ do
             exit 0 # This is not an error, User asked help. Don't do "exit 1"
             ;;
         build)
-            action="$1"
             shift 1
             script="build/build.sh"
             break
             ;;
         install)
-            action="$1"
             shift 1
             script="install/input.sh"
             break
