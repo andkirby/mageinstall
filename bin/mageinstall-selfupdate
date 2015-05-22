@@ -6,4 +6,4 @@ if [ -L $CURRENT"/mageinstall-selfupdate" ] ; then
   # I didn't find more right way to get a path of the real file
   SCRIPT_DIR=$(cd "$(dirname "$0")/../andkirby/mageinstall"; pwd)
 fi
-bash "$SCRIPT_DIR/wget_update.sh" $@
+bash "$SCRIPT_DIR/src/wget_update.sh" $@

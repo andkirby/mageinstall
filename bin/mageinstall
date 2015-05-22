@@ -6,4 +6,4 @@ if [ -L $CURRENT"/mageinstall" ] ; then
   # I didn't find more right way to get a path of the real file
   SCRIPT_DIR=$(cd "$(dirname "$0")/../andkirby/mageinstall"; pwd)
 fi
-bash "$SCRIPT_DIR/install_full.sh" $@
+bash "$SCRIPT_DIR/src/install_full.sh" $@
