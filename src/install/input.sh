@@ -8,7 +8,7 @@ cd "$SCRIPT_DIR"
 while :
 do
     case $1 in
-        "init")
+        init)
             shift 1
             script="init.sh"
             break
