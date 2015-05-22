@@ -153,8 +153,8 @@ then
             --use_secure "yes" \
             --secure_base_url "$PROTOCOL_SECURED://$PROJECT_DOMAIN/" \
             --use_secure_admin "yes" \
-            --admin_firstname "ad" \
-            --admin_lastname "min" \
+            --admin_firstname "Admin" \
+            --admin_lastname "MageInstall" \
             --admin_email "$ADMIN_EMAIL" \
             --admin_username "$ADMIN_USERNAME" \
             --admin_password "$ADMIN_PASSWORD" \
