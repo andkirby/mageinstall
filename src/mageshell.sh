@@ -27,7 +27,7 @@ do
         install)
             action="$1"
             shift 1
-            script="install/install.sh"
+            script="install/input.sh"
             break
             ;;
         *)  # no more options. Stop while loop
@@ -36,27 +36,5 @@ do
             ;;
     esac
 done
-
-if [ "$action" = "install" ] ; then
-    # todo move this block into install/install.sh
-    # parse extra install actions
-    while :
-    do
-        case $1 in
-            init)
-                shift 1
-                script="install/init.sh"
-                ;;
-            test)
-                shift 1
-                script="install/params-test.sh"
-                ;;
-            *)  # no more options. Stop while loop
-                break
-                ;;
-        esac
-    done
-fi
-
 bash "$SCRIPT_DIR/$script" $@
 
