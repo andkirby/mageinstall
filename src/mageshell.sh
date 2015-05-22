@@ -32,7 +32,7 @@ do
             ;;
         *)  # no more options. Stop while loop
             echo "Error: Please set an action."
-            break
+            exit 1
             ;;
     esac
 done
