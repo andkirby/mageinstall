@@ -60,7 +60,8 @@ IMPORT_DIR="__SAMPLE_DIR__/import"
 PROJECT_DIR="__DOCROOT__/__PROJECT__"
 
 # Permissions for "var", "media", and "etc" directories
-PERMISSIONS_DIR=0777
+MEDIA_DIR_PERMISSIONS=0777
+MEDIA_DIR_USER=""
 
 # ---------- 4. Binary files parameters
 # Path to MySQL client binary file

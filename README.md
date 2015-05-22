@@ -126,7 +126,15 @@ If you would you like to make some fixes feel free to make it and add pull reque
 
 -m, --sample-data-media-run
    Param SAMPLE_DATA_MEDIA_RUN = boolean
-   
+
+-x, --media-dir-permissions
+    Param MEDIA_DIR_PERMISSIONS
+    "media", "var", "app/etc" directories permissions.
+
+-X, --media-dir-owner
+    Param MEDIA_DIR_OWNER
+    "media", "var", "app/etc" directories owner username.
+
 Boolean means any value of yes, no, true, false, 1, 0.
 ```
 

@@ -92,6 +92,14 @@ do
             setBoolean SAMPLE_DATA_MEDIA_RUN "$2"
             shift 2
             ;;
+        -x | --media-dir-permissions)
+            MEDIA_DIR_PERMISSIONS="$2"
+            shift 2
+            ;;
+        -X | --media-dir-owner)
+            MEDIA_DIR_OWNER="$2"
+            shift 2
+            ;;
         -*)
             printf >&2 'WARN: Unknown option (ignored): %s\n' "$1"
             shift

@@ -133,9 +133,15 @@ fi
 if [ "$INSTALL_RUN" = true ]
 then
     # Set permissions
-    chmod -R $PERMISSIONS_DIR $PROJECT_DIR/media
-    chmod $PERMISSIONS_DIR $PROJECT_DIR/app/etc/
-    chmod -R $PERMISSIONS_DIR $PROJECT_DIR/var
+    chmod -R $MEDIA_DIR_PERMISSIONS $PROJECT_DIR/media
+    chmod $MEDIA_DIR_PERMISSIONS    $PROJECT_DIR/app/etc/
+    chmod -R $MEDIA_DIR_PERMISSIONS $PROJECT_DIR/var
+
+    if [ ! -z "$MEDIA_DIR_OWNER" ] ; then
+        chown -R $MEDIA_DIR_OWNER $PROJECT_DIR/media
+        chown $MEDIA_DIR_OWNER    $PROJECT_DIR/app/etc/
+        chown -R $MEDIA_DIR_OWNER $PROJECT_DIR/var
+    fi
 
     echo "Start installing Magento..."
     START=$(date +%s)
