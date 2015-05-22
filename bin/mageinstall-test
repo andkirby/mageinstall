@@ -6,4 +6,5 @@ if [ -L $CURRENT"/mageinstall-test" ] ; then
     # I didn't find more right way to get a path of the real file
     SCRIPT_DIR=$(cd "$(dirname "$0")/../andkirby/mageinstall"; pwd)
 fi
-bash "$SCRIPT_DIR/src/params-test.sh" $@
+echo "Error: mageinstall-test command is deprecated since 4.0 version. Please use 'mageshell install test'."
+exit 1

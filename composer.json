@@ -17,8 +17,6 @@
   },
   "bin": [
     "bin/mageinstall",
-    "bin/mageinstall-init",
-    "bin/mageinstall-test",
-    "bin/mageinstall-selfupdate"
+    "bin/mageshell"
   ]
 }

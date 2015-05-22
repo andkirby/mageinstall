@@ -3,7 +3,6 @@ OLD_DIR=$(pwd)
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$SCRIPT_DIR"
 . tools/function.sh
-. tools/head.sh
 # include default params
 . params.sh.dist
 
@@ -79,23 +78,26 @@ fi
 # ======= Refreate DB =======
 if [ "$INSTALL_RUN" = true ] || ( [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] )
 then
-    echo "Refresh database '$DB_NAME'..."
     $DB_CONNECT_COMMAND -h$DB_HOST -e "CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;"
-    $DB_CONNECT_COMMAND -h$DB_HOST -e "
-        USE \`$DB_NAME\`;
-        SET FOREIGN_KEY_CHECKS = 0;
-        SELECT DATABASE() FROM DUAL INTO @current_dbname;
-        SET @tables = '';
-        SET SESSION group_concat_max_len = 1000000;
-        SELECT GROUP_CONCAT(table_schema, '.', table_name) INTO @tables
-          FROM information_schema.tables
-          WHERE table_schema = @current_dbname; -- specify DB name here.
-        SET @tables = CONCAT('DROP TABLE ', @tables);
-        PREPARE stmt FROM @tables;
-        EXECUTE stmt;
-        DEALLOCATE PREPARE stmt;
-        SET FOREIGN_KEY_CHECKS = 1;" 2>&1
-    echo "Database refreshed."
+    has_tables=$($DB_CONNECT_COMMAND -h$DB_HOST -D$DB_NAME -e "SHOW TABLES;")
+    if [ ! -z "$has_tables" ] ; then
+        echo "Drop tables in database '$DB_NAME'..."
+        $DB_CONNECT_COMMAND -h$DB_HOST -e "
+            USE \`$DB_NAME\`;
+            SET FOREIGN_KEY_CHECKS = 0;
+            SELECT DATABASE() FROM DUAL INTO @current_dbname;
+            SET @tables = '';
+            SET SESSION group_concat_max_len = 1000000;
+            SELECT GROUP_CONCAT(table_schema, '.', table_name) INTO @tables
+              FROM information_schema.tables
+              WHERE table_schema = @current_dbname; -- specify DB name here.
+            SET @tables = CONCAT('DROP TABLE ', @tables);
+            PREPARE stmt FROM @tables;
+            EXECUTE stmt;
+            DEALLOCATE PREPARE stmt;
+            SET FOREIGN_KEY_CHECKS = 1;" 2>&1
+        echo "Database refreshed."
+    fi
 fi
 
 # ======= Install Sample SQL Data =======
@@ -144,8 +146,14 @@ then
     fi
 
     echo "Start installing Magento..."
+    if [ ! -f "$PROJECT_DIR/install.php" ] ; then
+        echo "Error: There are no Magento files."
+        exit 1
+    fi
+
     START=$(date +%s)
-    RESULT=$($PHP_BIN -f "$PROJECT_DIR"/install.php -- \
+    RESULT=$($PHP_BIN -f "$SCRIPT_DIR"/tools/install.php -- \
+            "$PROJECT_DIR" \
             --license_agreement_accepted "yes" \
             --locale "en_US" \
             --timezone "America/Los_Angeles" \
@@ -170,6 +178,8 @@ then
     DIFF=$(( $END - $START ))
 
     echo "$RESULT";
+
+    exit 1
     TEST=$(echo $RESULT | grep "SUCCESS" 2>&1);
     if [ "$TEST" ] ; then
         echo "Magento has been installed for domain http://$PROJECT_DOMAIN/."

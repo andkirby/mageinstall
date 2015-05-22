@@ -1,0 +1,13 @@
+==================== Available commands ===================
+
+    -h, --help
+        Get this help.
+
+    install
+        Run Magento installation.
+        mageshell install --help
+
+    build
+        Build Magento Composer package.
+        mageshell build --help
+

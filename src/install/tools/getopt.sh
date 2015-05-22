@@ -4,9 +4,9 @@
 while :
 do
     case $1 in
-        -h | --help | -\?)
+        -h | --help)
             # Show some help
-            out=$(cat doc/shell/logo)"\n"$(cat doc/shell/readme)
+            out=$(cat ../../doc/shell/logo)"\n"$(cat doc/shell/help)"\n"
             echo -e "$out"
             exit 0 # This is not an error, User asked help. Don't do "exit 1"
             ;;

@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 SCRIPT_DIR=$(cd "$(dirname "$0")/../"; pwd) #root dir
 CURRENT=$(cd "$(dirname "$0")"; pwd)
-if [ -L $CURRENT"/mageinstall-selfupdate" ] ; then
+if [ -L $CURRENT"/mageshell" ] ; then
   # Case when symlink in vendor/bin
   # I didn't find more right way to get a path of the real file
   SCRIPT_DIR=$(cd "$(dirname "$0")/../andkirby/mageinstall"; pwd)
 fi
-echo "Error: mageinstall-selfupdate command is deprecated since 4.0 version. Please use update mageinstall via composer."
-exit 1
+bash "$SCRIPT_DIR/src/mageshell.sh" $@
