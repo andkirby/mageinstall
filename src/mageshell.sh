@@ -34,7 +34,7 @@ do
             break
             ;;
         *)  # no more options. Stop while loop
-            echo "Error: Please set an action."
+            echo "Error: Unknown action '$action'. Please use help: mageshell --help"
             exit 1
             ;;
     esac
