@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-SCRIPT_DIR=$(cd "$(dirname "$0")/../"; pwd) #root dir
+SCRIPT_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && cd .. && pwd) #root dir
 CURRENT=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
 if [ -L $CURRENT"/mageshell" ] ; then
   # Case when symlink in vendor/bin
