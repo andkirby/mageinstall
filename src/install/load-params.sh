@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+SCRIPT_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
+cd "$SCRIPT_DIR"
+
 # include custom params
 if [ -f $(cd ~; pwd)"/.mageinstall/params.sh" ] ; then
     . ~/.mageinstall/params.sh
