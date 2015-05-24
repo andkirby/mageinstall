@@ -4,6 +4,6 @@ CURRENT=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
 if [ -L $CURRENT"/mageshell" ] ; then
   # Case when symlink in vendor/bin
   # I didn't find more right way to get a path of the real file
-  SCRIPT_DIR=$(cd "$(dirname "$0")/../andkirby/mageinstall"; pwd)
+  SCRIPT_DIR=$(cd "$SCRIPT_DIR/andkirby/mageinstall"; pwd)
 fi
 bash "$SCRIPT_DIR/src/mageshell.sh" $@
