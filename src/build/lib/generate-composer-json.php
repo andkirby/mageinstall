@@ -6,7 +6,7 @@ use webignition\JsonPrettyPrinter\JsonPrettyPrinter;
 try {
     //region collect params
     $options = getopt(
-        'p:f:F:c:s',
+        'p:f:F:c:s:',
         array(
             'magento-root-dir',
             'magento-force',
@@ -18,7 +18,7 @@ try {
     $keys    = array(
         'p' => array(
             'long'     => 'magento-root-dir',
-            'required' => true,
+            'required' => false,
         ),
         'f' => array(
             'long' => 'magento-force',
@@ -50,14 +50,11 @@ try {
         }
     }
 
-    if (!is_dir((string)$options['magento-root-dir'])) {
+    if ($options['magento-root-dir'] && !is_dir((string)$options['magento-root-dir'])) {
         throw new Exception("Project path '{$options['magento-root-dir']}' not found.");
     }
-    if (!is_file((string)$options['json-file'])) {
+    if ($options['json-file'] && !is_file((string)$options['json-file'])) {
         throw new Exception("JSON file '{$options['json-file']}' not found.");
-    }
-    if (!is_array($options['composer-repository-url'])) {
-        $options['composer-repository-url'] = array($options['composer-repository-url']);
     }
     //endregion
 
@@ -68,6 +65,9 @@ try {
         $data = array();
     }
     if ($options['composer-repository-url']) {
+        if (!is_array($options['composer-repository-url'])) {
+            $options['composer-repository-url'] = array($options['composer-repository-url']);
+        }
         foreach ($options['composer-repository-url'] as $url) {
             $data['repositories'][] = array(
                 'type' => 'composer',
@@ -77,7 +77,9 @@ try {
     }
     $data['minimum-stability']         = (string)$options['minimum-stability'] ?: 'stable';
     $data['extra']['magento-force']    = (bool)$options['magento-force'];
-    $data['extra']['magento-root-dir'] = $options['magento-root-dir'];
+    if ($options['magento-root-dir']) {
+        $data['extra']['magento-root-dir'] = $options['magento-root-dir'];
+    }
 
     //write json
     $composerJson = json_encode($data);

@@ -5,9 +5,9 @@ MINIMUM_STABILITY="stable"
 echo "Set your parameters..."
 echo ""
 params=(\
-"MINIMUM_STABILITY:minimum-stability:stable|RC|beta|alpha|dev" \
+"MINIMUM_STABILITY:Minimum Stability:stable|RC|beta|alpha|dev" \
 "EXTRA_COMPOSER_URL:URL to your composer repository (if you have)" \
-"PROJECT_DIR:Path to your Magento directory" \
+#"PROJECT_DIR:Path to your Magento directory" \
 )
 for item in "${params[@]}"; do
 
@@ -61,12 +61,12 @@ if [ ! -d ~/.mageinstall/build ] ; then
         echo "Directory ~/.mageinstall/build cannot be created."
     fi
 fi
-
-json=$PHP_BIN -f $SRC_DIR/build/generate-composer-json.php -p$PROJECT_DIR -s$MINIMUM_STABILITY -c$EXTRA_COMPOSER_URL
+json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php -p$PROJECT_DIR -s$MINIMUM_STABILITY -c$EXTRA_COMPOSER_URL)
 hasError=$(echo $json | grep "Error:" 2>&1);
 if [ "$hasError" ] ; then
     echo "$json"
     exit 1
 fi
 
-echo "$json" > ~/.mageinstall/build/composer.json
+echo "$json" #> ~/.mageinstall/build/composer.json
+exit

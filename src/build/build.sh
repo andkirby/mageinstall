@@ -24,5 +24,5 @@ if [ -f ~/.mageinstall/build/params.sh ] ; then
 fi
 
 if [ ! -f ~/.mageinstall/build/composer.json ] ; then
-    . "$SRC_DIR/build/lib/make-composer-json.sh"
+    . "$SRC_DIR/build/lib/default-composer-json.sh"
 fi
