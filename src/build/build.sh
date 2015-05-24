@@ -26,3 +26,9 @@ fi
 if [ ! -f ~/.mageinstall/build/composer.json ] ; then
     . "$SRC_DIR/build/lib/default-composer-json.sh"
 fi
+
+# init package dir
+if [ -z "$PACKAGE_DIR" ] ; then
+    PACKAGE_DIR="~/.mageinstall/build/target-package"
+fi
+mkdir -p "$PACKAGE_DIR"
