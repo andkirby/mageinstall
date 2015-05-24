@@ -29,10 +29,13 @@ fi
 
 # init package dir
 if [ -z "$PACKAGE_DIR" ] ; then
-    PACKAGE_DIR="~/.mageinstall/build/target-package"
+    PACKAGE_DIR=${PROJECT_DIR%/}"-package"
 fi
 if [ ! -d "$PACKAGE_DIR" ] ; then
     mkdir -p "$PACKAGE_DIR"
+fi
+if [ ! -d "$PACKAGE_DIR" ] ; then
+    echo "Error: Cannot create directory '$PACKAGE_DIR'."
 fi
 
 # check Magento dir
@@ -42,3 +45,6 @@ fi
 if [ ! -f "$MAGENTO_DIR/app/Mage.php" ] ; then
     echo "Error: Directory '$MAGENTO_DIR' does not contain Magento scripts."
 fi
+
+# generate composer.json for a package
+. "$SRC_DIR/build/lib/build-package-composer-json.sh"
