@@ -10,7 +10,7 @@ do
     case $1 in
         init)
             shift 1
-            script="init.sh"
+            script="set-params.sh"
             break
             ;;
         test)
@@ -18,7 +18,7 @@ do
             script="params-test.sh"
             ;;
         *)  # no more options. Stop while loop
-            script="set-params.sh"
+            script="run.sh"
             break
             ;;
     esac
