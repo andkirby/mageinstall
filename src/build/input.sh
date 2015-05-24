@@ -14,7 +14,7 @@ do
             break
             ;;
         *)  # no more options. Stop while loop
-            script="build.sh"
+            script="run.sh"
             break
             ;;
     esac
