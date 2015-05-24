@@ -75,7 +75,9 @@ try {
             );
         }
     }
-    $data['minimum-stability']         = (string)$options['minimum-stability'] ?: 'stable';
+    if ($options['minimum-stability'] || empty($data['minimum-stability'])) {
+        $data['minimum-stability'] = (string)$options['minimum-stability'] ?: 'stable';
+    }
     $data['extra']['magento-force']    = (bool)$options['magento-force'];
     if ($options['magento-root-dir']) {
         $data['extra']['magento-root-dir'] = $options['magento-root-dir'];
