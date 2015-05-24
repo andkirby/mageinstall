@@ -25,3 +25,13 @@ if [ ! -f "$MAGENTO_DIR/app/Mage.php" ] ; then
     echo "Error: Directory '$MAGENTO_DIR' does not contain Magento scripts."
     exit 1
 fi
+# check package
+if [ -z "$PACKAGE" ] ; then
+    echo "Error: Package is required (-g | --package). Composer format 'vendor/pkg_name:version'. Version is optional."
+    exit 1
+fi
+# check Magento files refreshing
+if [ "$MAGENTO_REFRESH" = "true" ] && [ "$INSTALL_RUN" = "false" ] ; then
+    echo "Error: Magento files cannot be refreshed without installing."
+    exit 1
+fi
