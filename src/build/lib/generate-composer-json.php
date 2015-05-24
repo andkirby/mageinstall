@@ -60,7 +60,7 @@ try {
 
     //set data
     if ($options['json-file']) {
-        $data = (array)json_decode(file_get_contents($options['json-file']));
+        $data = (array)json_decode(file_get_contents($options['json-file']), true, 100, JSON_OBJECT_AS_ARRAY);
     } else {
         $data = array();
     }
