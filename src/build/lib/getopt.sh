@@ -14,10 +14,6 @@ do
             PROJECT="$2"
             shift 2
             ;;
-        -P | --project-http-dir)
-            PROJECT_DIR="$2"
-            shift 2
-            ;;
         -m | --magento-source-dir)
             MAGENTO_DIR="$2"
             shift 2
