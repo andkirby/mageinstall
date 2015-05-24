@@ -12,3 +12,6 @@ if [ "$hasError" ] ; then
 fi
 
 echo "$json" > $PACKAGE_DIR/composer.json
+if [ -f $PACKAGE_DIR/composer.lock ] ; then
+    rm -f $PACKAGE_DIR/composer.lock
+fi
