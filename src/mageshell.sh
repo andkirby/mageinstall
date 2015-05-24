@@ -25,7 +25,7 @@ do
             ;;
         build)
             shift 1
-            script="build/build.sh"
+            script="build/input.sh"
             break
             ;;
         install)

@@ -13,6 +13,10 @@ if [ ! -d "$PACKAGE_DIR" ] ; then
 fi
 
 # check Magento dir
+if [ -z "$MAGENTO_DIR" ] ; then
+    echo "Error: Parameter -m|--magento-source-dir is required."
+    exit 1
+fi
 if [ ! -d "$MAGENTO_DIR" ] ; then
     echo "Error: Magento directory '$MAGENTO_DIR' not found."
     exit 1

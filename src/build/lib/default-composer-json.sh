@@ -7,8 +7,11 @@ echo ""
 params=(\
 "MINIMUM_STABILITY:Minimum Stability:stable|RC|beta|alpha|dev" \
 "EXTRA_COMPOSER_URL:URL to your composer repository (if you have)" \
+"MAGENTO_DIR:Magento files directory (if empty set as a parameter)" \
 #"PROJECT_DIR:Path to your Magento directory" \
 )
+
+filledParams=()
 for item in "${params[@]}"; do
 
     IFS=':' read -ra ADDR <<< "$item"
@@ -51,9 +54,10 @@ for item in "${params[@]}"; do
     if [ "${!key}" != "$answer" ] ; then
         export "$key"="$answer"
     fi
+    filledParams+=("$key=\"$answer\"")
 done
 
-# Write ~/.mageinstall/params.sh
+# Write ~/.mageinstall/build/composer.json
 echo "Writing parameters into ~/.mageinstall/build/composer.json..."
 if [ ! -d ~/.mageinstall/build ] ; then
     mkdir ~/.mageinstall/build
@@ -69,3 +73,7 @@ if [ "$hasError" ] ; then
 fi
 
 echo "$json" > ~/.mageinstall/build/composer.json
+
+# Write ~/.mageinstall/build/composer.json
+echo "Writing parameters into ~/.mageinstall/build/params.sh..."
+( IFS=$'\n'; echo "${filledParams[*]}" ) > ~/.mageinstall/build/params.sh
