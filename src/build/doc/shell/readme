@@ -37,6 +37,9 @@ File composer.json.dist should have default configuration. E.g.:
     -g, --package
         Composer package (with version optionally).
 
+    -c, --composer-repository-url
+        Custom Composer repository URL.
+
     -i, --install-run
         Run Magento (re-)installing.
         Boolean value.

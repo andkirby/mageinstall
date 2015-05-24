@@ -30,6 +30,10 @@ do
             PACKAGE="$2"
             shift 2
             ;;
+        -c | --composer-repository-url)
+            EXTRA_COMPOSER_URL="$2"
+            shift 2
+            ;;
         -i | --install-run)
             setBoolean INSTALL_RUN "$2"
             shift 2
