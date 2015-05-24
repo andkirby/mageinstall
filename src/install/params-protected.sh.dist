@@ -3,11 +3,11 @@
 # ======= Not desirable to change ========
 
 function replaceVariable() {
-	local find replace input
-	input=$1
-	find=$2
-	replace=$3
-	echo "$input" | sed "s,$find,$replace,"
+    local find replace input
+    input=$1
+    find=$2
+    replace=$3
+    echo "$input" | sed "s,$find,$replace,"
 }
 
 # Set project domain
@@ -48,3 +48,9 @@ DB_HOST=$(replaceVariable "$DB_HOST" "__PROJECT__" "$PROJECT")
 
 # Replace symbols "/.-" with "_" in database name
 DB_NAME=$(echo $DB_NAME | tr /.- _)
+
+# ======= Set DB connect command =======
+DB_CONNECT_COMMAND="$MYSQL_BIN -u$DB_USER -h$DB_HOST"
+if [ "$DB_PASSWORD" ] ; then
+    DB_CONNECT_COMMAND="$DB_CONNECT_COMMAND -p$DB_PASSWORD"
+fi
