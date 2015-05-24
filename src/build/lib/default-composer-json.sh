@@ -68,5 +68,4 @@ if [ "$hasError" ] ; then
     exit 1
 fi
 
-echo "$json" #> ~/.mageinstall/build/composer.json
-exit
+echo "$json" > ~/.mageinstall/build/composer.json
