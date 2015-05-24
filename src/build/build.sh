@@ -51,7 +51,7 @@ if [ "$notUpdated" ] ; then
 fi
 
 binDir=$(cd $SRC_DIR/../bin/; pwd)
-sh "$binDir/"mageshell install -p "$PROJECT"
+sh "$binDir/"mageshell install -p "$PROJECT" -i "$INSTALL_RUN"
 
 END=$(date +%s)
 DIFF=$(( $END - $REBUILD_START ))
