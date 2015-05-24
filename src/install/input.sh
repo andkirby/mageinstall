@@ -18,7 +18,7 @@ do
             script="params-test.sh"
             ;;
         *)  # no more options. Stop while loop
-            script="run.sh"
+            script="set-params.sh"
             break
             ;;
     esac
