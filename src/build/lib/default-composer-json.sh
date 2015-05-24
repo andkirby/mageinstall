@@ -61,7 +61,7 @@ if [ ! -d ~/.mageinstall/build ] ; then
         echo "Directory ~/.mageinstall/build cannot be created."
     fi
 fi
-json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php -p$PROJECT_DIR -s$MINIMUM_STABILITY -c$EXTRA_COMPOSER_URL)
+json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php -s$MINIMUM_STABILITY -c$EXTRA_COMPOSER_URL)
 hasError=$(echo $json | grep "Error:" 2>&1);
 if [ "$hasError" ] ; then
     echo "$json"
