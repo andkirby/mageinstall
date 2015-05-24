@@ -7,6 +7,7 @@ SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$SCRIPT_DIR"
 
 . head.sh
+. lib/check-bash.sh
 
 action="$1"
 if [ -z "$action" ] ; then
