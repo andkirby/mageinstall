@@ -28,7 +28,7 @@ then
     FILE_CSV=""
     for FILE_CSV in $IMPORT_DIR/*.csv; do
         echo "Importing products file $FILE_CSV..."
-        $PHP_BIN -f "$SCRIPT_DIR/tools/import.php" "\"$PROJECT_DIR\"" "\"$FILE_CSV\""
+        $PHP_BIN -f "$SCRIPT_DIR/lib/import.php" "\"$PROJECT_DIR\"" "\"$FILE_CSV\""
         REINDEX_ALL_RUN="1"
     done
 

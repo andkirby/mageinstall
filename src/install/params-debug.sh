@@ -3,15 +3,15 @@ OLD_DIR=$(pwd)
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$SCRIPT_DIR"
 
-. $SCRIPT_DIR/tools/function.sh
+. $SCRIPT_DIR/../lib/function.sh
 if [ "$SKIP_LOAD" != true ] ; then
     # include default params
     . $SCRIPT_DIR/params.sh.dist
 
     # get options from command line
-    . $SCRIPT_DIR/tools/getopt.sh
+    . $SCRIPT_DIR/lib/getopt.sh
     # reset param into boolean
-    . $SCRIPT_DIR/tools/set-boolean.sh
+    . $SCRIPT_DIR/lib/set-boolean.sh
 
     # include addintional params
     if [ -f "$SCRIPT_DIR/params-protected.sh" ]

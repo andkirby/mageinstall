@@ -7,7 +7,7 @@ cd "$SCRIPT_DIR"
 . params.sh.dist
 
 # get options from command line
-. tools/getopt.sh
+. lib/getopt.sh
 
 # load parameters
 . load-params.sh
@@ -26,6 +26,6 @@ echo "Go to directory $PROJECT_DIR..."
 . magento-config.sh
 
 # Import products
-. "$SCRIPT_DIR"/tools/import.sh
+. "$SCRIPT_DIR"/lib/import.sh
 
 cd "$OLD_DIR"

@@ -8,7 +8,7 @@ else
     exit 1
 fi
 # reset param into boolean
-. tools/set-boolean.sh
+. lib/set-boolean.sh
 
 # include addintional params
 if [ -f "~/params-protected.sh" ]

@@ -1,6 +1,6 @@
 #!/bin/sh
 # (POSIX shell syntax)
-. tools/function.sh
+. ../lib/function.sh
 params=(\
 INSTALL_RUN \
 IMPORT_RUN \

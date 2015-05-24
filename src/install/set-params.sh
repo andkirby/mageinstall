@@ -11,7 +11,7 @@ function getUserParam() {
     echo "${!1}"
 }
 
-. tools/function.sh
+. ../lib/function.sh
 
 echo "Set your parameters..."
 echo "Variables:"

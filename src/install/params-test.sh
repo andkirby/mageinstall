@@ -2,7 +2,7 @@
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 cd "$SCRIPT_DIR"
 
-. tools/function.sh
+. ../lib/function.sh
 
 params=(\
 --project:PROJECT \
