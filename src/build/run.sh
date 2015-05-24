@@ -10,3 +10,6 @@ skipDefaultComposerJson="true"
 
 # generate composer.json for a package
 . "$SRC_DIR/build/lib/build-package-composer-json.sh"
+
+# building
+. "$SRC_DIR/build/build.sh"
