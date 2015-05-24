@@ -1,0 +1,42 @@
+==================== Tool for install Magento package with Magento. ===================
+ Usually you should make following files structure:
+  /yourdocroot
+      /magento/vendor/yourvendor/magento    - Magento project directory
+      /source                               - package source files dir
+      /project.com                          - project HTTP dir
+      /composer.json.dist                   - composer.json distributive file
+
+File composer.json.dist should have default configuration. E.g.:
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://path-to-your-composer-repo.com/"
+    }
+  ],
+  "minimum-stability": "stable",
+  "extra": {
+    "magento-root-dir": "/var/www/project.com/",
+    "magento-force": false
+  }
+}
+
+ CLI Parameters:
+    -h, --help, -?
+        Get this help.
+
+    -p, --project-http-dir
+        Path to project HTTP directory.
+
+    -m, --magento-source-dir
+        Path to Magento directory.
+
+    -k, --package-source-dir
+        Path to package directory.
+
+    -g, --package
+        Composer package (with version optionally).
+
+    -i, --install-run
+        Run Magento (re-)installing.
+        Boolean value.
