@@ -22,7 +22,7 @@ then
     fi
 
     START=$(date +%s)
-    RESULT=$($PHP_BIN -f "$SCRIPT_DIR"/lib/install.php -- \
+    RESULT=$($PHP_BIN -f "$SRC_DIR"/install/lib/install.php -- \
             "$PROJECT_DIR" \
             --license_agreement_accepted "yes" \
             --locale "en_US" \
