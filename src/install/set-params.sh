@@ -1,7 +1,6 @@
 #!/bin/sh
-SCRIPT_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
-cd "$SCRIPT_DIR"
-. params.sh.dist
+
+. "$SRC_DIR/install/params.sh.dist"
 
 function getUserParam() {
     local PROJECT DB_HOST DB_USER DB_PASSWORD DB_NAME PROJECT_DOMAIN_MASK PROTOCOL_SECURED USE_REWRITES ADMIN_USERNAME ADMIN_PASSWORD ADMIN_EMAIL INSTALL_RUN IMPORT_RUN SAMPLE_DATA_SQL_RUN SAMPLE_DATA_MEDIA_RUN SAMPLE_DATA_CONFIG_RUN ROOT SAMPLE_DATA_DIR IMPORT_DIR PROJECT_DIR MYSQL_BIN PHP_BIN
@@ -11,7 +10,7 @@ function getUserParam() {
     echo "${!1}"
 }
 
-. ../lib/function.sh
+. "$SRC_DIR/lib/function.sh"
 
 echo "Set your parameters..."
 echo "Variables:"

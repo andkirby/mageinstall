@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # (POSIX shell syntax)
 
-SCRIPT_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
-cd "$SCRIPT_DIR"
+SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && cd .. && pwd)
+cd "$SRC_DIR"
 
 # parse extra install actions
 while :
@@ -24,4 +24,4 @@ do
     esac
 done
 
-bash "$SCRIPT_DIR/$script" $@
+bash "$SRC_DIR/install/$script" $@

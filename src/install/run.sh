@@ -1,31 +1,27 @@
 #!/bin/sh
 OLD_DIR=$(pwd)
-SCRIPT_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
-cd "$SCRIPT_DIR"
-. ../lib/function.sh
+. ."$SRC_DIR/"lib/function.sh
 # include default params
-. params.sh.dist
+. "$SRC_DIR/install/"params.sh.dist
 
 # get options from command line
-. lib/getopt.sh
+. "$SRC_DIR/install/"lib/getopt.sh
 
 # load parameters
-. load-params.sh
+. "$SRC_DIR/install/"load-params.sh
 
 # ================= Code =================
 echo "Go to directory $PROJECT_DIR..."
 
-. magento-clean-up.sh
+. "$SRC_DIR/install/"magento-clean-up.sh
 
-. magento-init-db.sh
+. "$SRC_DIR/install/"magento-init-db.sh
 
-. magento-sample-data.sh
+. "$SRC_DIR/install/"magento-sample-data.sh
 
-. magento-install.sh
+. "$SRC_DIR/install/"magento-install.sh
 
-. magento-config.sh
+. "$SRC_DIR/install/"magento-config.sh
 
 # Import products
-. "$SCRIPT_DIR"/lib/import.sh
-
-cd "$OLD_DIR"
+. "$SRC_DIR/install/"/lib/import.sh

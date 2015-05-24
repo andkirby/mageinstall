@@ -1,10 +1,9 @@
 #!/bin/sh
 # (POSIX shell syntax)
 
-
 OLD_DIR=$(pwd)
-SCRIPT_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
-cd "$SCRIPT_DIR"
+SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
+cd "$SRC_DIR"
 
 . head.sh
 . lib/check-bash.sh
@@ -20,7 +19,7 @@ do
     case "$action" in
         -h | --help)
             # Show some help
-            out=$(cat ../doc/shell/logo)"\n"$(cat ../doc/shell/help)"\n"
+            out=$(cat $SRC_DIR/../doc/shell/logo)"\n"$(cat $SRC_DIR/../doc/shell/help)"\n"
             echo -e "$out"
             exit 0 # This is not an error, User asked help. Don't do "exit 1"
             ;;
@@ -40,5 +39,5 @@ do
             ;;
     esac
 done
-bash "$SCRIPT_DIR/$script" $@
+bash "$SRC_DIR/$script" $@
 

@@ -1,25 +1,22 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
-cd "$SCRIPT_DIR"
-
 # include custom params
 if [ -f $(cd ~; pwd)"/.mageinstall/params.sh" ] ; then
     . ~/.mageinstall/params.sh
 else
-    . set-params.sh
+    . "$SRC_DIR/install/"set-params.sh
     echo "Please run install script again."
     exit 1
 fi
 # reset param into boolean
-. lib/set-boolean.sh
+. "$SRC_DIR/install/lib/set-boolean.sh"
 
 # include addintional params
 if [ -f "~/params-protected.sh" ]
 then
-    . params-protected.sh
+    . "$SRC_DIR/install/params-protected.sh"
 else
-    . params-protected.sh.dist
+    . "$SRC_DIR/install/params-protected.sh.dist"
 fi
 
 if [ -z "$PROJECT" ] ; then
