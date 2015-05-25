@@ -6,7 +6,7 @@ do
     case $1 in
         -h | --help | -\?)
             # Show some help
-            out=$(cat doc/shell/readme)
+            out=$(cat "$SRC_DIR"/build/doc/shell/help)
             echo -e "$out"
             exit 0 # This is not an error, User asked help. Don't do "exit 1"
             ;;
