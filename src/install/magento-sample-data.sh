@@ -15,6 +15,11 @@ fi
 if [ true = "$SAMPLE_DATA_MEDIA_RUN" ] && [ -d "$SAMPLE_DATA_DIR/sample" ]
 then
     echo "Copying sample data files..."
+    if [ "$INSTALL_RUN" = "true" ] && [ -f "$SAMPLE_DATA_DIR/sample"/app/etc/local.xml ] ; then
+        echo "Notice: You going to copy 'local.xml' file. Installation will be ignored."
+        INSTALL_RUN="false"
+    fi
+
     for i in "$SAMPLE_DATA_DIR/sample"/* ; do
         if [ -d "$i" ]; then
             DIR=$(basename "$i")
