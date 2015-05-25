@@ -26,12 +26,20 @@ do
             PACKAGE_DIR="$2"
             shift 2
             ;;
+        -d | --package-deploy-strategy)
+            PACKAGE_DEPLOY_STRATEGY="$2"
+            shift 2
+            ;;
+        -s | --package-minimal-stability)
+            PACKAGE_MINIMAL_STABILITY="$2"
+            shift 2
+            ;;
         -g | --package)
             PACKAGE="$2"
             shift 2
             ;;
         -c | --composer-repository-url)
-            EXTRA_COMPOSER_URL="$2"
+            PACKAGE_COMPOSER_URL="$2"
             shift 2
             ;;
         -i | --install-run)
