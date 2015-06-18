@@ -34,12 +34,13 @@ More info: `mageshell build --help`.
 
 ## Structure
 Usually you may have following files structure:
+```
   /any/path/to/magento                      - Pure Magento directory
   /yourdocroot
       /project.com-package                  - package files dir (will be created automatically)
       /project.com                          - project HTTP dir
   ~/.mageinstall/build/composer.json        - composer.json distributive file
-
+```
 ### CLI Parameters
 
     -h, --help, -?
