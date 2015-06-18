@@ -20,6 +20,10 @@ fi
 # get CLI options
 . "$SRC_DIR/build/lib/getopt.sh"
 
+# hack for project variable :(
+# TODO remove hack
+PROJECT='init-build'
+
 # include custom params
 . "$SRC_DIR/install/load-params.sh"
 
