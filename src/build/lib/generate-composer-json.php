@@ -6,10 +6,11 @@ use webignition\JsonPrettyPrinter\JsonPrettyPrinter;
 try {
     //region collect params
     $options = getopt(
-        'p:f:F:c:s:',
+        'p:f:d:F:c:s:',
         array(
             'magento-root-dir',
             'magento-force',
+            'magento-deploystrategy',
             'json-file',
             'composer-repository-url',
             'minimum-stability',
@@ -18,6 +19,10 @@ try {
     $keys    = array(
         'p' => array(
             'long'     => 'magento-root-dir',
+            'required' => false,
+        ),
+        'd' => array(
+            'long'     => 'magento-deploystrategy',
             'required' => false,
         ),
         'f' => array(
@@ -78,7 +83,8 @@ try {
     if ($options['minimum-stability'] || empty($data['minimum-stability'])) {
         $data['minimum-stability'] = (string)$options['minimum-stability'] ?: 'stable';
     }
-    $data['extra']['magento-force']    = (bool)$options['magento-force'];
+    $data['extra']['magento-force']          = (bool)$options['magento-force'];
+    $data['extra']['magento-deploystrategy'] = (string)$options['magento-deploystrategy'] ?: 'symlink';
     if ($options['magento-root-dir']) {
         $data['extra']['magento-root-dir'] = $options['magento-root-dir'];
     }
