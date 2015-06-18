@@ -82,8 +82,8 @@ if [ "$hasError" ] ; then
     exit 1
 fi
 
-echo "$json" #> ~/.mageinstall/build/composer.json
+echo "$json" > ~/.mageinstall/build/composer.json
 
 # Write ~/.mageinstall/build/composer.json
 echo "Writing parameters into ~/.mageinstall/build/params.sh..."
-#( IFS=$'\n'; echo "${filledParams[*]}" ) > ~/.mageinstall/build/params.sh
+( IFS=$'\n'; echo "${filledParams[*]}" ) > ~/.mageinstall/build/params.sh
