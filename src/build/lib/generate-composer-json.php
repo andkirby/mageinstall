@@ -73,11 +73,28 @@ try {
         if (!is_array($options['composer-repository-url'])) {
             $options['composer-repository-url'] = array($options['composer-repository-url']);
         }
+
+        //collect exists composer repository URLs
+        $repositoryUrls = array();
+        if (isset($data['repositories'])) {
+            foreach ($data['repositories'] as $repository) {
+                if (isset($repository['type']) && 'composer' == $repository['type']) {
+                    $repositoryUrls[] = $repository['url'];
+                }
+            }
+        }
+
+        //add new composer repository URLs
         foreach ($options['composer-repository-url'] as $url) {
-            $data['repositories'][] = array(
-                'type' => 'composer',
-                'url'  => $url,
-            );
+            if (!$repositoryUrls || !in_array($url, $repositoryUrls)) {
+                if (!strpos($url, '://')) {
+                    throw new Exception("Composer URL '$url' is not valid.");
+                }
+                $data['repositories'][] = array(
+                    'type' => 'composer',
+                    'url'  => $url,
+                );
+            }
         }
     }
     if ($options['minimum-stability'] || empty($data['minimum-stability'])) {
