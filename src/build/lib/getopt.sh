@@ -1,6 +1,6 @@
 #!/bin/sh
 # (POSIX shell syntax)
-
+PACKAGE_COMPOSER_URL=()
 while :
 do
     case $1 in
@@ -39,7 +39,7 @@ do
             shift 2
             ;;
         -c | --composer-repository-url)
-            PACKAGE_COMPOSER_URL="$2"
+            PACKAGE_COMPOSER_URL+=("$2")
             shift 2
             ;;
         -i | --install-run)

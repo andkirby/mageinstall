@@ -4,7 +4,8 @@ echo "Set your parameters..."
 echo ""
 params=(\
 "PACKAGE_MINIMUM_STABILITY:Minimum Stability:stable|RC|beta|alpha|dev:stable" \
-"PACKAGE_COMPOSER_URL:URL to your composer repository (if you have)" \
+"PACKAGE_DEPLOY_STRATEGY:Deploy strategy:copy|symlink:copy" \
+#"PACKAGE_COMPOSER_URL:URL to your composer repository (if you have)" \
 "MAGENTO_DIR:Pure Magento files directory (if empty set as a parameter)" \
 #"PROJECT_DIR:Path to your Magento directory" \
 )
@@ -63,16 +64,26 @@ if [ ! -d ~/.mageinstall/build ] ; then
         echo "Directory ~/.mageinstall/build cannot be created."
     fi
 fi
+
+#set repository URLs
+repositories=""
+for i in "${PACKAGE_COMPOSER_URL[@]}"
+do
+    repositories="$repositories -c$i "
+done
 json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
-    -s$PACKAGE_MINIMUM_STABILITY -c$PACKAGE_COMPOSER_URL)
+    -s$PACKAGE_MINIMUM_STABILITY \
+    -d$PACKAGE_DEPLOY_STRATEGY \
+    $repositories)
+
 hasError=$(echo $json | grep "Error:" 2>&1);
 if [ "$hasError" ] ; then
     echo "$json"
     exit 1
 fi
 
-echo "$json" > ~/.mageinstall/build/composer.json
+echo "$json" #> ~/.mageinstall/build/composer.json
 
 # Write ~/.mageinstall/build/composer.json
 echo "Writing parameters into ~/.mageinstall/build/params.sh..."
-( IFS=$'\n'; echo "${filledParams[*]}" ) > ~/.mageinstall/build/params.sh
+#( IFS=$'\n'; echo "${filledParams[*]}" ) > ~/.mageinstall/build/params.sh
