@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # set default minimum-stability
-echo "Set your parameters..."
 echo ""
+echo "Set your parameters..."
 params=(\
 "PACKAGE_MINIMUM_STABILITY:Minimum Stability:stable|RC|beta|alpha|dev:stable" \
 "PACKAGE_DEPLOY_STRATEGY:Deploy strategy:copy|symlink:copy" \
