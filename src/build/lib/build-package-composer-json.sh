@@ -4,6 +4,8 @@
 userDir=$(cd ~; pwd)
 json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
     -p$PROJECT_DIR \
+    -s$PACKAGE_MINIMUM_STABILITY \
+    -d$PACKAGE_DEPLOY_STRATEGY \
     -F$userDir/.mageinstall/build/composer.json)
 hasError=$(echo $json | grep "Error:" 2>&1);
 if [ "$hasError" ] ; then
