@@ -70,6 +70,9 @@ Usually you may have following files structure:
 
     -i, --install-run
         Run Magento (re-)installing.
+        It will use default installation approach which was initialized before.
+        To prevent installation please use "false" parameter.
+        It will use "-S" parameter of "mageshell install".
         Boolean value.
 
 
@@ -124,77 +127,98 @@ If you would you like to make some fixes feel free to make it and add pull reque
 ## Console parameters
 
 ```
--h, --help, -?
-   Get this help.
+        -h, --help, -?
+            Get this help.
 
--p, --project [REQUIRED]
-   Param PROJECT.
-   REQUIRED
+        -p, --project [REQUIRED]
+            Project name.
+            Param PROJECT.
 
--t, --path
-   Param PROJECT_DIR.
+        -t, --path
+            Path to project directory.
+            Param PROJECT_DIR.
 
--H, --db-host
-   Param DB_HOST.
+        -H, --db-host
+            Database connection hostname.
+            Param DB_HOST.
 
--u, --db-user
-   Param DB_USER
+        -u, --db-user
+            Database connection username.
+            Param DB_USER
 
--P, --db-password
-   DB_PASSWORD
+        -P, --db-password
+            Database connection password.
+            DB_PASSWORD
 
--n, --db-name
-   Param DB_NAME
+        -n, --db-name
+            Database name.
+            Param DB_NAME
 
--d, --domain
-   Param PROJECT_DOMAIN
+        -d, --domain
+            Web domain.
+            Param PROJECT_DOMAIN
 
--s, --secured-protocol)
-   Param PROTOCOL_SECURED = https|http
+        -s, --secured-protocol)
+            Secured protocol string.
+            Param PROTOCOL_SECURED = https|http
 
--r, --use-rewrites
-   Param USE_REWRITES = yes|no
+        -r, --use-rewrites
+            Use Apache rewrites.
+            Param USE_REWRITES = yes|no
 
---admin-username
-   Param ADMIN_USERNAME
+        --admin-username
+            Administrator username in Admin Panel.
+            Param ADMIN_USERNAME
 
---admin-password
-   Param ADMIN_PASSWORD
+        --admin-password
+            Administrator password in Admin Panel.
+            Param ADMIN_PASSWORD
 
--e, --admin-email [REQUIRED]
-   Param ADMIN_EMAIL
-   Required if it is not set in ~/.mageinstall/params.sh file.
+        -e, --admin-email [REQUIRED]
+            Administrator email in Admin Panel.
+            Param ADMIN_EMAIL
+            Required if it is not set in ~/.mageinstall/params.sh file.
 
--S, --skip-all-run
-   Reset run params.
-   INSTALL_RUN=false
-   IMPORT_RUN=false
-   SAMPLE_DATA_CONFIG_RUN=false
-   SAMPLE_DATA_SQL_RUN=false
-   SAMPLE_DATA_MEDIA_RUN=false
+        -S, --skip-all-run
+            Reset run params.
+            INSTALL_RUN=false
+            IMPORT_RUN=false
+            SAMPLE_DATA_CONFIG_RUN=false
+            SAMPLE_DATA_SQL_RUN=false
+            SAMPLE_DATA_MEDIA_RUN=false
 
--i, --install-run
-   Param INSTALL_RUN = boolean
+        -i, --install-run
+            Run installation.
+            Param INSTALL_RUN = yes|no|true|false|1|0
 
--I, --import-run)
-   Param IMPORT_RUN = boolean
+        -I, --import-run)
+            Run importing.
+            Param IMPORT_RUN = yes|no|true|false|1|0
 
--c, --config-run
-   Param SAMPLE_DATA_CONFIG_RUN = boolean
+        -c, --config-run
+            Run setting configuration from a file.
+            Param SAMPLE_DATA_CONFIG_RUN = yes|no|true|false|1|0
 
--q, --sample-data-sql-run)
-   Param SAMPLE_DATA_SQL_RUN = boolean
+        -C, --project-config-run
+            Run setting configuration from a file withing project directory/es.
+            PROJECT_DIR/shell/mageshell/config
+            Param PROJECT_CONFIG_RUN = yes|no|true|false|1|0
 
--m, --sample-data-media-run
-   Param SAMPLE_DATA_MEDIA_RUN = boolean
+        -q, --sample-data-sql-run)
+            Run importing sample data SQL files.
+            Param SAMPLE_DATA_SQL_RUN = yes|no|true|false|1|0
 
--x, --media-dir-permissions
-    Param MEDIA_DIR_PERMISSIONS
-    "media", "var", "app/etc" directories permissions.
+        -m, --sample-data-media-run
+            Run copying sample data files.
+            Param SAMPLE_DATA_MEDIA_RUN = yes|no|true|false|1|0
 
--X, --media-dir-owner
-    Param MEDIA_DIR_OWNER
-    "media", "var", "app/etc" directories owner username.
+        -x, --media-dir-permissions
+            "media", "var", "app/etc" directories permissions.
+            Param MEDIA_DIR_PERMISSIONS.
+
+        -X, --media-dir-owner
+            "media", "var", "app/etc" directories owner username.
+            Param MEDIA_DIR_OWNER.
 
 Boolean means any value of yes, no, true, false, 1, 0.
 ```
