@@ -49,4 +49,7 @@ File composer.json should have default configuration. E.g.:
 
     -i, --install-run
         Run Magento (re-)installing.
+        It will use default installation approach which was initialized before.
+        To prevent installation please use "false" parameter.
+        It will use "-S" parameter of "mageshell install".
         Boolean value.
