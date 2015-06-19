@@ -19,7 +19,11 @@ REBUILD_START=$(date +%s)
 . "$SRC_DIR"/build/lib/package-deploy.sh
 
 binDir=$(cd $SRC_DIR/../bin/; pwd)
-bash "$binDir/"mageshell install -p "$PROJECT" -i "$INSTALL_RUN"
+if [ "$INSTALL_RUN" = "true" ] ; then
+    bash "$binDir/"mageshell install -p "$PROJECT"
+else
+    bash "$binDir/"mageshell install -p "$PROJECT" -S
+fi
 
 END=$(date +%s)
 DIFF=$(( $END - $REBUILD_START ))
