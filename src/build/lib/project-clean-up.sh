@@ -7,8 +7,8 @@ if [ "$MAGENTO_REFRESH" = "true" ] || [ ! -f "$PROJECT_DIR/app/Mage.php" ] ; the
 else
     echo "Removing package files..."
     if [ -d "$PACKAGE_DIR" ] ; then
-        echo "Cleaning $PACKAGE_DIR..."
-        rm -rf "$PACKAGE_DIR/*"
+        echo "Cleaning up $PACKAGE_DIR..."
+        rm -rf "$PACKAGE_DIR"/*
     fi
     if [ "$INSTALL_RUN" = "false" ] ; then
         # Ignore removing media, var, app/etc/local.xml when no re-installing

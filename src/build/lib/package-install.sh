@@ -14,6 +14,9 @@ fi
 # redeploy package if it wasn't updated
 notUpdated=$(echo "$RESULT" | grep "Nothing to install" 2>&1)
 if [ "$notUpdated" ] ; then
+    if [ "$VERBOSITY_VERY" = "true" ] ; then
+        cat $PACKAGE_DIR/composer.json
+    fi
     die "Package cannot be installed."
    #cd $PACKAGE_DIR && $PHP_BIN ./vendor/bin/composerCommandIntegrator.php magento-module-deploy
 fi

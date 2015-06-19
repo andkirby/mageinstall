@@ -8,8 +8,5 @@ skipDefaultComposerJson="true"
 
 . "$SRC_DIR/build/init-params.sh"
 
-# generate composer.json for a package
-. "$SRC_DIR/build/lib/build-package-composer-json.sh"
-
 # building
 . "$SRC_DIR/build/build.sh"
