@@ -50,3 +50,9 @@ File composer.json should have default configuration. E.g.:
     -i, --install-run
         Run Magento (re-)installing.
         Boolean value.
+
+    -P, --install-params
+        Installation params. It should looks like a string:
+            "-c 1 -q 0"
+        To get more help about installation parameters please use:
+            mageshell install --help

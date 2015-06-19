@@ -46,6 +46,10 @@ do
             setBoolean INSTALL_RUN "$2"
             shift 2
             ;;
+        -P | --install-params)
+            setBoolean INSTALL_PARAMS "$2"
+            shift 2
+            ;;
         -*)
             printf >&2 'WARN: Unknown option (ignored): %s\n' "$1"
             shift
