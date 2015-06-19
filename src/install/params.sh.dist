@@ -59,12 +59,12 @@ IMPORT_DIR="__SAMPLE_DIR__/import"
 # You root directory of project
 PROJECT_DIR="__DOCROOT__/__PROJECT__"
 
-# Permissions for "var", "media", and "etc" directories
-MEDIA_DIR_PERMISSIONS=0777
-MEDIA_DIR_USER=""
-
 # ---------- 4. Binary files parameters
 # Path to MySQL client binary file
 MYSQL_BIN="mysql"
 # Path to PHP binary file
 PHP_BIN="php"
+
+# ---------- 5. Permissions for "var", "media", and "etc" directories
+MEDIA_DIR_PERMISSIONS=0777
+MEDIA_DIR_USER=""
