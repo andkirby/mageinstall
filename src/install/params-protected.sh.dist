@@ -23,6 +23,9 @@ IMPORT_DIR=$(replaceVariable "$IMPORT_DIR" "__SAMPLE_DIR__" "$SAMPLE_DATA_DIR")
 PROJECT_DIR=$(replaceVariable "$PROJECT_DIR" "__DOCROOT__" "$ROOT")
 PROJECT_DIR=$(replaceVariable "$PROJECT_DIR" "__PROJECT__" "$PROJECT")
 
+PROJECT_CONFIG_DIR=$(replaceVariable "$PROJECT_CONFIG_DIR" "__DOCROOT__" "$ROOT")
+PROJECT_CONFIG_DIR=$(replaceVariable "$PROJECT_CONFIG_DIR" "__PROJECT__" "$PROJECT")
+
 # Set project name into email
 ADMIN_EMAIL=$(replaceVariable "$ADMIN_EMAIL" "__PROJECT__" "$PROJECT")
 

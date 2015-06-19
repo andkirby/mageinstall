@@ -68,3 +68,8 @@ PHP_BIN="php"
 # ---------- 5. Permissions for "var", "media", and "etc" directories
 MEDIA_DIR_PERMISSIONS=0777
 MEDIA_DIR_USER=""
+
+# ---------- 6. Package config
+# *.csv files will be added to configuration recurcivelly
+PROJECT_CONFIG_DIR="__DOCROOT__/__PROJECT__/shell/mageshell/config"
+PROJECT_CONFIG_RUN=true
