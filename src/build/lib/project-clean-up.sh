@@ -19,6 +19,7 @@ else
             xargs -0 rm 2>&1)
 
     fi
+    cd "$PROJECT_DIR" && find . -empty -type d -delete
     echo 'Cleaning up completed.'
 fi
 
