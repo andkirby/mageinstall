@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+echo "Refreshing composer.json file..."
 #set repository URLs
 repositories=""
 for i in "${PACKAGE_COMPOSER_URL[@]}"
