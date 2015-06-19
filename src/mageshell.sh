@@ -6,6 +6,7 @@ SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
 cd "$SRC_DIR"
 
 . head.sh
+. lib/function.sh
 . lib/check-bash.sh
 
 action="$1"
