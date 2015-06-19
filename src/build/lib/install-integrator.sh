@@ -8,7 +8,7 @@ if [ "$hasError" ] ; then
 fi
 notFound=$(echo "$RESULT" | grep "magento-hackathon/composer-command-integrator not found" 2>&1)
 if [ "$notFound" ] ; then
-    RESULT=$(cd "$PACKAGE_DIR" && composer require magento-hackathon/composer-command-integrator:@stable)
+    RESULT=$(cd "$PACKAGE_DIR" && composer require magento-hackathon/composer-command-integrator:@stable 2>&1)
     echo "$RESULT"
     hasError=$(echo "$RESULT" | grep -E "(failed|fatal|Error)" 2>&1)
     if [ "$hasError" ] ; then
