@@ -6,7 +6,7 @@ if [ "$MAGENTO_REFRESH" = "true" ] || [ ! -f "$PROJECT_DIR/app/Mage.php" ] ; the
     cp -rl "$MAGENTO_DIR"/* "$PROJECT_DIR"/
 else
     echo "Removing package files..."
-    if [ "$PACKAGE_DIR" -d ] ; then
+    if [ -d "$PACKAGE_DIR" ] ; then
         echo "Cleaning $PACKAGE_DIR..."
         rm -rf "$PACKAGE_DIR/*"
     fi
