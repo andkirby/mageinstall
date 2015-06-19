@@ -7,13 +7,16 @@ REBUILD_START=$(date +%s)
 . "$SRC_DIR"/build/lib/project-clean-up.sh
 
 # generate composer.json for a package
-. "$SRC_DIR/build/lib/build-package-composer-json.sh"
+. "$SRC_DIR"/build/lib/build-package-composer-json.sh
 
-# There is a problem with part installing.
-# We cannot recognize when only one several modules was changed.
-#. "$SRC_DIR"/build/lib/install-integrator.sh
+. "$SRC_DIR"/build/lib/install-integrator.sh
 
+# install package w/o deploying
 . "$SRC_DIR"/build/lib/package-install.sh
+
+# Deploying
+. "$SRC_DIR"/build/lib/make-deploy-composer-json.sh
+. "$SRC_DIR"/build/lib/package-deploy.sh
 
 binDir=$(cd $SRC_DIR/../bin/; pwd)
 bash "$binDir/"mageshell install -p "$PROJECT" -i "$INSTALL_RUN"
