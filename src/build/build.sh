@@ -6,7 +6,9 @@ REBUILD_START=$(date +%s)
 
 . "$SRC_DIR"/build/lib/project-clean-up.sh
 
-. "$SRC_DIR"/build/lib/install-integrator.sh
+# There is a problem with part installing.
+# We cannot recognize when only one several modules was changed.
+#. "$SRC_DIR"/build/lib/install-integrator.sh
 
 . "$SRC_DIR"/build/lib/package-install.sh
 

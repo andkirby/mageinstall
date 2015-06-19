@@ -8,11 +8,12 @@ echo "$RESULT"
 hasError=$(echo "$RESULT" | grep -E "(failed|fatal|Error|Exception)" 2>&1)
 if [ "$hasError" ] ; then
     # stop if error
-    exit 1
+    die "Package installation failed."
 fi
 
 # redeploy package if it wasn't updated
 notUpdated=$(echo "$RESULT" | grep "Nothing to install" 2>&1)
 if [ "$notUpdated" ] ; then
-   cd $PACKAGE_DIR && $PHP_BIN ./vendor/bin/composerCommandIntegrator.php magento-module-deploy
+    die "Package cannot be installed."
+   #cd $PACKAGE_DIR && $PHP_BIN ./vendor/bin/composerCommandIntegrator.php magento-module-deploy
 fi

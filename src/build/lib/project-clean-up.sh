@@ -6,6 +6,10 @@ if [ "$MAGENTO_REFRESH" = "true" ] || [ ! -f "$PROJECT_DIR/app/Mage.php" ] ; the
     cp -rl "$MAGENTO_DIR"/* "$PROJECT_DIR"/
 else
     echo "Removing package files..."
+    if [ "$PACKAGE_DIR" -d ] ; then
+        echo "Cleaning $PACKAGE_DIR..."
+        rm -rf "$PACKAGE_DIR/*"
+    fi
     if [ "$INSTALL_RUN" = "false" ] ; then
         # Ignore removing media, var, app/etc/local.xml when no re-installing
         filesToRemove=$(cd "$PROJECT_DIR" && find . -type f \
