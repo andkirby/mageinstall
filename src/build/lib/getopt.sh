@@ -50,10 +50,6 @@ do
             setBoolean INSTALL_RUN "$2"
             shift 2
             ;;
-        -P | --install-params)
-            setBoolean INSTALL_PARAMS "$2"
-            shift 2
-            ;;
         -v)
             VERBOSITY=true
             shift 1

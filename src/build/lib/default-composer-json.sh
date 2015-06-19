@@ -7,7 +7,6 @@ params=(\
 "PACKAGE_DEPLOY_STRATEGY:Deploy strategy:copy|symlink:copy" \
 #"PACKAGE_COMPOSER_URL:URL to your composer repository (if you have)" \
 "MAGENTO_DIR:Pure Magento files directory (if empty set as a parameter)" \
-"INSTALL_PARAMS:Extra installation parameters. Help: 'mageshell install --help'." \
 #"PROJECT_DIR:Path to your Magento directory" \
 )
 
