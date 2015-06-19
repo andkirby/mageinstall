@@ -84,6 +84,10 @@ do
             setBoolean SAMPLE_DATA_CONFIG_RUN "$2"
             shift 2
             ;;
+        -C | --project-config-run)
+            setBoolean PROJECT_CONFIG_RUN "$2"
+            shift 2
+            ;;
         -q | --sample-data-sql-run)
             setBoolean SAMPLE_DATA_SQL_RUN "$2"
             shift 2

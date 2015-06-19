@@ -32,6 +32,7 @@ params=(\
 "INSTALL_RUN:Run Magento installation:boolean" \
 "IMPORT_RUN:Run Magento importing products:boolean" \
 "SAMPLE_DATA_CONFIG_RUN:Run importing configuration files:boolean" \
+"PROJECT_CONFIG_RUN:Run importing project configuration files:boolean" \
 "SAMPLE_DATA_SQL_RUN:Run importing sample data SQL files:boolean" \
 "SAMPLE_DATA_MEDIA_RUN:Run importing sample data media files:boolean" \
 "ROOT:Document Root" \

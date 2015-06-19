@@ -104,6 +104,11 @@
             Run setting configuration from a file.
             Param SAMPLE_DATA_CONFIG_RUN = yes|no|true|false|1|0
 
+        -c, --project-config-run
+            Run setting configuration from a file withing project directory/es.
+            PROJECT_DIR/shell/mageshell/config
+            Param PROJECT_CONFIG_RUN = yes|no|true|false|1|0
+
         -q, --sample-data-sql-run)
             Run importing sample data SQL files.
             Param SAMPLE_DATA_SQL_RUN = yes|no|true|false|1|0
