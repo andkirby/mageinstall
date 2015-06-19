@@ -2,6 +2,8 @@
 # Main rebuild script
 REBUILD_START=$(date +%s)
 
+. "$SRC_DIR/lib/function.sh"
+
 . "$SRC_DIR"/build/lib/project-clean-up.sh
 
 . "$SRC_DIR"/build/lib/install-integrator.sh

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
 if [ -z "$(ps -p $$ | grep " bash")" ] ; then
-    echo "Error: Sorry, this script can be run only with 'bash'."
-    exit 1
+    die "Sorry, this script can be run only with 'bash'."
 fi

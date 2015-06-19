@@ -17,8 +17,7 @@ then
 
     echo "Start installing Magento..."
     if [ ! -f "$PROJECT_DIR/install.php" ] ; then
-        echo "Error: There are no Magento files."
-        exit 1
+        die "There are no Magento files."
     fi
 
     START=$(date +%s)

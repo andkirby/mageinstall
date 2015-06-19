@@ -2,6 +2,8 @@
 
 . "$SRC_DIR/install/params.sh.dist"
 
+. "$SRC_DIR/lib/function.sh"
+
 function getUserParam() {
     local PROJECT DB_HOST DB_USER DB_PASSWORD DB_NAME PROJECT_DOMAIN_MASK PROTOCOL_SECURED USE_REWRITES ADMIN_USERNAME ADMIN_PASSWORD ADMIN_EMAIL INSTALL_RUN IMPORT_RUN SAMPLE_DATA_SQL_RUN SAMPLE_DATA_MEDIA_RUN SAMPLE_DATA_CONFIG_RUN ROOT SAMPLE_DATA_DIR IMPORT_DIR PROJECT_DIR MYSQL_BIN PHP_BIN
     if [ -f $(cd ~; pwd)"/.mageinstall/params.sh" ] ; then
@@ -9,8 +11,6 @@ function getUserParam() {
     fi
     echo "${!1}"
 }
-
-. "$SRC_DIR/lib/function.sh"
 
 echo "Set your parameters..."
 echo "Variables:"

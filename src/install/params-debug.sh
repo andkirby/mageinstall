@@ -4,6 +4,7 @@ SCRIPT_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
 cd "$SCRIPT_DIR"
 
 . $SCRIPT_DIR/../lib/function.sh
+
 if [ "$SKIP_LOAD" != true ] ; then
     # include default params
     . $SCRIPT_DIR/params.sh.dist

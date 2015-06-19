@@ -2,13 +2,12 @@
 SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && cd .. && pwd)
 cd "$SRC_DIR"
 
-if [ ! -f ~/.mageinstall/params.sh ] ; then
-    echo "Error: You have to initialize install params. Try 'mageshell install init'."
-    exit 1
-fi
-
 # load functions
 . "$SRC_DIR/lib/function.sh"
+
+if [ ! -f ~/.mageinstall/params.sh ] ; then
+    die "You have to initialize install params. Try 'mageshell install init'."
+fi
 
 # include default params
 . "$SRC_DIR/install/params.sh.dist"
