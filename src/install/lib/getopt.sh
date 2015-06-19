@@ -70,6 +70,7 @@ do
             SAMPLE_DATA_CONFIG_RUN=false
             SAMPLE_DATA_SQL_RUN=false
             SAMPLE_DATA_MEDIA_RUN=false
+            PROJECT_CONFIG_RUN=false
             shift 1
             ;;
         -i | --install-run)
