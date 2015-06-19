@@ -13,7 +13,7 @@ userDir=$(cd ~; pwd)
 json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
     -p$PROJECT_DIR \
     -s$PACKAGE_MINIMUM_STABILITY \
-    -dnone\
+    -dnone \
     $repositories \
     -F$userDir/.mageinstall/build/composer.json)
 hasError=$(echo $json | grep "Error:" 2>&1);
