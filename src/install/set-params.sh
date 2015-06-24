@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ -z "$SRC_DIR" ] ; then
+    SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && cd .. && pwd)
+    cd "$SRC_DIR"
+fi
+
 . "$SRC_DIR/install/params.sh.dist"
 
 . "$SRC_DIR/lib/function.sh"
