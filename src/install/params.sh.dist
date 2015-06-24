@@ -35,7 +35,7 @@ ADMIN_USERNAME="admin"
 # Password of default administrator.
 ADMIN_PASSWORD="password"
 # Email of default administrator.
-ADMIN_EMAIL="example@example.com"
+ADMIN_EMAIL="example-__PROJECT__@example.com"
 
 # ---------- 2. Install parameters
 # Enable Magento installation
