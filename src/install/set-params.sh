@@ -47,7 +47,7 @@ params=(\
 "PROJECT_CONFIG_RUN:Run importing project configuration files:boolean" \
 "SAMPLE_DATA_SQL_RUN:Run importing sample data SQL files:boolean" \
 "SAMPLE_DATA_MEDIA_RUN:Run importing sample data media files:boolean" \
-"MEDIA_DIR_PERMISSIONS:Permissions for 'var', 'media', and 'etc' directories:0777" \
+"MEDIA_DIR_PERMISSIONS:Permissions for 'var', 'media', and 'etc' directories" \
 "MEDIA_DIR_USER:Permissions user for 'var', 'media', and 'etc' directories" \
 "ROOT:Document Root" \
 "SAMPLE_DATA_DIR:Sample data directory" \
@@ -71,6 +71,7 @@ for item in "${params[@]}"; do
         default="$userParam"
     fi
 
+    VALUES=""
     if [ "$values" = "boolean" ] ; then
         VALUES="|yes|no|YES|NO|true|false|TRUE|FALSE|1|0|"
     elif [ "$values" ] ; then
