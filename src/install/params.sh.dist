@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Project name. It should be provided as a parameter.
 PROJECT=""
@@ -12,7 +12,7 @@ DB_USER="root"
 # Database connection password.
 DB_PASSWORD=""
 # Database name.
-DB_NAME=$(echo $PROJECT | tr . _)
+DB_NAME="__PROJECT__"
 
 # ---------- 1.2. URL parameters
 # __PROJECT__ will be replaced with your $PROJECT parameter
