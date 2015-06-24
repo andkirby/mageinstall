@@ -122,6 +122,11 @@ Usually, you should make following files structure:
 
 `sample_data` inner directories structure cannot be changed.
 
+### Config files in project
+Also you may put your configuration files within project by path:
+`PROJECT_DIR/shell/mageshell/config`.
+There are should be CSV files. You may make any directories structure within this directory.
+
 If you would you like to make some fixes feel free to make it and add pull request. Or add an issue.
 
 ## Console parameters
