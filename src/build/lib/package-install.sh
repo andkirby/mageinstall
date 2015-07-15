@@ -26,3 +26,9 @@ if [ "$hasError" ] ; then
     # stop if error
     die "Package requiring failed."
 fi
+# Check if module didn't get updates
+notInstalled=$(echo "$RESULT" | grep -E "(Nothing to install or update)" 2>&1)
+if [ "$notInstalled" ] ; then
+    # stop if error
+    die "Nothing to install or update."
+fi
