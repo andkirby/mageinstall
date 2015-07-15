@@ -9,19 +9,14 @@ REBUILD_START=$(date +%s)
 # generate composer.json for a package
 . "$SRC_DIR"/build/lib/build-package-composer-json.sh
 
-. "$SRC_DIR"/build/lib/install-integrator.sh
-
 # install package w/o deploying
 . "$SRC_DIR"/build/lib/package-install.sh
 
-# Deploying
-. "$SRC_DIR"/build/lib/make-deploy-composer-json.sh
-. "$SRC_DIR"/build/lib/package-deploy.sh
-
 binDir=$(cd $SRC_DIR/../bin/; pwd)
-if [ "$INSTALL_RUN" = "true" ] ; then
+if [ "$PACKAGE_INSTALL_RUN" = "true" ] ; then
     bash "$binDir/"mageshell install -p "$PROJECT"
 else
+    echo "Ignore installing."
     bash "$binDir/"mageshell install -p "$PROJECT" -S
 fi
 

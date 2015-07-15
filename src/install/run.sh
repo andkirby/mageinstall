@@ -7,6 +7,9 @@ cd "$SRC_DIR"
 # include default params
 . "$SRC_DIR/install/"params.sh.dist
 
+# load user parameters
+. "$SRC_DIR/install/"load-user-params.sh
+
 # get options from command line
 . "$SRC_DIR/install/"lib/getopt.sh
 
@@ -27,4 +30,4 @@ echo "Go to directory $PROJECT_DIR..."
 . "$SRC_DIR/install/"magento-config.sh
 
 # Import products
-. "$SRC_DIR/install/"/lib/import.sh
+. "$SRC_DIR/install/"lib/import.sh

@@ -47,7 +47,7 @@ do
             shift 2
             ;;
         -i | --install-run)
-            setBoolean INSTALL_RUN "$2"
+            setBoolean PACKAGE_INSTALL_RUN "$2"
             shift 2
             ;;
         -v)

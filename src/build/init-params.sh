@@ -10,6 +10,12 @@ fi
 if [ ! -d "$PACKAGE_DIR" ] ; then
     die "Cannot create directory '$PACKAGE_DIR'."
 fi
+if [ ! -d "$PROJECT_DIR" ] ; then
+    mkdir -p "$PROJECT_DIR"
+fi
+if [ ! -d "$PROJECT_DIR" ] ; then
+    die "Cannot create directory '$PROJECT_DIR'."
+fi
 
 # check Magento dir
 if [ -z "$MAGENTO_DIR" ] ; then
@@ -26,6 +32,6 @@ if [ -z "$PACKAGE" ] ; then
     die "Package is required (-g | --package). Composer format 'vendor/pkg_name:version'. Version is optional."
 fi
 # check Magento files refreshing
-if [ "$MAGENTO_REFRESH" = "true" ] && [ "$INSTALL_RUN" = "false" ] ; then
+if [ "$MAGENTO_REFRESH" = "true" ] && [ "$PACKAGE_INSTALL_RUN" = "false" ] ; then
     die "Magento files cannot be refreshed without installing."
 fi

@@ -23,7 +23,8 @@ fi
 # TODO remove hack
 ignoreValidateProjectParams='1'
 
-# include custom params
+# load params
+. "$SRC_DIR/install/load-user-params.sh"
 . "$SRC_DIR/install/load-params.sh"
 
 if [ "$skipDefaultComposerJson" != "true" ] || [ ! -f ~/.mageinstall/build/composer.json ] ; then
