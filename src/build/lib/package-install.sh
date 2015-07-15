@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-#install required installer version
 
+#install required installer version
 FOUND=$(cd "$PACKAGE_DIR" && composer show -i | grep magento-hackathon/magento-composer-installer | grep " 3\." 2>&1)
 if [ -z "$FOUND" ] ; then
     echo "Installing the package 'magento-hackathon/magento-composer-installer:~3.0@stable'..."
