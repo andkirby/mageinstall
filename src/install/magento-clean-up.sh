@@ -9,10 +9,18 @@ if [ "$INSTALL_RUN" = true ] || ( [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SA
     rm -rf var/cache
     rm -rf var/lock
     rm -rf var/log
+
+    # clean up product images cache
     rm -rf media/catalog/product/cache
+
+    # clean up JS & CSS cache
+    rm -rf media/js/*
+    rm -rf media/css/*
+
+    rm -rf var/session
+
     cleaned=true
 fi
-rm -rf var/session
 if [ "$INSTALL_RUN" = true ] ; then
     echo "Removing local.xml..."
     rm -rf app/etc/local.xml
