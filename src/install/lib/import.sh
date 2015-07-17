@@ -39,10 +39,10 @@ then
         REINDEX_ALL_RUN="1"
     fi
 
-    if [ "$FILE_CSV" ] || [ "$REINDEX_ALL_RUN" ] # check if any file participated in the importing
+    if [ "$REINDEX_ALL_RUN" ] # check if any file participated in the importing
     then
         echo "Reindexing..."
-#        $PHP_BIN -f $PROJECT_DIR/shell/indexer.php reindexall
+        $PHP_BIN -f $PROJECT_DIR/shell/indexer.php reindexall
     fi
 fi
 
