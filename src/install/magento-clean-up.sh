@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 cd "$PROJECT_DIR"
-cleaned=false
+cleared=false
 # ======= Clean Up var Directory =======
 if [ "$INSTALL_RUN" = true ] || [ "$CLEAR_CACHE" = true ] || ( [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] ) ; then
-    echo "Cleaning up cache files..."
+    echo "Clearing cache files..."
     rm -rf var/full_page_cache
     rm -rf var/cache
     rm -rf var/lock
@@ -19,13 +19,13 @@ if [ "$INSTALL_RUN" = true ] || [ "$CLEAR_CACHE" = true ] || ( [ "$SAMPLE_DATA_S
 
     rm -rf var/session
 
-    cleaned=true
+    cleared=true
 fi
-if [ "$INSTALL_RUN" = true ] ; then
+if [ "$INSTALL_RUN" = true ] && [ -f app/etc/local.xml ] ; then
     echo "Removing local.xml..."
     rm -rf app/etc/local.xml
-    cleaned=true
+    cleared=true
 fi
-if [ "$cleaned" = true ] ; then
-    echo "Clean up done."
+if [ "$cleared" = true ] ; then
+    echo "Cache clearing has been done."
 fi
