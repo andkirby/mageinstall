@@ -106,6 +106,14 @@ try {
         $data['extra']['magento-root-dir'] = $options['magento-root-dir'];
     }
 
+    /**
+     * Ignore updating Varien_Autoload class because the issue
+     * @link https://github.com/ajbonner/magento-composer-autoload/issues/4
+     */
+    if (!isset($data['extra']['magento-deploystrategy-overwrite'])) {
+        $data['extra']['magento-deploystrategy-overwrite']['ajbonner/magento-composer-autoload'] = 'none';
+    }
+
     //write json
     $composerJson = json_encode($data);
     $formatter    = new JsonPrettyPrinter();
