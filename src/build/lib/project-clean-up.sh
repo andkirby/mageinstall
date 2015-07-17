@@ -6,6 +6,7 @@ if [ -f ~/.mageinstall/build/before-clean.sh ] ; then
 fi
 if [ "$MAGENTO_REFRESH" = "true" ] || [ ! -f "$PROJECT_DIR/app/Mage.php" ] ; then
     echo "Copying Magento source files..."
+    rm -rf "$PACKAGE_DIR"/*
     rm -rf "$PROJECT_DIR"/*
     cp -rl "$MAGENTO_DIR"/* "$PROJECT_DIR"/
 elif [ "$PACKAGE_INSTALL_RUN" = "true" ] ; then

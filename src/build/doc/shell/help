@@ -34,6 +34,9 @@ File composer.json should have default configuration. E.g.:
     -k, --package-source-dir
         Path to package directory.
 
+    -R, --refresh-magento-files
+        Clear everything and rebuild the project again.
+
     -d, --package-deploy-strategy
         Composer package deploy strategy.
         Default:
@@ -53,3 +56,6 @@ File composer.json should have default configuration. E.g.:
         To prevent installation please use "false" parameter.
         It will use "-S" parameter of "mageshell install".
         Boolean value.
+
+    -v, -vv, -vvv
+        Set verbosity level.
