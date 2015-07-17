@@ -66,6 +66,7 @@ do
             ;;
         -S | --skip-all-run)
             INSTALL_RUN=false
+            CLEAR_CACHE=false
             IMPORT_RUN=false
             SAMPLE_DATA_CONFIG_RUN=false
             SAMPLE_DATA_SQL_RUN=false
@@ -75,6 +76,10 @@ do
             ;;
         -i | --install-run)
             setBoolean INSTALL_RUN "$2"
+            shift 2
+            ;;
+        -a | --clear-cache)
+            setBoolean CLEAR_CACHE "$2"
             shift 2
             ;;
         -I | --import-run)

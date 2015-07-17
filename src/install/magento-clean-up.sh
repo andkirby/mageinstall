@@ -3,7 +3,7 @@
 cd "$PROJECT_DIR"
 cleaned=false
 # ======= Clean Up var Directory =======
-if [ "$INSTALL_RUN" = true ] || ( [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] ) ; then
+if [ "$INSTALL_RUN" = true ] || [ "$CLEAR_CACHE" = true ] || ( [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] ) ; then
     echo "Cleaning up cache files..."
     rm -rf var/full_page_cache
     rm -rf var/cache

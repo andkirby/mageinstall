@@ -12,7 +12,7 @@ fi
 function getUserParam() {
     local PROJECT DB_HOST DB_USER DB_PASSWORD DB_NAME PROJECT_DOMAIN_MASK \
         PROTOCOL_SECURED USE_REWRITES ADMIN_USERNAME ADMIN_PASSWORD ADMIN_EMAIL \
-        INSTALL_RUN IMPORT_RUN SAMPLE_DATA_SQL_RUN SAMPLE_DATA_MEDIA_RUN \
+        INSTALL_RUN CLEAR_CACHE IMPORT_RUN SAMPLE_DATA_SQL_RUN SAMPLE_DATA_MEDIA_RUN \
         SAMPLE_DATA_CONFIG_RUN ROOT SAMPLE_DATA_DIR IMPORT_DIR PROJECT_DIR \
         MYSQL_BIN PHP_BIN MEDIA_DIR_PERMISSIONS MEDIA_DIR_USER PROJECT_CONFIG_DIR \
         PROJECT_CONFIG_RUN
@@ -42,6 +42,7 @@ params=(\
 "ADMIN_PASSWORD:Admin password" \
 "ADMIN_EMAIL:Admin email" \
 "INSTALL_RUN:Run Magento installation:boolean" \
+"CLEAR_CACHE:Run clearing cache (automatically uses in installation):boolean" \
 "IMPORT_RUN:Run Magento importing products:boolean" \
 "SAMPLE_DATA_CONFIG_RUN:Run importing configuration files:boolean" \
 "PROJECT_CONFIG_RUN:Run importing project configuration files:boolean" \

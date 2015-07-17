@@ -36,6 +36,10 @@ params=(\
 --import-run:IMPORT_RUN:no:boolean \
 -I:IMPORT_RUN:yes:boolean \
 -I:IMPORT_RUN:no:boolean \
+--clear-cache:CLEAR_CACHE:yes:boolean \
+--clear-cache:CLEAR_CACHE:no:boolean \
+-a:CLEAR_CACHE:yes:boolean \
+-a:CLEAR_CACHE:no:boolean \
 --config-run:SAMPLE_DATA_CONFIG_RUN:yes:boolean \
 --config-run:SAMPLE_DATA_CONFIG_RUN:no:boolean \
 -c:SAMPLE_DATA_CONFIG_RUN:yes:boolean \

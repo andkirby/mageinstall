@@ -87,6 +87,7 @@
         -S, --skip-all-run
             Reset run params.
             INSTALL_RUN=false
+            CLEAR_CACHE=false
             IMPORT_RUN=false
             SAMPLE_DATA_CONFIG_RUN=false
             SAMPLE_DATA_SQL_RUN=false
@@ -95,6 +96,20 @@
         -i, --install-run
             Run installation.
             Param INSTALL_RUN = yes|no|true|false|1|0
+
+        -a, --clear-cache
+            Clear cache files.
+            It will be done automatically on enabled installation.
+            Param CLEAR_CACHE = yes|no|true|false|1|0
+            It will clear following directories:
+                var/full_page_cache
+                var/cache
+                var/lock
+                var/log
+                var/session
+                media/catalog/product/cache
+                media/js
+                media/css
 
         -I, --import-run)
             Run importing.

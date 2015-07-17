@@ -40,6 +40,8 @@ ADMIN_EMAIL="example-__PROJECT__@example.com"
 # ---------- 2. Install parameters
 # Enable Magento installation
 INSTALL_RUN=yes
+# Clean cache. It will be done on enabled installation
+CLEAR_CACHE=yes
 # Enable products importing
 IMPORT_RUN=yes
 # Enable importing sample data SQL scripts
