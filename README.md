@@ -57,7 +57,7 @@ Usually you may have following files structure:
 
     -d, --package-deploy-strategy
         Composer package deploy strategy.
-        Default:
+        Default: copy
 
     -s, --package-minimal-stability
         Composer package minimal stability.
