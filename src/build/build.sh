@@ -4,6 +4,8 @@ REBUILD_START=$(date +%s)
 
 . "$SRC_DIR/lib/function.sh"
 
+. "$SRC_DIR/build/lib/check-composer.sh"
+
 . "$SRC_DIR"/build/lib/project-clean-up.sh
 
 # generate composer.json for a package
