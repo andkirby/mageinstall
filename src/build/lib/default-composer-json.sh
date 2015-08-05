@@ -7,6 +7,7 @@ params=(\
 "PACKAGE_DEPLOY_STRATEGY:Deploy strategy:copy|symlink:copy" \
 #"PACKAGE_COMPOSER_URL:URL to your composer repository (if you have)" \
 "MAGENTO_DIR:Pure Magento files directory (if empty set as a parameter)" \
+"PACKAGE_PREFER_STABLE:Composer package prefer-stable value:boolean:true" \
 #"PROJECT_DIR:Path to your Magento directory" \
 )
 
@@ -17,7 +18,12 @@ for item in "${params[@]}"; do
     key=${ADDR[0]}
     comment=${ADDR[1]}
     values=${ADDR[2]}
+    suggest=${ADDR[3]}
     default=${!key}
+
+    if [ -z "$default" ] ; then
+        default=${suggest}
+    fi
 
     if [ "$values" = "boolean" ] ; then
         VALUES="|yes|no|YES|NO|true|false|TRUE|FALSE|1|0|"
@@ -74,6 +80,7 @@ done
 json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
     -s$PACKAGE_MINIMUM_STABILITY \
     -d$PACKAGE_DEPLOY_STRATEGY \
+    -t$PACKAGE_PREFER_STABLE \
     $repositories)
 
 hasError=$(echo $json | grep "Error:" 2>&1);

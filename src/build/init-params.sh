@@ -35,3 +35,7 @@ fi
 if [ "$MAGENTO_REFRESH" = "true" ] && [ "$PACKAGE_INSTALL_RUN" = "false" ] ; then
     die "Magento files cannot be refreshed without installing."
 fi
+# set prefer stable to TRUE by default
+if [ -z "$PACKAGE_PREFER_STABLE" ] ; then
+    PACKAGE_PREFER_STABLE=true
+fi
