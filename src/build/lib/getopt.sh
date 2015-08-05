@@ -5,6 +5,7 @@ VERBOSITY=false
 VERBOSITY_VERY=false
 VERBOSITY_VERY_VERY=false
 VERBOSITY_PARAM=''
+PACKAGE_PREFER_STABLE=true
 
 while :
 do
@@ -33,6 +34,10 @@ do
             ;;
         -d | --package-deploy-strategy)
             PACKAGE_DEPLOY_STRATEGY="$2"
+            shift 2
+            ;;
+        -t | --package-prefer-stable)
+            PACKAGE_PREFER_STABLE="$2"
             shift 2
             ;;
         -s | --package-minimal-stability)

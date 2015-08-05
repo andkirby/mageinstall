@@ -41,6 +41,10 @@ File composer.json should have default configuration. E.g.:
         Composer package deploy strategy.
         Default: copy
 
+    -t, --package-prefer-stable
+        Composer package prefer-stable value.
+        Default: true
+
     -s, --package-minimal-stability
         Composer package minimal stability.
 
