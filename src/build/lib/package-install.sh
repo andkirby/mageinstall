@@ -26,7 +26,10 @@ if [ "$hasError" ] ; then
     die "Package requiring failed."
 fi
 # Require target package
-RESULT=$(cd "$PACKAGE_DIR" && composer update $VERBOSITY_PARAM 2>&1)
+COMPOSER_PROCESS_TIMEOUT=600
+RESULT=$(cd "$PACKAGE_DIR" && \
+    COMPOSER_PROCESS_TIMEOUT=$COMPOSER_PROCESS_TIMEOUT \
+    composer update $VERBOSITY_PARAM 2>&1)
 # show result
 echo "$RESULT"
 

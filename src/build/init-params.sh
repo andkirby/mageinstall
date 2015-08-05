@@ -39,3 +39,7 @@ fi
 if [ -z "$PACKAGE_PREFER_STABLE" ] ; then
     PACKAGE_PREFER_STABLE=true
 fi
+# set timeout for composer processes (need more higher to clone big repositories)
+if [ -z "$COMPOSER_PROCESS_TIMEOUT" ] ; then
+    COMPOSER_PROCESS_TIMEOUT=600
+fi
