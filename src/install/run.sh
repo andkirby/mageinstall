@@ -16,6 +16,9 @@ cd "$SRC_DIR"
 # load parameters
 . "$SRC_DIR/install/"load-params.sh
 
+# load project specific parameters
+. "$SRC_DIR/install/"load-project-params.sh
+
 # ================= Code =================
 echo "Go to directory $PROJECT_DIR..."
 
