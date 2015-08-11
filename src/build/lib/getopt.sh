@@ -5,6 +5,7 @@ VERBOSITY=false
 VERBOSITY_VERY=false
 VERBOSITY_VERY_VERY=false
 VERBOSITY_PARAM=''
+INTERACTION_PARAM=''
 
 while :
 do
@@ -54,6 +55,11 @@ do
         -i | --install-run)
             setBoolean PACKAGE_INSTALL_RUN "$2"
             shift 2
+            ;;
+        -n | --composer-no-interaction)
+            COMPOSER_NO_INTERACTION=true
+            INTERACTION_PARAM='-n'
+            shift 1
             ;;
         -v)
             VERBOSITY=true

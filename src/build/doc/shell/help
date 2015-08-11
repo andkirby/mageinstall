@@ -54,6 +54,9 @@ File composer.json should have default configuration. E.g.:
     -c, --composer-repository-url
         Custom Composer repository URL.
 
+    -n, --composer-no-interaction
+        Do not ask any interactive question in composer commands.
+
     -i, --install-run
         Run Magento (re-)installing.
         It will use default installation approach which was initialized before.
