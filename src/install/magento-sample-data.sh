@@ -17,7 +17,7 @@ then
     echo "Copying sample data files..."
     if [ "$INSTALL_RUN" = "true" ] && [ -f "$SAMPLE_DATA_DIR/sample"/app/etc/local.xml ] ; then
         echo "Notice: You going to copy 'local.xml' file. Installation will be ignored."
-        INSTALL_RUN="false"
+        INSTALL_RUN=false
     fi
 
     for i in "$SAMPLE_DATA_DIR/sample"/* ; do
