@@ -34,7 +34,7 @@ File composer.json should have default configuration. E.g.:
     -k, --package-source-dir
         Path to package directory.
 
-    -R, --refresh-magento-files
+    -R, --clear-all
         Clear everything and rebuild the project again.
 
     -d, --package-deploy-strategy

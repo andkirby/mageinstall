@@ -4,7 +4,7 @@ echo "Cleaning up..."
 if [ -f ~/.mageinstall/build/before-clean.sh ] ; then
     . ~/.mageinstall/build/before-clean.sh
 fi
-if [ "$MAGENTO_REFRESH" = "true" ] || [ ! -f "$PROJECT_DIR/app/Mage.php" ] ; then
+if [ "$REFRESH_ALL" = "true" ] || [ ! -f "$PROJECT_DIR/app/Mage.php" ] ; then
     echo "Copying Magento source files..."
     rm -rf "$PACKAGE_DIR"/*
     rm -rf "$PROJECT_DIR"/*

@@ -32,7 +32,7 @@ if [ -z "$PACKAGE" ] ; then
     die "Package is required (-g | --package). Composer format 'vendor/pkg_name:version'. Version is optional."
 fi
 # check Magento files refreshing
-if [ "$MAGENTO_REFRESH" = "true" ] && [ "$PACKAGE_INSTALL_RUN" = "false" ] ; then
+if [ "$REFRESH_ALL" = "true" ] && [ "$PACKAGE_INSTALL_RUN" = "false" ] ; then
     die "Magento files cannot be refreshed without installing."
 fi
 # set prefer stable to TRUE by default

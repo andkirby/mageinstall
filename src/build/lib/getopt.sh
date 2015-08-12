@@ -24,8 +24,8 @@ do
             MAGENTO_DIR="$2"
             shift 2
             ;;
-        -R | --refresh-magento-files)
-            setBoolean MAGENTO_REFRESH "$2"
+        -R | --clear-all)
+            setBoolean REFRESH_ALL "$2"
             shift 2
             ;;
         -k | --package-dir)
