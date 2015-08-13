@@ -69,7 +69,8 @@ PHP_BIN="php"
 
 # ---------- 5. Permissions for "var", "media", and "etc" directories
 MEDIA_DIR_PERMISSIONS=0777
-MEDIA_DIR_USER=""
+MEDIA_DIR_OWNER=""
+PROJECT_DIR_OWNER=""
 
 # ---------- 6. Package config
 # *.csv files will be added to configuration recurcivelly

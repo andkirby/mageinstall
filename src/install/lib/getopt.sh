@@ -110,6 +110,10 @@ do
             MEDIA_DIR_OWNER="$2"
             shift 2
             ;;
+        -w | --project-dir-owner)
+            PROJECT_DIR_OWNER="$2"
+            shift 2
+            ;;
         -*)
             printf >&2 'WARN: Unknown option (ignored): %s\n' "$1"
             shift

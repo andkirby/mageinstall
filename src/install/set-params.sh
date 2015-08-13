@@ -14,8 +14,8 @@ function getUserParam() {
         PROTOCOL_SECURED USE_REWRITES ADMIN_USERNAME ADMIN_PASSWORD ADMIN_EMAIL \
         INSTALL_RUN CLEAR_CACHE IMPORT_RUN SAMPLE_DATA_SQL_RUN SAMPLE_DATA_MEDIA_RUN \
         SAMPLE_DATA_CONFIG_RUN ROOT SAMPLE_DATA_DIR IMPORT_DIR PROJECT_DIR \
-        MYSQL_BIN PHP_BIN MEDIA_DIR_PERMISSIONS MEDIA_DIR_USER PROJECT_CONFIG_DIR \
-        PROJECT_CONFIG_RUN
+        MYSQL_BIN PHP_BIN MEDIA_DIR_PERMISSIONS MEDIA_DIR_OWNER PROJECT_DIR_OWNER \
+        PROJECT_CONFIG_DIR PROJECT_CONFIG_RUN
 
     if [ -f $(cd ~; pwd)"/.mageinstall/params.sh" ] ; then
         . ~/.mageinstall/params.sh
@@ -49,7 +49,8 @@ params=(\
 "SAMPLE_DATA_SQL_RUN:Run importing sample data SQL files:boolean" \
 "SAMPLE_DATA_MEDIA_RUN:Run importing sample data media files:boolean" \
 "MEDIA_DIR_PERMISSIONS:Permissions for 'var', 'media', and 'etc' directories" \
-"MEDIA_DIR_USER:Permissions user for 'var', 'media', and 'etc' directories" \
+"MEDIA_DIR_OWNER:Owner for 'var', 'media', and 'etc' directories" \
+"PROJECT_DIR_OWNER:Owner for whole project directory" \
 "ROOT:Document Root" \
 "SAMPLE_DATA_DIR:Sample data directory" \
 "IMPORT_DIR:Product import files directory" \

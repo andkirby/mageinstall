@@ -137,5 +137,9 @@
             Param MEDIA_DIR_PERMISSIONS.
 
         -X, --media-dir-owner
-            "media", "var", "app/etc" directories owner username.
+            "media", "var", "app/etc" directories owner username:group.
             Param MEDIA_DIR_OWNER.
+
+        -w, --project-dir-owner
+            Project directory owner username:group.
+            Param PROJECT_DIR_OWNER.
