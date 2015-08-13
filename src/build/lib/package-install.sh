@@ -51,7 +51,7 @@ if [ "$hasError" ] ; then
 fi
 # Check if module didn't get updates
 notInstalled=$(echo "$RESULT" | grep -E "(Nothing to install or update)" 2>&1)
-if [ "$notInstalled" ] ; then
+if [ "$notInstalled" ] && [ "$PACKAGE_INSTALL_RUN" != "true" ] ; then
     # stop if error
     die "Nothing to install or update."
 fi
