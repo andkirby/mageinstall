@@ -9,8 +9,8 @@ then
         die "There are no Magento files."
     fi
 
-    START=$(date +%s)
-    RESULT=$($PHP_BIN -f "$SRC_DIR"/install/lib/install.php -- \
+    start=$(date +%s)
+    result=$($PHP_BIN -f "$SRC_DIR"/install/lib/install.php -- \
             "$PROJECT_DIR" \
             --license_agreement_accepted "yes" \
             --locale "en_US" \
@@ -32,15 +32,17 @@ then
             --admin_password "$ADMIN_PASSWORD" \
             --skip_url_validation "yes" 2>&1)
 
-    END=$(date +%s)
-    DIFF=$(( $END - $START ))
+    status=$?
 
-    user_message "$RESULT" 0;
-    TEST=$(echo $RESULT | grep "SUCCESS" 2>&1);
-    if [ "$TEST" ] ; then
-        user_message "Magento has been installed for domain http://$PROJECT_DOMAIN/." 0
-        user_message "Installing took $DIFF seconds." 0
-    else
+    end=$(date +%s)
+    diff=$(( $end - $start ))
+
+    # show result
+    user_message "$result" 0
+
+    if [ ${status} != 0 ] ; then
         die "Magento installation failed."
     fi
+    user_message "Magento has been installed for domain http://$PROJECT_DOMAIN/." 0
+    user_message "Installing took $diff seconds." 0
 fi
