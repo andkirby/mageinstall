@@ -5,6 +5,5 @@ if [ -f $(cd ~; pwd)"/.mageinstall/params.sh" ] ; then
     . ~/.mageinstall/params.sh
 else
     . "$SRC_DIR/install/"set-params.sh
-    echo "Please run install script again."
-    exit 1
+    die "Please run install script again."
 fi
