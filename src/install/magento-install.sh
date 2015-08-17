@@ -4,7 +4,7 @@ cd "$PROJECT_DIR"
 # ======== Install Magento ========
 if [ "$INSTALL_RUN" = true ]
 then
-    user_message "Start installing Magento..." 1
+    user_message "Start installing Magento..." 0
     if [ ! -f "$PROJECT_DIR/install.php" ] ; then
         die "There are no Magento files."
     fi
@@ -35,7 +35,7 @@ then
     END=$(date +%s)
     DIFF=$(( $END - $START ))
 
-    user_message "$RESULT" 1;
+    user_message "$RESULT" 0;
     TEST=$(echo $RESULT | grep "SUCCESS" 2>&1);
     if [ "$TEST" ] ; then
         user_message "Magento has been installed for domain http://$PROJECT_DOMAIN/." 0

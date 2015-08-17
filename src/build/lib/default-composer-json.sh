@@ -86,8 +86,7 @@ json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
 
 hasError=$(echo $json | grep "Error:" 2>&1);
 if [ "$hasError" ] ; then
-    user_message "$json" 1
-    die "Cannot create composer.json file."
+    die "$json"
 fi
 
 echo "$json" > ~/.mageinstall/build/composer.json

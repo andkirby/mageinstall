@@ -19,8 +19,7 @@ json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
     -F$userDir/.mageinstall/build/composer.json)
 hasError=$(echo $json | grep "Error:" 2>&1);
 if [ "$hasError" ] ; then
-    user_message "$json" 1
-    die "Cannot create/update composer.json file."
+    die "$json"
 fi
 
 echo "$json" > $PACKAGE_DIR/composer.json
