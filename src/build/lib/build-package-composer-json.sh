@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Refreshing composer.json file..."
+user_message "Refreshing composer.json file..." 1
 #set repository URLs
 repositories=""
 for i in "${PACKAGE_COMPOSER_URL[@]}"
@@ -19,8 +19,8 @@ json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
     -F$userDir/.mageinstall/build/composer.json)
 hasError=$(echo $json | grep "Error:" 2>&1);
 if [ "$hasError" ] ; then
-    echo "$json"
-    exit 1
+    user_message "$json" 1
+    die "Cannot create composer.json file."
 fi
 
 echo "$json" > $PACKAGE_DIR/composer.json
