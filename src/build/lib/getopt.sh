@@ -91,7 +91,7 @@ do
             break
             ;;
         --) # End of all options
-        echo "End of all build options"
+            user_message "End of all build options" 1
             shift
             break
             ;;
