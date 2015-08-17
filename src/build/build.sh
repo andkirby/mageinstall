@@ -16,10 +16,10 @@ REBUILD_START=$(date +%s)
 
 binDir=$(cd $SRC_DIR/../bin/; pwd)
 if [ "$PACKAGE_INSTALL_RUN" = "true" ] ; then
-    echo "Installing..."
+    user_message "Installing..." 0
     bash "$binDir/"mageshell install -p "$PROJECT" ${VERBOSITY_PARAM}
 else
-    echo "Installation will be ignored. Clear cache only."
+    user_message "Installation will be ignored. Clear cache only." 0
     bash "$binDir/"mageshell install -p "$PROJECT" -S -a 1 ${VERBOSITY_PARAM}
 fi
 

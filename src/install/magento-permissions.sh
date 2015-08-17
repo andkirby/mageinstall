@@ -5,13 +5,13 @@ cd "$PROJECT_DIR"
 
 # Set owner for all files
 if [ ! -z "${PROJECT_DIR_OWNER}" ] ; then
-    echo "Changing project directory owner to '$PROJECT_DIR_OWNER'..."
+    user_message "Changing project directory owner to '$PROJECT_DIR_OWNER'..." 1
     chown -R $PROJECT_DIR_OWNER $PROJECT_DIR
 fi
 
 # Set permissions for media/etc/var directories
 if [ -n "$MEDIA_DIR_PERMISSIONS" ] ; then
-    echo "Changing media/etc/var directory permissions to '$MEDIA_DIR_PERMISSIONS'..."
+    user_message "Changing media/etc/var directory permissions to '$MEDIA_DIR_PERMISSIONS'..." 1
     chmod -R $MEDIA_DIR_PERMISSIONS $PROJECT_DIR/media
     chmod $MEDIA_DIR_PERMISSIONS    $PROJECT_DIR/app/etc/
     chmod -R $MEDIA_DIR_PERMISSIONS $PROJECT_DIR/var
@@ -19,7 +19,7 @@ fi
 
 # Set owner for media/etc/var directories
 if [ ! -z "$MEDIA_DIR_OWNER" ] ; then
-    echo "Changing media/etc/var directory owner to '$MEDIA_DIR_OWNER'..."
+    user_message "Changing media/etc/var directory owner to '$MEDIA_DIR_OWNER'..." 1
     chown -R $MEDIA_DIR_OWNER $PROJECT_DIR/media
     chown $MEDIA_DIR_OWNER    $PROJECT_DIR/app/etc/
     chown -R $MEDIA_DIR_OWNER $PROJECT_DIR/var
