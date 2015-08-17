@@ -2,7 +2,9 @@
 SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && cd .. && pwd)
 cd "$SRC_DIR"
 
+
 . "$SRC_DIR/lib/function.sh"
+
 
 # include default params
 . "$SRC_DIR/install/"params.sh.dist
@@ -20,7 +22,9 @@ cd "$SRC_DIR"
 . "$SRC_DIR/install/"load-project-params.sh
 
 # ================= Code =================
-user_message "Go to directory $PROJECT_DIR..." 1
+user_message "Magento Installation." 0
+
+user_message "Go to directory $PROJECT_DIR..." 2
 
 . "$SRC_DIR/install/"magento-clean-up.sh
 
