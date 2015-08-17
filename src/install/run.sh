@@ -28,6 +28,8 @@ echo "Go to directory $PROJECT_DIR..."
 
 . "$SRC_DIR/install/"magento-sample-data.sh
 
+. "$SRC_DIR/install/"magento-permissions.sh
+
 . "$SRC_DIR/install/"magento-install.sh
 
 . "$SRC_DIR/install/"magento-config.sh
