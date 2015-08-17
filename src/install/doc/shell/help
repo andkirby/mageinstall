@@ -143,3 +143,6 @@
         -w, --project-dir-owner
             Project directory owner username:group.
             Param PROJECT_DIR_OWNER.
+
+        -v, -vv, -vvv
+            Set verbosity level.
