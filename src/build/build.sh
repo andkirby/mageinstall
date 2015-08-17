@@ -25,4 +25,4 @@ fi
 
 END=$(date +%s)
 DIFF=$(( $END - $REBUILD_START ))
-echo "Rebuild time: $DIFF seconds."
+user_message "Rebuild time: $DIFF seconds." 1
