@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # require installer
-echo "Adding the installer package 'magento-hackathon/magento-composer-installer:~3.0@stable'..."
+user_message "Adding the installer package 'magento-hackathon/magento-composer-installer:~3.0@stable'..." 2
 RESULT=$(cd "$PACKAGE_DIR" && composer require \
     magento-hackathon/magento-composer-installer:~3.0@stable \
     --no-update \
@@ -17,7 +17,7 @@ if [ "$hasError" ] ; then
     die "Package requiring failed."
 fi
 
-echo "Adding the package '$PACKAGE'..."
+user_message "Adding the package '$PACKAGE'..." 1
 
 # Require target package
 RESULT=$(cd "$PACKAGE_DIR" && composer require "$PACKAGE" \
