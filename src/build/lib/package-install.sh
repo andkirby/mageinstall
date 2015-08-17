@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
+COMPOSER_VERBOSITY_PARAM=""
+if [ ${VERBOSITY_COMPOSER} = "true" ] ; then
+    VERBOSITY_PARAM=${COMPOSER_VERBOSITY_PARAM}
+fi
+
 # require installer
 user_message "Adding the installer package 'magento-hackathon/magento-composer-installer:~3.0@stable'..." 2
 RESULT=$(cd "$PACKAGE_DIR" && composer require \
     magento-hackathon/magento-composer-installer:~3.0@stable \
     --no-update \
-    $VERBOSITY_PARAM \
+    $COMPOSER_VERBOSITY_PARAM \
     $INTERACTION_PARAM \
     2>&1)
 # show result
@@ -22,7 +27,7 @@ user_message "Adding the package '$PACKAGE'..." 1
 # Require target package
 RESULT=$(cd "$PACKAGE_DIR" && composer require "$PACKAGE" \
     --no-update \
-    $VERBOSITY_PARAM \
+    $COMPOSER_VERBOSITY_PARAM \
     $INTERACTION_PARAM \
     2>&1)
 
@@ -38,7 +43,7 @@ fi
 COMPOSER_PROCESS_TIMEOUT=600
 RESULT=$(cd "$PACKAGE_DIR" && \
     COMPOSER_PROCESS_TIMEOUT=$COMPOSER_PROCESS_TIMEOUT \
-    composer update $VERBOSITY_PARAM \
+    composer update $COMPOSER_VERBOSITY_PARAM \
     $INTERACTION_PARAM \
     2>&1)
 # show result

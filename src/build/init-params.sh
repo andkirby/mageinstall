@@ -47,3 +47,7 @@ fi
 if [ -z "$COPY_METHOD" ] ; then
     COPY_METHOD="symlink"
 fi
+# set apply verbosity to composer
+if [ -z "$VERBOSITY_COMPOSER" ] ; then
+    VERBOSITY_COMPOSER=false
+fi

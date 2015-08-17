@@ -83,6 +83,10 @@ do
             VERBOSITY_PARAM="-vvv"
             shift 1
             ;;
+        -V | --verbosity-to-composer)
+            VERBOSITY_COMPOSER=true
+            shift 1
+            ;;
         -*)
             printf >&2 'WARN: Unknown build option (ignored): %s\n' "$1"
             shift

@@ -66,3 +66,6 @@ File composer.json should have default configuration. E.g.:
 
     -v, -vv, -vvv
         Set verbosity level.
+
+    -V, --verbosity-to-composer
+        Set verbosity to Composer commands.
