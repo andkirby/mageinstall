@@ -13,17 +13,14 @@ fi
 
 if [ -z "$ignoreValidateProjectParams" ] ; then
     if [ -z "$PROJECT" ] ; then
-       echo "Please set project name."
-       exit 1
+       die "Please set project name."
     fi
 
     if [ ! -d "$PROJECT_DIR" ] ; then
-        echo "Directory $PROJECT_DIR does not exist."
-        exit 1
+        die "Directory $PROJECT_DIR does not exist."
     fi
 fi
 
 if [ -z "$ADMIN_EMAIL" ] ; then
-   echo "Please set admin email."
-   exit 1
+   die "Please set admin email."
 fi
