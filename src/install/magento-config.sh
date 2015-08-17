@@ -7,7 +7,7 @@ then
         if [ ${FILE_INI} = "$SAMPLE_DATA_DIR"/*.csv ] ; then
             break
         fi
-        echo "Applying configuration from file $FILE_INI..."
+        user_message "Applying configuration from file $FILE_INI..." 1
         $PHP_BIN -f "$SRC_DIR/install/lib/config.php" "$FILE_INI"
     done
 fi
@@ -19,7 +19,7 @@ then
         if [ ${FILE_INI} = "*.csv" ] ; then
             break
         fi
-        echo "Applying configuration from file $FILE_INI..."
+        user_message "Applying configuration from file $FILE_INI..." 1
         $PHP_BIN -f "$SRC_DIR/install/lib/config.php" "$FILE_INI"
     done
 fi

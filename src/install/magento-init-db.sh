@@ -5,7 +5,7 @@ then
     $DB_CONNECT_COMMAND -h$DB_HOST -e "CREATE DATABASE IF NOT EXISTS \`$DB_NAME\`;"
     has_tables=$($DB_CONNECT_COMMAND -h$DB_HOST -D$DB_NAME -e "SHOW TABLES;")
     if [ ! -z "$has_tables" ] ; then
-        echo "Drop tables in database '$DB_NAME'..."
+        user_message "Drop tables in database '$DB_NAME'..." 1
         $DB_CONNECT_COMMAND -h$DB_HOST -e "
             USE \`$DB_NAME\`;
             SET FOREIGN_KEY_CHECKS = 0;
@@ -20,6 +20,6 @@ then
             EXECUTE stmt;
             DEALLOCATE PREPARE stmt;
             SET FOREIGN_KEY_CHECKS = 1;" 2>&1
-        echo "Database refreshed."
+        user_message "Database refreshed." 1
     fi
 fi

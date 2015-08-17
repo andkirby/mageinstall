@@ -9,7 +9,7 @@ RESULT=$(cd "$PACKAGE_DIR" && composer require \
     $INTERACTION_PARAM \
     2>&1)
 # show result
-echo "$RESULT"
+user_message "$RESULT" 0
 
 hasError=$(echo "$RESULT" | grep -E "(failed|fatal|Error|Exception|Problem)" 2>&1)
 if [ "$hasError" ] ; then
@@ -27,7 +27,7 @@ RESULT=$(cd "$PACKAGE_DIR" && composer require "$PACKAGE" \
     2>&1)
 
 # Show result
-echo "$RESULT"
+user_message "$RESULT" 0
 
 hasError=$(echo "$RESULT" | grep -E "(failed|fatal|Error|Exception|Problem)" 2>&1)
 if [ "$hasError" ] ; then
@@ -42,7 +42,7 @@ RESULT=$(cd "$PACKAGE_DIR" && \
     $INTERACTION_PARAM \
     2>&1)
 # show result
-echo "$RESULT"
+user_message "$RESULT" 0
 
 hasError=$(echo "$RESULT" | grep -E "(failed|fatal|Error|Exception|Problem)" 2>&1)
 if [ "$hasError" ] ; then
