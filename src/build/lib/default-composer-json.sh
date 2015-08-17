@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # set default minimum-stability
 echo ""
-echo "Set your parameters..."
+user_message "Set your parameters..." 0
 params=(\
 "PACKAGE_MINIMUM_STABILITY:Minimum Stability:stable|RC|beta|alpha|dev:stable" \
 "PACKAGE_DEPLOY_STRATEGY:Deploy strategy:copy|symlink:copy" \
@@ -63,11 +63,11 @@ for item in "${params[@]}"; do
 done
 
 # Write ~/.mageinstall/build/composer.json
-echo "Writing parameters into ~/.mageinstall/build/composer.json..."
+user_message "Writing parameters into ~/.mageinstall/build/composer.json..." 1
 if [ ! -d ~/.mageinstall/build ] ; then
     mkdir ~/.mageinstall/build
     if [ ! -d ~/.mageinstall/build ] ; then
-        echo "Directory ~/.mageinstall/build cannot be created."
+        die "Directory ~/.mageinstall/build cannot be created."
     fi
 fi
 
@@ -76,6 +76,7 @@ repositories=""
 for i in "${PACKAGE_COMPOSER_URL[@]}"
 do
     repositories="$repositories -c$i "
+    user_message "Extra composer URL: $i" 2
 done
 json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
     -s$PACKAGE_MINIMUM_STABILITY \
@@ -85,12 +86,12 @@ json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
 
 hasError=$(echo $json | grep "Error:" 2>&1);
 if [ "$hasError" ] ; then
-    echo "$json"
-    exit 1
+    user_message "$json" 1
+    die "Cannot create composer.json file."
 fi
 
 echo "$json" > ~/.mageinstall/build/composer.json
 
 # Write ~/.mageinstall/build/composer.json
-echo "Writing parameters into ~/.mageinstall/build/params.sh..."
+user_message "Writing parameters into ~/.mageinstall/build/params.sh..." 1
 ( IFS=$'\n'; echo "${filledParams[*]}" ) > ~/.mageinstall/build/params.sh
