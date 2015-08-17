@@ -29,12 +29,13 @@ function die {
 }
 
 function user_message {
+    local level message
     message=${1}
     level=${2}
     if [ -z ${level} ] ; then
         level=0
     fi
-    if [ ${level} >= ${VERBOSITY_LEVEL} ] ; then
+    if [ ${VERBOSITY_LEVEL} -ge ${level} ] ; then
         echo ${message}
     fi
 }
