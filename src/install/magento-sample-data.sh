@@ -5,7 +5,7 @@ then
     user_message "Installing sample data SQL files..." 1
     for SQL_FILE in $SAMPLE_DATA_DIR/sample/*.sql; do
         $DB_CONNECT_COMMAND -h$DB_HOST $DB_NAME < $SQL_FILE
-        user_message "Added to DB SQL file: $SQL_FILE..." 1
+        user_message "Added to DB SQL file: $SQL_FILE..." 2
     done
 else
     echo "Skipped adding sample SQL data."
