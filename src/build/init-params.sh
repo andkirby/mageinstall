@@ -43,3 +43,7 @@ fi
 if [ -z "$COMPOSER_PROCESS_TIMEOUT" ] ; then
     COMPOSER_PROCESS_TIMEOUT=600
 fi
+# set copy method for magento source files
+if [ -z "$COPY_METHOD" ] ; then
+    COPY_METHOD="symlink"
+fi
