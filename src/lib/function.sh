@@ -27,3 +27,14 @@ function die {
     fi
     exit 1
 }
+
+function user_message {
+    message=${1}
+    level=${2}
+    if [ -z ${level} ] ; then
+        level=0
+    fi
+    if [ ${level} >= ${VERBOSITY_LEVEL} ] ; then
+        echo ${message}
+    fi
+}
