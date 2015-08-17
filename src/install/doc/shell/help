@@ -32,117 +32,117 @@
 
  Input parameters:
 
-        -h, --help, -?
-            Get this help.
+    -h, --help, -?
+        Get this help.
 
-        -p, --project [REQUIRED]
-            Project name.
-            Param PROJECT.
+    -p, --project [REQUIRED]
+        Project name.
+        Param PROJECT.
 
-        -t, --path
-            Path to project directory.
-            Param PROJECT_DIR.
+    -t, --path
+        Path to project directory.
+        Param PROJECT_DIR.
 
-        -H, --db-host
-            Database connection hostname.
-            Param DB_HOST.
+    -H, --db-host
+        Database connection hostname.
+        Param DB_HOST.
 
-        -u, --db-user
-            Database connection username.
-            Param DB_USER
+    -u, --db-user
+        Database connection username.
+        Param DB_USER
 
-        -P, --db-password
-            Database connection password.
-            DB_PASSWORD
+    -P, --db-password
+        Database connection password.
+        DB_PASSWORD
 
-        -n, --db-name
-            Database name.
-            Param DB_NAME
+    -n, --db-name
+        Database name.
+        Param DB_NAME
 
-        -d, --domain
-            Web domain.
-            Param PROJECT_DOMAIN
+    -d, --domain
+        Web domain.
+        Param PROJECT_DOMAIN
 
-        -s, --secured-protocol)
-            Secured protocol string.
-            Param PROTOCOL_SECURED = https|http
+    -s, --secured-protocol)
+        Secured protocol string.
+        Param PROTOCOL_SECURED = https|http
 
-        -r, --use-rewrites
-            Use Apache rewrites.
-            Param USE_REWRITES = yes|no
+    -r, --use-rewrites
+        Use Apache rewrites.
+        Param USE_REWRITES = yes|no
 
-        --admin-username
-            Administrator username in Admin Panel.
-            Param ADMIN_USERNAME
+    --admin-username
+        Administrator username in Admin Panel.
+        Param ADMIN_USERNAME
 
-        --admin-password
-            Administrator password in Admin Panel.
-            Param ADMIN_PASSWORD
+    --admin-password
+        Administrator password in Admin Panel.
+        Param ADMIN_PASSWORD
 
-        -e, --admin-email [REQUIRED]
-            Administrator email in Admin Panel.
-            Param ADMIN_EMAIL
-            Required if it is not set in ~/.mageinstall/params.sh file.
+    -e, --admin-email [REQUIRED]
+        Administrator email in Admin Panel.
+        Param ADMIN_EMAIL
+        Required if it is not set in ~/.mageinstall/params.sh file.
 
-        -S, --skip-all-run
-            Reset run params.
-            INSTALL_RUN=false
-            CLEAR_CACHE=false
-            IMPORT_RUN=false
-            SAMPLE_DATA_CONFIG_RUN=false
-            SAMPLE_DATA_SQL_RUN=false
-            SAMPLE_DATA_MEDIA_RUN=false
+    -S, --skip-all-run
+        Reset run params.
+        INSTALL_RUN=false
+        CLEAR_CACHE=false
+        IMPORT_RUN=false
+        SAMPLE_DATA_CONFIG_RUN=false
+        SAMPLE_DATA_SQL_RUN=false
+        SAMPLE_DATA_MEDIA_RUN=false
 
-        -i, --install-run
-            Run installation.
-            Param INSTALL_RUN = yes|no|true|false|1|0
+    -i, --install-run
+        Run installation.
+        Param INSTALL_RUN = yes|no|true|false|1|0
 
-        -a, --clear-cache
-            Clear cache files.
-            It will be done automatically on enabled installation.
-            Param CLEAR_CACHE = yes|no|true|false|1|0
-            It will clear following directories:
-                var/full_page_cache
-                var/cache
-                var/lock
-                var/log
-                var/session
-                media/catalog/product/cache
-                media/js
-                media/css
+    -a, --clear-cache
+        Clear cache files.
+        It will be done automatically on enabled installation.
+        Param CLEAR_CACHE = yes|no|true|false|1|0
+        It will clear following directories:
+            var/full_page_cache
+            var/cache
+            var/lock
+            var/log
+            var/session
+            media/catalog/product/cache
+            media/js
+            media/css
 
-        -I, --import-run)
-            Run importing.
-            Param IMPORT_RUN = yes|no|true|false|1|0
+    -I, --import-run)
+        Run importing.
+        Param IMPORT_RUN = yes|no|true|false|1|0
 
-        -c, --config-run
-            Run setting configuration from a file.
-            Param SAMPLE_DATA_CONFIG_RUN = yes|no|true|false|1|0
+    -c, --config-run
+        Run setting configuration from a file.
+        Param SAMPLE_DATA_CONFIG_RUN = yes|no|true|false|1|0
 
-        -C, --project-config-run
-            Run setting configuration from a file withing project directory/es.
-            PROJECT_DIR/shell/mageshell/config
-            Param PROJECT_CONFIG_RUN = yes|no|true|false|1|0
+    -C, --project-config-run
+        Run setting configuration from a file withing project directory/es.
+        PROJECT_DIR/shell/mageshell/config
+        Param PROJECT_CONFIG_RUN = yes|no|true|false|1|0
 
-        -q, --sample-data-sql-run)
-            Run importing sample data SQL files.
-            Param SAMPLE_DATA_SQL_RUN = yes|no|true|false|1|0
+    -q, --sample-data-sql-run)
+        Run importing sample data SQL files.
+        Param SAMPLE_DATA_SQL_RUN = yes|no|true|false|1|0
 
-        -m, --sample-data-media-run
-            Run copying sample data files.
-            Param SAMPLE_DATA_MEDIA_RUN = yes|no|true|false|1|0
+    -m, --sample-data-media-run
+        Run copying sample data files.
+        Param SAMPLE_DATA_MEDIA_RUN = yes|no|true|false|1|0
 
-        -x, --media-dir-permissions
-            "media", "var", "app/etc" directories permissions.
-            Param MEDIA_DIR_PERMISSIONS.
+    -x, --media-dir-permissions
+        "media", "var", "app/etc" directories permissions.
+        Param MEDIA_DIR_PERMISSIONS.
 
-        -X, --media-dir-owner
-            "media", "var", "app/etc" directories owner username:group.
-            Param MEDIA_DIR_OWNER.
+    -X, --media-dir-owner
+        "media", "var", "app/etc" directories owner username:group.
+        Param MEDIA_DIR_OWNER.
 
-        -w, --project-dir-owner
-            Project directory owner username:group.
-            Param PROJECT_DIR_OWNER.
+    -w, --project-dir-owner
+        Project directory owner username:group.
+        Param PROJECT_DIR_OWNER.
 
-        -v, -vv, -vvv
-            Set verbosity level.
+    -v, -vv, -vvv
+        Set verbosity level.
