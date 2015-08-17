@@ -20,7 +20,7 @@ cd "$SRC_DIR"
 . "$SRC_DIR/install/"load-project-params.sh
 
 # ================= Code =================
-echo "Go to directory $PROJECT_DIR..."
+user_message "Go to directory $PROJECT_DIR..." 1
 
 . "$SRC_DIR/install/"magento-clean-up.sh
 

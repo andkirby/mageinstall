@@ -23,12 +23,12 @@ function getUserParam() {
     echo "${!1}"
 }
 
-echo "Set your parameters..."
-echo "Variables:"
-echo "__PROJECT__    - Project parameter. It should be passed from command line."
-echo "__DOCROOT__    - Document root directory."
-echo "__SAMPLE_DIR__ - Sample data directory."
-echo ""
+user_message "Set your parameters..." 0
+user_message "Variables:" 0
+user_message "__PROJECT__    - Project parameter. It should be passed from command line." 0
+user_message "__DOCROOT__    - Document root directory." 0
+user_message "__SAMPLE_DIR__ - Sample data directory." 0
+user_message "" 0
 
 params=(\
 "DB_HOST:Database server hostname" \
@@ -114,7 +114,7 @@ for item in "${params[@]}"; do
 done
 
 # Write ~/.mageinstall/params.sh
-echo "Writing parameters into ~/.mageinstall/params.sh..."
+user_message "Writing parameters into ~/.mageinstall/params.sh..." 2
 if [ ! -d ~/.mageinstall ] ; then
     mkdir ~/.mageinstall
     if [ ! -d ~/.mageinstall ] ; then
