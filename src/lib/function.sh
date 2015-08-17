@@ -36,6 +36,6 @@ function user_message {
         level=0
     fi
     if [ ${VERBOSITY_LEVEL} -ge ${level} ] ; then
-        echo ${message}
+        printf "${message}\n"
     fi
 }
