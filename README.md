@@ -40,41 +40,6 @@ Usually you may have following files structure:
       /project.com-package                  - package files dir (will be created automatically)
       /project.com                          - project HTTP dir
   ~/.mageinstall/build/composer.json        - composer.json distributive file
-```
-### CLI Parameters
-
-    -h, --help, -?
-        Get this help.
-
-    -p, --project-http-dir
-        Path to project HTTP directory.
-
-    -m, --magento-source-dir
-        Path to Magento directory.
-
-    -k, --package-source-dir
-        Path to package directory.
-
-    -d, --package-deploy-strategy
-        Composer package deploy strategy.
-        Default: copy
-
-    -s, --package-minimal-stability
-        Composer package minimal stability.
-
-    -g, --package
-        Composer package (with version optionally).
-
-    -c, --composer-repository-url
-        Custom Composer repository URL.
-
-    -i, --install-run
-        Run Magento (re-)installing.
-        It will use default installation approach which was initialized before.
-        To prevent installation please use "false" parameter.
-        It will use "-S" parameter of "mageshell install".
-        Boolean value.
-
 
 # Install
 ## Using
@@ -84,7 +49,7 @@ $ composer require andkirby/mageinstall:@beta
 ```
 ### Initialization
 If you haven't initialized **MageInstall** it will suggest you to initialize by command `mageshell install`.<br>
-Anyway if what to make reinitialization follow the command: 
+Anyway if what to make reinitialization follow the command:
 ```shell
 $ mageshell install init
 ```
@@ -127,106 +92,7 @@ Also you may put your configuration files within project by path:
 `PROJECT_DIR/shell/mageshell/config`.
 There are should be CSV files. You may make any directories structure within this directory.
 
-If you would you like to make some fixes feel free to make it and add pull request. Or add an issue.
-
-## Console parameters
-
-```
-        -h, --help, -?
-            Get this help.
-
-        -p, --project [REQUIRED]
-            Project name.
-            Param PROJECT.
-
-        -t, --path
-            Path to project directory.
-            Param PROJECT_DIR.
-
-        -H, --db-host
-            Database connection hostname.
-            Param DB_HOST.
-
-        -u, --db-user
-            Database connection username.
-            Param DB_USER
-
-        -P, --db-password
-            Database connection password.
-            DB_PASSWORD
-
-        -n, --db-name
-            Database name.
-            Param DB_NAME
-
-        -d, --domain
-            Web domain.
-            Param PROJECT_DOMAIN
-
-        -s, --secured-protocol)
-            Secured protocol string.
-            Param PROTOCOL_SECURED = https|http
-
-        -r, --use-rewrites
-            Use Apache rewrites.
-            Param USE_REWRITES = yes|no
-
-        --admin-username
-            Administrator username in Admin Panel.
-            Param ADMIN_USERNAME
-
-        --admin-password
-            Administrator password in Admin Panel.
-            Param ADMIN_PASSWORD
-
-        -e, --admin-email [REQUIRED]
-            Administrator email in Admin Panel.
-            Param ADMIN_EMAIL
-            Required if it is not set in ~/.mageinstall/params.sh file.
-
-        -S, --skip-all-run
-            Reset run params.
-            INSTALL_RUN=false
-            IMPORT_RUN=false
-            SAMPLE_DATA_CONFIG_RUN=false
-            SAMPLE_DATA_SQL_RUN=false
-            SAMPLE_DATA_MEDIA_RUN=false
-
-        -i, --install-run
-            Run installation.
-            Param INSTALL_RUN = yes|no|true|false|1|0
-
-        -I, --import-run)
-            Run importing.
-            Param IMPORT_RUN = yes|no|true|false|1|0
-
-        -c, --config-run
-            Run setting configuration from a file.
-            Param SAMPLE_DATA_CONFIG_RUN = yes|no|true|false|1|0
-
-        -C, --project-config-run
-            Run setting configuration from a file withing project directory/es.
-            PROJECT_DIR/shell/mageshell/config
-            Param PROJECT_CONFIG_RUN = yes|no|true|false|1|0
-
-        -q, --sample-data-sql-run)
-            Run importing sample data SQL files.
-            Param SAMPLE_DATA_SQL_RUN = yes|no|true|false|1|0
-
-        -m, --sample-data-media-run
-            Run copying sample data files.
-            Param SAMPLE_DATA_MEDIA_RUN = yes|no|true|false|1|0
-
-        -x, --media-dir-permissions
-            "media", "var", "app/etc" directories permissions.
-            Param MEDIA_DIR_PERMISSIONS.
-
-        -X, --media-dir-owner
-            "media", "var", "app/etc" directories owner username.
-            Param MEDIA_DIR_OWNER.
-
-Boolean means any value of yes, no, true, false, 1, 0.
-```
+If you would you like to make some fixes feel free to make it and add pull request or add an issue.
 
 ## Quick set up examples
 Let's consider some configurations how to use it within some environment.
