@@ -123,4 +123,4 @@ if [ ! -d ~/.mageinstall ] ; then
 fi
 ( IFS=$'\n'; echo "${nonDefault[*]}" ) > ~/.mageinstall/params.sh
 
-echo "Finish!"
+user_message "Finish!" 0
