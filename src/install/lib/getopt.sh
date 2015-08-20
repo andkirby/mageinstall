@@ -1,9 +1,6 @@
 #!/bin/sh
 # (POSIX shell syntax)
 
-VERBOSITY_LEVEL=0
-VERBOSITY_PARAM=''
-
 while :
 do
     case $1 in
