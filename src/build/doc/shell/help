@@ -65,7 +65,7 @@ File composer.json should have default configuration. E.g.:
         Boolean value.
 
     -l, --silent
-        Silent mode. It will prevents any output excepting errors.
+        Silent mode. It block any output messages excepting errors.
 
     -v, -vv, -vvv
         Set verbosity level.
