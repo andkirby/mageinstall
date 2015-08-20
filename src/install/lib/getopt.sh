@@ -117,6 +117,11 @@ do
             PROJECT_DIR_OWNER="$2"
             shift 2
             ;;
+        -l | --silent)
+            VERBOSITY_LEVEL=-1
+            VERBOSITY_PARAM="-l"
+            shift 1
+            ;;
         -v)
             VERBOSITY_LEVEL=1
             VERBOSITY_PARAM="-v"

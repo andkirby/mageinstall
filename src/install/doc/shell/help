@@ -144,5 +144,8 @@
         Project directory owner username:group.
         Param PROJECT_DIR_OWNER.
 
+    -l, --silent
+        Silent mode. It block any output messages excepting errors.
+
     -v, -vv, -vvv
         Set verbosity level.
