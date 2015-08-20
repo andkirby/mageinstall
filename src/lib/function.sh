@@ -27,12 +27,17 @@ function setBoolean {
 }
 
 function die {
-    local error_code
+    local error_code verbosity
+
+    verbosity=${VERBOSITY_LEVEL}
+    if [ -z ${verbosity} ] ; then
+        verbosity=${VERBOSITY_MODE['off']}
+    fi
 
     echo "Error: ${1}"
 
     # show backtrace
-    if [ ${VERBOSITY_LEVEL} = ${VERBOSITY_MODE['debug']} ] ; then
+    if [ ${verbosity} = ${VERBOSITY_MODE['debug']} ] ; then
         local frame=0
         while caller "$frame"; do
             ((frame++));
@@ -40,20 +45,28 @@ function die {
     fi
 
     error_code=1
-    if [ -n ${2} ] && [ ${2} -ge 1 ]; then
+    if [ "${2}" ] && [ ${2} -ge 1 ]; then
         error_code=${2}
     fi
     exit ${error_code}
 }
 
 function user_message {
-    local level message
+    local min_verbosity message verbosity
+
+    verbosity=${VERBOSITY_LEVEL}
     message=${1}
-    level=${2}
-    if [ -z ${level} ] ; then
-        level=${VERBOSITY_MODE['off']}
+    min_verbosity=${2}
+
+    if [ -z ${min_verbosity} ] ; then
+        min_verbosity=${VERBOSITY_MODE['off']}
     fi
-    if [ ${VERBOSITY_LEVEL} -ge ${level} ] ; then
+
+    if [ -z ${verbosity} ] ; then
+        verbosity=${VERBOSITY_MODE['off']}
+    fi
+
+    if [ ${verbosity} -ge ${min_verbosity} ] ; then
         printf "${message}\n"
     fi
 }
