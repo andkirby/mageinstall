@@ -1,11 +1,4 @@
 #!/bin/bash
-SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && cd .. && pwd)
-cd "$SRC_DIR"
-
-
-. "$SRC_DIR/lib/function.sh"
-
-
 # include default params
 . "$SRC_DIR/install/"params.sh.dist
 

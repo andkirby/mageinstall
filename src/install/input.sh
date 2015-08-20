@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # (POSIX shell syntax)
 
-SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && cd .. && pwd)
-cd "$SRC_DIR"
-
 # parse extra install actions
 while :
 do
@@ -24,4 +21,4 @@ do
     esac
 done
 
-bash "$SRC_DIR/install/$script" $@
+. "$SRC_DIR/install/$script"

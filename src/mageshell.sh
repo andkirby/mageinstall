@@ -1,15 +1,17 @@
 #!/bin/sh
 # (POSIX shell syntax)
 
-OLD_DIR=$(pwd)
 SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
+readonly SRC_DIR
 cd "$SRC_DIR"
 
 . lib/function.sh
 . lib/check-bash.sh
+
 if [ -z $1 ] ; then
     . help.sh
 fi
+
 while :
 do
     case "$1" in
@@ -47,12 +49,13 @@ do
             shift 1
             ;;
         *)  # no more options. Stop while loop
-            die "Unknown action '$action'. Please use help: mageshell --help"
+            die "Unknown action '$1'. Please use help: mageshell --help"
             ;;
     esac
 done
 
 . head.sh
 
-bash ${SRC_DIR}/${script} $@
+user_message "Opening ${script}..." 3
+. ${SRC_DIR}/${script}
 

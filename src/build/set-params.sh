@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && cd .. && pwd)
-cd "$SRC_DIR"
-
-# load functions
-. "$SRC_DIR/lib/function.sh"
 
 if [ ! -f ~/.mageinstall/params.sh ] ; then
     die "You have to initialize install params. Try 'mageshell install init'."
