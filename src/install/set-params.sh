@@ -8,6 +8,7 @@ fi
 . "$SRC_DIR/install/params.sh.dist"
 
 . "$SRC_DIR/lib/function.sh"
+. "$SRC_DIR/install/lib/getopt.sh"
 
 function getUserParam() {
     local PROJECT DB_HOST DB_USER DB_PASSWORD DB_NAME PROJECT_DOMAIN_MASK \
