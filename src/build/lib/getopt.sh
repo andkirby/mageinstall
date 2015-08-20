@@ -1,8 +1,6 @@
 #!/bin/sh
 # (POSIX shell syntax)
 PACKAGE_COMPOSER_URL=()
-VERBOSITY_LEVEL=0
-VERBOSITY_PARAM=''
 INTERACTION_PARAM=''
 
 while :
