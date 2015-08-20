@@ -34,6 +34,27 @@ do
             script="install/input.sh"
             break
             ;;
+        -l | --silent)
+            VERBOSITY_LEVEL=-1
+            VERBOSITY_PARAM="-l"
+            shift 1
+            ;;
+        -v)
+            VERBOSITY_LEVEL=1
+            VERBOSITY_PARAM="-v"
+            shift 1
+            ;;
+        -vv)
+            VERBOSITY_LEVEL=2
+            VERBOSITY_PARAM="-vv"
+            shift 1
+            ;;
+        -vvv)
+            VERBOSITY_LEVEL=3
+            VERBOSITY=true
+            VERBOSITY_PARAM="-vvv"
+            shift 1
+            ;;
         *)  # no more options. Stop while loop
             die "Unknown action '$action'. Please use help: mageshell --help"
             ;;
