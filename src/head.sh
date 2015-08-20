@@ -1,5 +1,5 @@
 #!/bin/sh
 # (POSIX shell syntax)
 
-echo "MageInstall "$(cat ../doc/shell/version)
-echo "Homepage: https://github.com/andkirby/mageinstall"
+user_message "MageInstall "$(cat ../doc/shell/version) 0
+user_message "Homepage: https://github.com/andkirby/mageinstall" 0

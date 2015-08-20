@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # set verbosity modes
-#declare -A VERBOSITY_MODE
+declare -A VERBOSITY_MODE
 VERBOSITY_MODE['silent']=-1
 VERBOSITY_MODE['off']=0
 VERBOSITY_MODE['on']=1
