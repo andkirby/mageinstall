@@ -2,9 +2,6 @@
 # (POSIX shell syntax)
 PACKAGE_COMPOSER_URL=()
 VERBOSITY_LEVEL=0
-VERBOSITY=false
-VERBOSITY_VERY=false
-VERBOSITY_VERY_VERY=false
 VERBOSITY_PARAM=''
 INTERACTION_PARAM=''
 
@@ -69,22 +66,17 @@ do
             ;;
         -v)
             VERBOSITY_LEVEL=1
-            VERBOSITY=true
             VERBOSITY_PARAM="-v"
             shift 1
             ;;
         -vv)
             VERBOSITY_LEVEL=2
-            VERBOSITY=true
-            VERBOSITY_VERY=true
             VERBOSITY_PARAM="-vv"
             shift 1
             ;;
         -vvv)
             VERBOSITY_LEVEL=3
             VERBOSITY=true
-            VERBOSITY_VERY=true
-            VERBOSITY_VERY_VERY=true
             VERBOSITY_PARAM="-vvv"
             shift 1
             ;;
