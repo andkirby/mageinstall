@@ -1,4 +1,14 @@
 #!/bin/sh
+
+# set verbosity modes
+#declare -A VERBOSITY_MODE
+VERBOSITY_MODE['silent']=-1
+VERBOSITY_MODE['off']=0
+VERBOSITY_MODE['on']=1
+VERBOSITY_MODE['very']=2
+VERBOSITY_MODE['debug']=3
+readonly VERBOSITY_MODE
+
 # Boolean function
 function setBoolean {
     local v
@@ -17,15 +27,23 @@ function setBoolean {
 }
 
 function die {
-    echo "Error: $*"
-    echo "$VERBOSITY_VERY_VERY"
-    if [ "$VERBOSITY_VERY_VERY" = "true" ] ; then
+    local error_code
+
+    echo "Error: ${1}"
+
+    # show backtrace
+    if [ ${VERBOSITY_LEVEL} = ${VERBOSITY_MODE['debug']} ] ; then
         local frame=0
         while caller "$frame"; do
             ((frame++));
         done
     fi
-    exit 1
+
+    error_code=1
+    if [ -n ${2} ] && [ ${2} -ge 1 ]; then
+        error_code=${2}
+    fi
+    exit ${error_code}
 }
 
 function user_message {
@@ -33,7 +51,7 @@ function user_message {
     message=${1}
     level=${2}
     if [ -z ${level} ] ; then
-        level=0
+        level=${VERBOSITY_MODE['off']}
     fi
     if [ ${VERBOSITY_LEVEL} -ge ${level} ] ; then
         printf "${message}\n"
