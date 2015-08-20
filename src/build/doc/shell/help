@@ -64,6 +64,9 @@ File composer.json should have default configuration. E.g.:
         It will use "-S" parameter of "mageshell install".
         Boolean value.
 
+    -l, --silent
+        Silent mode. It will prevents any output excepting errors.
+
     -v, -vv, -vvv
         Set verbosity level.
 

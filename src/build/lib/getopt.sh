@@ -62,6 +62,11 @@ do
             INTERACTION_PARAM='-n'
             shift 1
             ;;
+        -l | --silent)
+            VERBOSITY_LEVEL=-1
+            VERBOSITY_PARAM="-l"
+            shift 1
+            ;;
         -v)
             VERBOSITY_LEVEL=1
             VERBOSITY=true
