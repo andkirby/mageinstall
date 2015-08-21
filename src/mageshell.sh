@@ -5,6 +5,9 @@ SRC_DIR=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
 readonly SRC_DIR
 cd "$SRC_DIR"
 
+# stop executing on first error
+set -e
+
 . lib/function.sh
 . lib/check-bash.sh
 
