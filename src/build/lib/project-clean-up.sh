@@ -21,7 +21,6 @@ if [ "$REFRESH_ALL" = "true" ] || [ ! -f "$PROJECT_DIR/app/Mage.php" ] ; then
 elif [ "$PACKAGE_INSTALL_RUN" = "true" ] ; then
     user_message "Clean up project directory..." 1
 
-    # TODO remove enabling errors
     filesToRemove=$(cd "$PROJECT_DIR" && find . -type f -print0 |
         grep -Fxvz -f <(cd "$MAGENTO_DIR" && find . -type f) |
         xargs -0 rm 2>&1)
