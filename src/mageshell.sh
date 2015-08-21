@@ -58,8 +58,5 @@ done
 
 user_message "Opening ${script}..." 3
 
-# stop executing on first error
-set -e
-
 . ${SRC_DIR}/${script}
 
