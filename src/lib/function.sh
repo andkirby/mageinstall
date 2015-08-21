@@ -9,23 +9,24 @@ VERBOSITY_MODE['very']=2
 VERBOSITY_MODE['debug']=3
 readonly VERBOSITY_MODE
 
-# Boolean function
+# Set boolean value to a variable
 function setBoolean {
     local v
     if (( $# != 2 )); then
-        die "Improper setBoolean() usage" 1>&2;
+        die "Improper setBoolean() usage";
     fi
 
     case "$2" in
         TRUE | true | yes | YES | 1) v=true ;;
         FALSE | false | no | NO | 0 | "") v=false ;;
-        *) die "Unknown boolean value \"$2\". Please use 'true|false' or 'yes|no' or '1|0' or '' for 'false'." 1>&2;
+        *) die "Unknown boolean value \"$2\". Please use 'true|false' or 'yes|no' or '1|0' or '' for 'false'.";
             ;;
     esac
 
     eval $1=$v
 }
 
+# Show message and exit
 function die {
     local error_code verbosity
 
@@ -51,6 +52,7 @@ function die {
     exit ${error_code}
 }
 
+# Show user message based upon verbosity level
 function user_message {
     local min_verbosity message verbosity
 
@@ -69,4 +71,18 @@ function user_message {
     if [ ${verbosity} -ge ${min_verbosity} ] ; then
         printf "${message}\n"
     fi
+}
+
+# Function to check status code of executed command
+function check_status {
+    local status
+    status=$1
+    if [ ${status} = 0 ]; then
+        return
+    elif [ ${status} = 130 ]; then
+        die "Exit." 130
+    elif [ -z "${status}" ]; then
+        die "Status code is not set."
+    fi
+    die "Code: ${status}" ${status}
 }
