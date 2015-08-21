@@ -84,5 +84,8 @@ function check_status {
     elif [ -z "${status}" ]; then
         die "Status code is not set."
     fi
-    die "Code: ${status}" ${status}
+    if [ -z "${2}" ] ; then
+        die "Code: ${status}" ${status}
+    fi
+    exit ${status}
 }
