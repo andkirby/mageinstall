@@ -102,6 +102,10 @@ do
             setBoolean SAMPLE_DATA_MEDIA_RUN "$2"
             shift 2
             ;;
+        --use-project-sample-data)
+            SAMPLE_DATA_PROJECT="$2"
+            shift 2
+            ;;
         -x | --media-dir-permissions)
             MEDIA_DIR_PERMISSIONS="$2"
             shift 2

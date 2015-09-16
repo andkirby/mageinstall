@@ -132,6 +132,10 @@
         Run copying sample data files.
         Param SAMPLE_DATA_MEDIA_RUN = yes|no|true|false|1|0
 
+    --use-project-sample-data
+        Set specific project name for sample data.
+        Param SAMPLE_DATA_PROJECT
+
     -x, --media-dir-permissions
         "media", "var", "app/etc" directories permissions.
         Param MEDIA_DIR_PERMISSIONS.

@@ -61,6 +61,8 @@ IMPORT_DIR="__SAMPLE_DIR__/import"
 # You root directory of project
 PROJECT_DIR="__DOCROOT__/__PROJECT__"
 
+SAMPLE_DATA_PROJECT=''
+
 # ---------- 4. Binary files parameters
 # Path to MySQL client binary file
 MYSQL_BIN="mysql"
