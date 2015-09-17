@@ -17,7 +17,6 @@
     "bin-dir": "bin"
   },
   "bin": [
-    "bin/mageinstall",
     "bin/mageshell"
   ],
   "extra": {
