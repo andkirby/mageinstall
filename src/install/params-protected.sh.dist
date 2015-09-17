@@ -22,7 +22,6 @@ else
     SAMPLE_DATA_DIR=$(replaceVariable "$SAMPLE_DATA_DIR" "__PROJECT__" "${SAMPLE_DATA_PROJECT}")
 fi
 SAMPLE_DATA_DIR=$(replaceVariable "$SAMPLE_DATA_DIR" "__DOCROOT__" "$ROOT")
-echo $SAMPLE_DATA_DIR; exit;
 IMPORT_DIR=$(replaceVariable "$IMPORT_DIR" "__SAMPLE_DIR__" "$SAMPLE_DATA_DIR")
 
 PROJECT_DIR=$(replaceVariable "$PROJECT_DIR" "__DOCROOT__" "$ROOT")
