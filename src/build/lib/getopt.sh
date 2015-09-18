@@ -32,6 +32,10 @@ do
             PACKAGE_DEPLOY_STRATEGY="$2"
             shift 2
             ;;
+        --package-deploy-force)
+            setBoolean PACKAGE_DEPLOY_FORCE "$2"
+            shift 2
+            ;;
         -t | --package-prefer-stable)
             PACKAGE_PREFER_STABLE="$2"
             shift 2

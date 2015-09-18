@@ -41,6 +41,10 @@ File composer.json should have default configuration. E.g.:
         Composer package deploy strategy.
         Default: copy
 
+    --package-deploy-force
+        Force package deploying when the file/s exist.
+        Default: false
+
     -t, --package-prefer-stable
         Composer package prefer-stable value.
         Default: true

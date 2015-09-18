@@ -23,6 +23,6 @@ ignoreValidateProjectParams='1'
 . "$SRC_DIR/install/load-params.sh"
 
 if [ "$skipDefaultComposerJson" != "true" ] || [ ! -f ~/.mageinstall/build/composer.json ] ; then
-    . "$SRC_DIR/build/lib/default-composer-json.sh"
+    . "$SRC_DIR/build/init/init.sh"
 fi
 

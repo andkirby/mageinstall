@@ -4,11 +4,10 @@ echo ""
 user_message "Set your parameters..." 0
 params=(\
 "PACKAGE_MINIMUM_STABILITY:Minimum Stability:stable|RC|beta|alpha|dev:stable" \
+"PACKAGE_PREFER_STABLE:Composer package prefer-stable value:boolean:false" \
 "PACKAGE_DEPLOY_STRATEGY:Deploy strategy:copy|symlink:copy" \
-#"PACKAGE_COMPOSER_URL:URL to your composer repository (if you have)" \
+"PACKAGE_DEPLOY_FORCE:Force deploying when the same file exists:boolean:true" \
 "MAGENTO_DIR:Pure Magento files directory (if empty set as a parameter)" \
-"PACKAGE_PREFER_STABLE:Composer package prefer-stable value:boolean:true" \
-#"PROJECT_DIR:Path to your Magento directory" \
 )
 
 filledParams=()
@@ -31,8 +30,8 @@ for item in "${params[@]}"; do
         VALUES="|$values|"
     fi
 
-    while true
-    do
+    while true; do
+
         if [ "$values" ] ; then
             printf "$comment ($values) [$default] : "
         else
@@ -73,14 +72,14 @@ fi
 
 #set repository URLs
 repositories=""
-for i in "${PACKAGE_COMPOSER_URL[@]}"
-do
+for i in "${PACKAGE_COMPOSER_URL[@]}"; do
     repositories="$repositories -c$i "
     user_message "Extra composer URL: $i" 2
 done
 json=$($PHP_BIN "$SRC_DIR"/build/lib/generate-composer-json.php \
     -s$PACKAGE_MINIMUM_STABILITY \
     -d$PACKAGE_DEPLOY_STRATEGY \
+    -f$PACKAGE_DEPLOY_FORCE \
     -t$PACKAGE_PREFER_STABLE \
     $repositories)
 
@@ -89,8 +88,5 @@ if [ "$hasError" ] ; then
     die "$json"
 fi
 
-echo "$json" > ~/.mageinstall/build/composer.json
 
-# Write ~/.mageinstall/build/composer.json
-user_message "Writing parameters into ~/.mageinstall/build/params.sh..." 1
-( IFS=$'\n'; echo "${filledParams[*]}" ) > ~/.mageinstall/build/params.sh
+
