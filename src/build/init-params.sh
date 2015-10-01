@@ -51,3 +51,7 @@ fi
 if [ -z "$VERBOSITY_COMPOSER" ] ; then
     VERBOSITY_COMPOSER=false
 fi
+# set apply verbosity to composer
+if [ -z "$VERBOSITY_LEVEl" ] ; then
+    VERBOSITY_LEVEL=0
+fi
