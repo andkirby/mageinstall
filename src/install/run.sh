@@ -15,6 +15,7 @@
 . "$SRC_DIR/install/"load-project-params.sh
 
 # ================= Code =================
+full_start=$(date +%s)
 user_message "Magento Installation." 0
 
 user_message "Go to directory $PROJECT_DIR..." 2
@@ -33,3 +34,7 @@ user_message "Go to directory $PROJECT_DIR..." 2
 
 # Import products
 . "$SRC_DIR/install/"lib/import.sh
+
+end=$(date +%s)
+diff=$(( $end - ${full_start} ))
+user_message "Full installing took $diff seconds." 0
