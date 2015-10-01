@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VERBOSITY_LEVEL=0
+
 # Project name. It should be provided as a parameter.
 PROJECT=""
 
