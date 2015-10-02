@@ -33,8 +33,8 @@ for item in "${params[@]}"; do
 
     while true; do
 
-        if [ "$values" ] ; then
-            printf "$comment ($values) [$default] : "
+        if [ "$values_input" ] ; then
+            printf "$comment ($values_input) [$default] : "
         else
             printf "$comment [$default] : "
         fi
