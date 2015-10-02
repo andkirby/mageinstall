@@ -37,4 +37,4 @@ user_message "Go to directory $PROJECT_DIR..." 2
 
 end=$(date +%s)
 diff=$(( $end - ${full_start} ))
-user_message "Full installing took $diff seconds." 0
+user_message "Time (whole install): $diff seconds." 0
