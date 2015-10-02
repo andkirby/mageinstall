@@ -1,7 +1,20 @@
 <?php
+namespace MageInstall\Composer\Config;
+
 require_once realpath(__DIR__ . '/../../lib') . '/autoload-init.php';
 
 use webignition\JsonPrettyPrinter\JsonPrettyPrinter;
+
+/**
+ * Get boolean value from string
+ *
+ * @param bool|string $value
+ * @return bool
+ */
+function getBoolean($value)
+{
+    return $value !== 'false' && $value;
+}
 
 try {
     //region collect params
@@ -56,15 +69,15 @@ try {
         }
 
         if ($required && !isset($options[$long])) {
-            throw new Exception("Parameter --$long|-$short is required.");
+            throw new \Exception("Parameter --$long|-$short is required.");
         }
     }
 
     if ($options['magento-root-dir'] && !is_dir((string)$options['magento-root-dir'])) {
-        throw new Exception("Project path '{$options['magento-root-dir']}' not found.");
+        throw new \Exception("Project path '{$options['magento-root-dir']}' not found.");
     }
     if ($options['json-file'] && !is_file((string)$options['json-file'])) {
-        throw new Exception("JSON file '{$options['json-file']}' not found.");
+        throw new \Exception("JSON file '{$options['json-file']}' not found.");
     }
     //endregion
 
@@ -93,7 +106,7 @@ try {
         foreach ($options['composer-repository-url'] as $url) {
             if (!$repositoryUrls || !in_array($url, $repositoryUrls)) {
                 if (!strpos($url, '://')) {
-                    throw new Exception("Composer URL '$url' is not valid.");
+                    throw new \Exception("Composer URL '$url' is not valid.");
                 }
                 $data['repositories'][] = array(
                     'type' => 'composer',
@@ -106,9 +119,9 @@ try {
         $data['minimum-stability'] = (string)$options['minimum-stability'] ?: 'stable';
     }
     if (isset($options['prefer-stable'])) {
-        $data['prefer-stable'] = (bool)$options['prefer-stable'];
+        $data['prefer-stable'] = getBoolean($options['prefer-stable']);
     }
-    $data['extra']['magento-force']          = (bool)$options['magento-force'];
+    $data['extra']['magento-force']          = getBoolean($options['magento-force']);
     $data['extra']['magento-deploystrategy'] = (string)$options['magento-deploystrategy'] ?: 'symlink';
     if ($options['magento-root-dir']) {
         $data['extra']['magento-root-dir'] = $options['magento-root-dir'];
@@ -126,6 +139,6 @@ try {
     $composerJson = json_encode($data);
     $formatter    = new JsonPrettyPrinter();
     echo $formatter->format($composerJson);
-} catch (Exception $e) {
+} catch (\Exception $e) {
     echo "Error: " . $e->getMessage() . PHP_EOL;
 }
