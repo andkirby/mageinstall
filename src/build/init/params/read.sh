@@ -16,7 +16,7 @@ for item in "${params[@]}"; do
     IFS=':' read -ra ADDR <<< "$item"
     key=${ADDR[0]}
     comment=${ADDR[1]}
-    values=${ADDR[2]}
+    values_input=${ADDR[2]}
     suggest=${ADDR[3]}
     default=${!key}
 
@@ -24,10 +24,11 @@ for item in "${params[@]}"; do
         default=${suggest}
     fi
 
-    if [ "$values" = "boolean" ] ; then
-        VALUES="|yes|no|YES|NO|true|false|TRUE|FALSE|1|0|"
-    elif [ "$values" ] ; then
-        VALUES="|$values|"
+    values=''
+    if [ "$values_input" = "boolean" ] ; then
+        values="|yes|no|YES|NO|true|false|TRUE|FALSE|1|0|"
+    elif [ "$values_input" ] ; then
+        values="|$values_input|"
     fi
 
     while true; do
@@ -44,8 +45,8 @@ for item in "${params[@]}"; do
             answer="$default"
         fi
         if [ "$values" ] ; then
-            f=`echo "$VALUES" | grep "|$answer|"`;
-            if [ "$f" = "$VALUES" ] ; then
+            f=`echo "$values" | grep "|$answer|"`;
+            if [ "$f" = "$values" ] ; then
                 # value matched
                 break
             fi
