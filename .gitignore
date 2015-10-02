@@ -1,3 +1,4 @@
 # Created by .gitignore support plugin (hsz.mobi)
 params.sh
 params-protected.sh
+/test
