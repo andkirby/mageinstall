@@ -4,7 +4,7 @@ cd "$PROJECT_DIR"
 cleared=false
 # ======= Clean Up var Directory =======
 if [ "$INSTALL_RUN" = true ] || [ "$CLEAR_CACHE" = true ] || ( [ "$SAMPLE_DATA_SQL_RUN" = true ] && [ -d "$SAMPLE_DATA_DIR" ] ) ; then
-    user_message "Clearing cache files..." 1
+    user_message "Cleaning cache files..." 1
     rm -rf var/full_page_cache
     rm -rf var/cache
     rm -rf var/lock
