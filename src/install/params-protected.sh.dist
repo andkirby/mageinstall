@@ -37,11 +37,9 @@ ADMIN_EMAIL=$(replaceVariable "$ADMIN_EMAIL" "__PROJECT__" "$PROJECT")
 CUR_DIR=$(pwd)
 
 # Set default DB host
-if [ -z "$DB_HOST" ]
-then
+if [ -z "$DB_HOST" ]; then
     DB_HOST="localhost"
 fi
-
 
 # Set DB name as project name if it's empty
 if [ -z "$DB_NAME" ]
@@ -50,11 +48,12 @@ then
 fi
 
 DB_NAME=$(replaceVariable "$DB_NAME" "__PROJECT__" "$PROJECT")
-
 DB_HOST=$(replaceVariable "$DB_HOST" "__PROJECT__" "$PROJECT")
+DB_USER=$(replaceVariable "$DB_USER" "__PROJECT__" "$PROJECT")
 
-# Replace symbols "/.-" with "_" in database name
-DB_NAME=$(echo $DB_NAME | tr /.- _)
+# Replace inappropriate symbols with "_" in database name
+DB_NAME=$(echo $DB_NAME | sed -re 's:[^a-zA-Z0-9_]+:_:g')
+DB_USER=$(echo $DB_USER | sed -re 's:[^a-zA-Z0-9_]+:_:g')
 
 # ======= Set DB connect command =======
 DB_CONNECT_COMMAND="$MYSQL_BIN -u$DB_USER -h$DB_HOST"
