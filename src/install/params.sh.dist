@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERBOSITY_LEVEL=0
+[ -z "${VERBOSITY_LEVEL:-}" ] && VERBOSITY_LEVEL=0
 
 # Project name. It should be provided as a parameter.
 PROJECT=""
@@ -8,13 +8,13 @@ PROJECT=""
 # ---------- 1. INSTALLATION PARAMETERS ------------
 # ---------- 1.1. Database parameters --------------
 # Database connection host.
-DB_HOST="localhost"
+[ -z "${DB_HOST:-}" ] && DB_HOST="localhost"
 # Database connection username.
-DB_USER="root"
+[ -z "${DB_USER:-}" ] && DB_USER="root"
 # Database connection password.
-DB_PASSWORD=""
+[ -z "${DB_PASSWORD:-}" ] && DB_PASSWORD=""
 # Database name.
-DB_NAME="__PROJECT__"
+[ -z "${DB_NAME:-}" ] && DB_NAME="__PROJECT__"
 
 # ---------- 1.2. URL parameters
 # __PROJECT__ will be replaced with your $PROJECT parameter
@@ -24,20 +24,20 @@ DB_NAME="__PROJECT__"
 # And you will get completed domains:
 #   example.com/path/to/projectname
 #   example-projectname.com
-PROJECT_DOMAIN_MASK="__PROJECT__.cc"
+[ -z "${PROJECT_DOMAIN_MASK:-}" ] && PROJECT_DOMAIN_MASK="__PROJECT__.cc"
 # Secured protocol secured URL of project.
 # Set "http" if you don't have HTTPS.
-PROTOCOL_SECURED="https"
+[ -z "${PROTOCOL_SECURED:-}" ] && PROTOCOL_SECURED="https"
 # Enable using of Apache rewrites.
-USE_REWRITES="yes"
+[ -z "${USE_REWRITES:-}" ] && USE_REWRITES="yes"
 
 # ---------- 1.3. Admin user parameters
 # Username of default administrator.
-ADMIN_USERNAME="admin"
+[ -z "${ADMIN_USERNAME:-}" ] && ADMIN_USERNAME="admin"
 # Password of default administrator.
-ADMIN_PASSWORD="password"
+[ -z "${ADMIN_PASSWORD:-}" ] && ADMIN_PASSWORD="password"
 # Email of default administrator.
-ADMIN_EMAIL="example-__PROJECT__@example.com"
+[ -z "${ADMIN_EMAIL:-}" ] && ADMIN_EMAIL="example-__PROJECT__@example.com"
 
 # ---------- 2. Install parameters
 # Enable Magento installation
@@ -55,32 +55,32 @@ SAMPLE_DATA_CONFIG_RUN=yes
 
 # ---------- 3. Install directories
 # Path to document root
-ROOT="/usr/local/www/apache22/data"
+[ -z "${ROOT:-}" ] && ROOT="/usr/local/www/apache22/data"
 # Path sample data directory
-SAMPLE_DATA_DIR="__DOCROOT__/sample_data/__PROJECT__"
+[ -z "${SAMPLE_DATA_DIR:-}" ] && SAMPLE_DATA_DIR="__DOCROOT__/sample_data/__PROJECT__"
 # Products CSV files directory
-IMPORT_DIR="__SAMPLE_DIR__/import"
+[ -z "${IMPORT_DIR:-}" ] && IMPORT_DIR="__SAMPLE_DIR__/import"
 # You root directory of project
-PROJECT_DIR="__DOCROOT__/__PROJECT__"
+[ -z "${PROJECT_DIR:-}" ] && PROJECT_DIR="__DOCROOT__/__PROJECT__"
 
 SAMPLE_DATA_PROJECT=''
 
 # ---------- 4. Binary files parameters
 # Path to MySQL client binary file
-MYSQL_BIN="mysql"
+[ -z "${MYSQL_BIN:-}" ] && MYSQL_BIN="mysql"
 # Path to PHP binary file
-PHP_BIN="php"
+[ -z "${PHP_BIN:-}" ] && PHP_BIN="php"
 
 # ---------- 5. Permissions for "var", "media", and "etc" directories
 # TODO Add using MEDIA_PERMISSION_DIRS MEDIA_PERMISSION_DIRS_RECURSIVE PROJECT_DIR_PERMISSIONS
-MEDIA_PERMISSION_DIRS='etc/'
-MEDIA_PERMISSION_DIRS_RECURSIVE='var/:media/'
-MEDIA_DIR_PERMISSIONS=0770
-MEDIA_DIR_OWNER=""
-PROJECT_DIR_PERMISSIONS=0770
-PROJECT_DIR_OWNER=""
+[ -z "${MEDIA_PERMISSION_DIRS:-}" ] && MEDIA_PERMISSION_DIRS='etc/'
+[ -z "${MEDIA_PERMISSION_DIRS_RECURSIVE:-}" ] && MEDIA_PERMISSION_DIRS_RECURSIVE='var/:media/'
+[ -z "${MEDIA_DIR_PERMISSIONS:-}" ] && MEDIA_DIR_PERMISSIONS=0770
+[ -z "${MEDIA_DIR_OWNER:-}" ] && MEDIA_DIR_OWNER=""
+[ -z "${PROJECT_DIR_PERMISSIONS:-}" ] && PROJECT_DIR_PERMISSIONS=0770
+[ -z "${PROJECT_DIR_OWNER:-}" ] && PROJECT_DIR_OWNER=""
 
 # ---------- 6. Package config
 # *.csv files will be added to configuration recurcivelly
-PROJECT_CONFIG_DIR="__DOCROOT__/__PROJECT__/shell/mageshell/config"
-PROJECT_CONFIG_RUN=true
+[ -z "${PROJECT_CONFIG_DIR:-}" ] && PROJECT_CONFIG_DIR="__DOCROOT__/__PROJECT__/shell/mageshell/config"
+[ -z "${PROJECT_CONFIG_RUN:-}" ] && PROJECT_CONFIG_RUN=true
